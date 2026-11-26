@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Út Điệu Spa — Phú Quốc</title>
+<meta name="description" content="Út Điệu Spa, Ông Lang, Phú Quốc — body & foot massage, hair spa, nails. Book on WhatsApp.">
+<meta name="theme-color" content="#f6efe6">
+<link rel="icon" href="assets/img/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shared.css">
+<style>
+:root{--bg:#f6efe6;--ink:#3b2418;--muted:#8a7163;--acc:#a8552f;--acc-ink:#fff;--card:#fffaf3;--line:rgba(74,44,29,.12);--hdr:rgba(246,239,230,.86);
+--gate:radial-gradient(120% 90% at 50% 0%,#5a3423,#2a1810);--gate-ink:#f6efe6;--gate-card:rgba(255,255,255,.1);
+--fd:"Cormorant Garamond",Georgia,serif;--fb:Manrope,system-ui,sans-serif;--green:#2f6b46}
+.hdr:not(.solid){color:#fff}
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:0 0 96px;color:#fff;overflow:hidden}
+.hero-bg{position:absolute;inset:-6% 0;width:100%;height:112%;object-fit:cover;animation:kb 22s ease-in-out infinite alternate;will-change:transform}
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.14) translateY(-2%)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(42,24,16,.45) 0%,rgba(42,24,16,.3) 30%,rgba(42,24,16,.8) 58%,rgba(42,24,16,.95) 100%)}
+.hero .w{position:relative;z-index:1}
+.hero .kick{color:#f0cfa8}
+.hero h1{font-size:clamp(46px,12vw,92px);font-weight:600;margin:14px 0 16px;letter-spacing:-.01em}
+.hero h1 em{font-style:italic;color:#f0cfa8}
+.hero p{max-width:44ch;opacity:.9;margin-bottom:26px}
+.hero-btns{display:flex;flex-wrap:wrap;gap:12px}
+.scroll-hint{position:absolute;left:50%;bottom:26px;z-index:1;width:1px;height:44px;background:rgba(255,255,255,.35);overflow:hidden}
+.scroll-hint::after{content:"";position:absolute;inset:0;background:#fff;animation:drop 2s infinite}
+@keyframes drop{from{transform:translateY(-100%)}to{transform:translateY(100%)}}
+/* body map */
+.map-grid{display:grid;gap:26px;margin-top:28px}
+@media(min-width:820px){.map-grid{grid-template-columns:340px 1fr;align-items:start}}
+.figure{position:relative;background:radial-gradient(60% 50% at 50% 40%,#fff8ee,#ecdcc6);border-radius:32px;padding:22px 10px 14px}
+.figure svg{height:min(46svh,470px);margin:0 auto;overflow:visible}
+.z{color:#d9b998;cursor:pointer;transition:color .35s,transform .35s;transform-box:fill-box;transform-origin:center}
+.z .f{fill:currentColor}.z .l{fill:none;stroke:currentColor;stroke-linecap:round}
+.z:hover{color:#c99a72}
+.z.on{color:var(--acc);filter:drop-shadow(0 6px 14px rgba(168,85,47,.45))}
+.dot{fill:#fff;opacity:.9;pointer-events:none;animation:pulse 2.4s infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pulse{50%{transform:scale(1.9);opacity:.25}}
+.zchips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px}
+.zchips button{padding:8px 14px;border-radius:99px;background:rgba(255,255,255,.7);font-size:13px;font-weight:600;transition:.25s}
+.zchips button.on{background:var(--acc);color:#fff}
+.panel{background:var(--card);border-radius:28px;padding:22px 18px;box-shadow:0 0 0 1px var(--line);min-height:220px;scroll-margin-top:70px}
+.panel h3{font-size:30px;margin-bottom:4px}
+.hint{font-size:13px;color:var(--muted);margin-bottom:8px}
+.empty{display:grid;place-items:center;min-height:170px;text-align:center;color:var(--muted);font-family:var(--fd);font-size:24px;font-style:italic}
+/* service rows */
+.svc{padding:16px 0;border-top:1px solid var(--line);animation:rise .5s cubic-bezier(.2,.7,.2,1) both}
+.svc:first-of-type{border-top:0}
+.svc-n{font-weight:700;margin-bottom:10px}
+.svc-c{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+@media(min-width:520px){.svc-c{display:flex;flex-wrap:wrap;gap:8px}}
+.chip{display:flex;flex-direction:column;align-items:flex-start;gap:1px;padding:9px 9px;border-radius:14px;box-shadow:inset 0 0 0 1.5px var(--line);background:#fff;text-align:left;transition:background .25s,color .25s,transform .2s,box-shadow .25s}
+@media(min-width:520px){.chip{padding:9px 13px;min-width:104px}}
+.chip:active{transform:scale(.95)}
+.chip b{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.chip span{font-weight:700;font-size:14px;white-space:nowrap}
+.chip i{font-style:normal;font-size:12px;color:var(--muted)}
+.chip.on{background:var(--green);color:#fff;box-shadow:none}
+.chip.on b,.chip.on i{color:rgba(255,255,255,.8)}
+.chip.on b::after{content:" ✓"}
+/* menu tabs */
+.tabs{display:flex;gap:8px;overflow-x:auto;margin:24px -20px 14px;padding:4px 20px;scrollbar-width:none;position:sticky;top:58px;z-index:5;background:linear-gradient(var(--bg) 80%,transparent)}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none;padding:10px 18px;border-radius:99px;font-weight:700;font-size:14px;box-shadow:inset 0 0 0 1.5px var(--line);transition:.25s}
+.tabs button.on{background:var(--ink);color:var(--bg);box-shadow:none}
+.note{font-size:12px;color:var(--muted);margin-top:16px}
+/* gallery */
+.gal{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 20px 20px;margin-top:22px;scrollbar-width:none}
+.gal::-webkit-scrollbar{display:none}
+.gal img{flex:none;width:min(72vw,300px);aspect-ratio:3/4;object-fit:cover;border-radius:24px;scroll-snap-align:center;cursor:zoom-in;transition:transform .5s}
+.gal img:nth-child(even){margin-top:26px}
+.lb{position:fixed;inset:0;z-index:90;background:rgba(20,10,5,.94);display:grid;place-items:center;padding:16px;animation:fade .3s}
+.lb img{max-height:92svh;border-radius:16px}
+@keyframes fade{from{opacity:0}}
+/* location */
+.loc{display:grid;gap:22px}
+@media(min-width:820px){.loc{grid-template-columns:1fr 1fr;align-items:center}}
+.loc-img{border-radius:28px;aspect-ratio:4/3;object-fit:cover;width:100%}
+.loc-rows{margin:18px 0 22px;display:grid;gap:8px;font-weight:600}
+.loc-rows a{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line)}
+/* cart */
+.cart{position:fixed;left:10px;right:10px;bottom:10px;z-index:50;background:#2a1810;color:#f6efe6;border-radius:24px;padding:12px;transform:translateY(140%);transition:transform .5s cubic-bezier(.2,.8,.2,1);box-shadow:0 20px 50px -15px rgba(0,0,0,.6);max-width:560px;margin:0 auto}
+body.has-cart .cart{transform:none}
+.cart-top{display:flex;align-items:center;gap:10px}
+.cart-sum{flex:1;text-align:left;padding:2px 6px;min-width:0}
+.cart-sum small{display:block;font-size:12px;opacity:.7}
+.cart-sum strong{font-size:17px;white-space:nowrap}
+.cart .btn{padding:13px 18px;font-size:15px}
+.cart-list{max-height:0;overflow:hidden;transition:max-height .4s;font-size:14px}
+.cart.open .cart-list{max-height:40svh;overflow:auto}
+.cart-list div{display:flex;justify-content:space-between;gap:10px;padding:9px 6px;border-bottom:1px solid rgba(255,255,255,.1)}
+.cart-list button{opacity:.6;padding:0 6px;font-size:18px}
+
+</style>
+</head>
+<body>
+<header class="hdr">
+  <a class="brand" href="#top"><img src="assets/img/logo.jpg" alt="">Út Điệu Spa</a>
+  <button id="langBtn" class="lang-btn" aria-label="Language"></button>
+</header>
+
+<section class="hero" id="top">
+  <img class="hero-bg" src="assets/img/p14.jpg" alt="">
+  <div class="w">
+    <div class="kick rv">Ông Lang · Phú Quốc</div>
+    <h1 class="rv d1" data-i18n="hero_h"></h1>
+    <p class="rv d2" data-i18n="hero_p"></p>
+    <div class="hero-btns rv d3">
+      <a class="btn" href="#map" data-i18n="hero_cta"></a>
+      <a class="btn ghost" href="#menu" data-i18n="menu_h"></a>
+    </div>
+  </div>
+  <div class="scroll-hint"></div>
+</section>
+
+<section id="map">
+  <div class="w">
+    <div class="kick rv" data-i18n="map_k"></div>
+    <h2 class="h2 rv" data-i18n="map_h"></h2>
+    <p class="lead rv" data-i18n="map_p"></p>
+    <div class="map-grid">
+      <div class="figure rv">
+        <svg viewBox="0 0 220 490" id="body" role="img" aria-label="Body map">
+          <g class="z" data-z="head"><ellipse class="f" cx="110" cy="46" rx="27" ry="33"/></g>
+          <g class="z" data-z="shoulders"><rect class="f" x="99" y="76" width="22" height="24" rx="8"/><path class="f" d="M56 124Q58 98 100 93L120 93Q162 98 164 124Q110 106 56 124Z"/></g>
+          <g class="z" data-z="body"><path class="f" d="M63 130Q110 113 157 130L150 205Q146 234 156 264Q110 278 64 264Q74 234 70 205Z"/></g>
+          <g class="z" data-z="arms"><path class="l" stroke-width="21" d="M46 136Q35 190 31 256"/><path class="l" stroke-width="21" d="M174 136Q185 190 189 256"/><ellipse class="f" cx="29" cy="284" rx="11" ry="15"/><ellipse class="f" cx="191" cy="284" rx="11" ry="15"/></g>
+          <g class="z" data-z="legs"><path class="l" stroke-width="34" d="M88 294Q84 360 88 428"/><path class="l" stroke-width="34" d="M132 294Q136 360 132 428"/></g>
+          <g class="z" data-z="feet"><ellipse class="f" cx="83" cy="466" rx="21" ry="12"/><ellipse class="f" cx="137" cy="466" rx="21" ry="12"/></g>
+          <circle class="dot" cx="110" cy="46" r="4"/><circle class="dot" cx="110" cy="104" r="4" style="animation-delay:.3s"/><circle class="dot" cx="110" cy="190" r="4" style="animation-delay:.6s"/><circle class="dot" cx="33" cy="230" r="4" style="animation-delay:.9s"/><circle class="dot" cx="134" cy="360" r="4" style="animation-delay:1.2s"/><circle class="dot" cx="83" cy="466" r="4" style="animation-delay:1.5s"/>
+        </svg>
+        <div class="zchips" id="zchips"></div>
+      </div>
+      <div class="panel rv d1" id="panel"></div>
+    </div>
+  </div>
+</section>
+
+<section id="menu" style="padding-top:20px">
+  <div class="w">
+    <div class="kick rv" data-i18n="menu_k"></div>
+    <h2 class="h2 rv" data-i18n="menu_h"></h2>
+    <p class="lead rv" data-i18n="tap_hint"></p>
+    <div class="tabs" id="tabs"></div>
+    <div class="panel" id="list" style="min-height:0"></div>
+    <p class="note" data-i18n="rate_note"></p>
+  </div>
+</section>
+
+<section id="gallery" style="padding-bottom:30px">
+  <div class="w"><div class="kick rv" data-i18n="gal_k"></div><h2 class="h2 rv" data-i18n="gal_h"></h2></div>
+  <div class="gal" id="gal"></div>
+</section>
+
+<section id="find">
+  <div class="w loc">
+    <img class="loc-img rv" src="assets/img/p18.jpg" alt="Út Điệu Spa" loading="lazy">
+    <div class="rv d1">
+      <div class="kick" data-i18n="loc_k"></div>
+      <h2 class="h2" data-i18n="loc_h"></h2>
+      <p class="lead" data-i18n="loc_p"></p>
+      <div class="loc-rows">
+        <span>📍 <span data-i18n="foot_addr"></span></span>
+        <span>📞 <a href="tel:+84767907799">+84 76 790 7799</a> · <a href="tel:+84707515595">+84 707 515 595</a></span>
+        <span>💬 <a href="https://zalo.me/0767907799" target="_blank" rel="noopener">Zalo</a></span>
+      </div>
+      <div class="hero-btns">
+        <a class="btn wa" data-wa><span data-i18n="wa_btn"></span></a>
+        <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%C3%9At+%C4%90i%E1%BB%87u+Spa+%C3%94ng+Lang+Ph%C3%BA+Qu%E1%BB%91c" data-i18n="map_btn"></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cross" style="padding-top:20px"></section>
+<footer><div class="w"><b>Út Điệu Spa</b> · Body · Foot · Shampoo · Nail<br><span data-i18n="foot_addr"></span></div></footer>
+
+<div class="cart" id="cart">
+  <div class="cart-list" id="cartList"></div>
+  <div class="cart-top">
+    <button class="cart-sum" id="cartSum"></button>
+    <a class="btn wa" id="cartGo" target="_blank" rel="noopener"></a>
+  </div>
+</div>
+
+<script>
+/* ===== Услуги и цены (в тысячах донгов). d — длительность в минутах, 0 = без длительности. n — [ru,en,vi,ko,zh] ===== */
+const SERVICES = [
+ {id:'relax',c:'body',d:[60,90,120],p:[400,600,800],n:['Расслабляющий массаж','Relaxing massage','Massage thư giãn','릴랙싱 마사지','舒缓按摩']},
+ {id:'deep',c:'body',d:[60,90,120],p:[450,650,850],n:['Глубокий массаж тканей','Deep tissue massage','Massage mô sâu','딥티슈 마사지','深层组织按摩']},
+ {id:'aloe',c:'body',d:[60,90,120],p:[450,650,850],n:['Массаж с алоэ вера','Aloe vera body massage','Massage nha đam','알로에 베라 마사지','芦荟身体按摩']},
+ {id:'thai',c:'body',d:[60,90,120],p:[500,700,900],n:['Тайский массаж','Thai body massage','Massage Thái','타이 마사지','泰式按摩']},
+ {id:'herbal',c:'body',d:[60,90,120],p:[500,700,900],n:['Травяной массаж','Herbal body massage','Massage thảo dược','허브 마사지','草本按摩']},
+ {id:'stone',c:'body',d:[60,90,120],p:[500,700,900],n:['Массаж горячими камнями','Hot stone massage','Massage đá nóng','핫스톤 마사지','热石按摩']},
+ {id:'prenatal',c:'body',d:[60,90,120],p:[500,700,900],n:['Массаж для беременных','Prenatal massage','Massage bầu','임산부 마사지','孕妇按摩']},
+ {id:'scrub',c:'body',d:[30,60],p:[300,500],n:['Скраб для тела','Body scrub','Tẩy tế bào chết toàn thân','바디 스크럽','身体磨砂']},
+ {id:'sun',c:'body',d:[30,60],p:[350,600],n:['Восстановление после загара','After-sun recovery','Phục hồi da sau cháy nắng','선번 진정 케어','晒后修复']},
+ {id:'foot',c:'foot',d:[30,60,90],p:[250,450,650],n:['Массаж стоп','Foot massage','Massage chân','발 마사지','足部按摩']},
+ {id:'fscrub',c:'foot',d:[30,60,90],p:[250,450,650],n:['Скраб для ног','Foot scrub','Tẩy tế bào chết chân','발 스크럽','足部磨砂']},
+ {id:'fscrubm',c:'foot',d:[60,90],p:[450,650],n:['Скраб + массаж стоп','Foot scrub + massage','Tẩy tế bào chết + massage chân','발 스크럽 + 마사지','足部磨砂 + 按摩']},
+ {id:'fcare',c:'foot',d:[60,90],p:[500,700],n:['Уход за стопами: пилинг пяток, очищение, массаж','Foot care: heel scrub, cleansing, massage','Chăm sóc chân: chà gót, làm sạch, massage','풋 케어: 각질 제거 · 클렌징 · 마사지','足部护理：去角质 · 清洁 · 按摩']},
+ {id:'nbasic',c:'nail',d:[0],p:[200],n:['Маникюр / педикюр без покрытия','Manicure / pedicure, no polish','Cắt da, làm sạch móng (không sơn)','매니큐어 / 페디큐어 (컬러 없음)','修甲 / 修脚（不涂甲油）']},
+ {id:'nremove',c:'nail',d:[0],p:[150],n:['Снятие гель-лака','Gel removal','Tháo gel cũ','젤 제거','卸除旧甲油胶']},
+ {id:'ngel',c:'nail',d:[0],p:[450],n:['Покрытие гель-лаком','Gel polish','Sơn gel','젤 네일','甲油胶']},
+ {id:'ncool',c:'nail',d:[0],p:[400],n:['Холодный гель-лак','Cool gel polish','Sơn gel lạnh','쿨 젤 네일','冷凝胶甲油']},
+ {id:'ndesign',c:'nail',d:[0],p:[200],max:1000,n:['Индивидуальный дизайн','Custom nail design','Vẽ móng theo yêu cầu','커스텀 네일 아트','定制美甲设计']},
+ {id:'hwash',c:'hair',d:[45,60,90],p:[350,450,600],n:['Мытьё и сушка волос','Hair wash & blow-dry','Gội và sấy khô','샴푸 & 드라이','洗发吹干']},
+ {id:'hrelax',c:'hair',d:[45,60,90],p:[350,450,600],n:['Расслабляющее мытьё головы','Relaxing hair wash','Gội đầu thư giãn','릴랙싱 샴푸','舒缓洗发']},
+ {id:'hherbal',c:'hair',d:[45,60,90],p:[400,500,700],n:['Мытьё с травяным шампунем','Herbal shampoo','Gội đầu thảo dược','허브 샴푸','草本洗发']},
+ {id:'hmask',c:'hair',d:[45,60,90],p:[400,500,700],n:['Мытьё волос + маска для лица','Hair wash + face mask','Gội đầu + đắp mặt nạ','샴푸 + 페이스 마스크','洗发 + 面膜']},
+ {id:'hface',c:'hair',d:[45,60,90],p:[400,500,700],n:['Мытьё волос + массаж лица','Hair wash + facial massage','Gội đầu + massage mặt','샴푸 + 얼굴 마사지','洗发 + 面部按摩']},
+ {id:'hneck',c:'hair',d:[45,60,90],p:[400,500,700],n:['Мытьё волос + массаж шеи и плеч','Hair wash + neck & shoulder massage','Gội đầu + massage cổ vai gáy','샴푸 + 목 · 어깨 마사지','洗发 + 肩颈按摩']},
+ {id:'hand',c:'focus',d:[30,60,90],p:[250,400,600],n:['Массаж рук','Hand massage','Massage tay','손 마사지','手部按摩']},
+ {id:'neck',c:'focus',d:[30,60,90],p:[250,400,600],n:['Массаж шеи и плеч','Neck & shoulder massage','Massage cổ vai gáy','목 · 어깨 마사지','肩颈按摩']},
+ {id:'facial',c:'focus',d:[30,60,90],p:[300,500,800],n:['Массаж лица','Facial massage','Massage mặt','얼굴 마사지','面部按摩']},
+ {id:'mask',c:'focus',d:[0],p:[100],n:['Премиальная маска для лица','Premium face mask','Mặt nạ cao cấp','프리미엄 페이스 마스크','高级面膜']},
+];
+const CATS = ['body','foot','nail','hair','focus'];
+const ZONES = {
+ head:['facial','mask','hrelax','hherbal','hmask','hface','hwash'],
+ shoulders:['neck','hneck','deep','thai'],
+ body:['relax','deep','aloe','herbal','stone','prenatal','scrub','sun'],
+ arms:['hand','nbasic','ngel','ncool','ndesign'],
+ legs:['foot','fscrubm','thai','relax'],
+ feet:['foot','fscrub','fscrubm','fcare','nbasic','ngel'],
+};
+window.SITE = {
+ id:'spa', root:'', hello:"Hello! I'd like to book at Út Điệu Spa.",
+ gateLogo:'<img class="gate-logo" src="assets/img/logo.jpg" alt="Út Điệu Spa">',
+ dict:{
+  title:['Út Điệu Spa — массаж и спа на Фукоке','Út Điệu Spa — massage & spa in Phú Quốc','Út Điệu Spa — massage & spa tại Phú Quốc','Út Điệu Spa — 푸꾸옥 마사지 & 스파','Út Điệu Spa — 富国岛按摩水疗'],
+  hero_h:['Час тишины <em>посреди отпуска</em>','An hour of calm <em>in the middle of your holiday</em>','Một giờ bình yên <em>giữa kỳ nghỉ</em>','휴가 중 만나는 <em>고요한 한 시간</em>','假期里的 <em>一小时宁静</em>'],
+  hero_p:['Массаж тела и стоп, спа для волос, маникюр. Выберите процедуру и напишите нам в WhatsApp.','Body and foot massage, hair spa, nails. Pick a treatment and message us on WhatsApp.','Massage toàn thân và chân, gội đầu dưỡng sinh, làm móng. Chọn liệu trình và nhắn cho chúng tôi qua WhatsApp.','바디·발 마사지, 헤어 스파, 네일. 원하는 관리를 고르고 WhatsApp으로 연락 주세요.','身体与足部按摩、头发水疗、美甲。选好项目，用 WhatsApp 联系我们。'],
+  hero_cta:['Подобрать массаж','Find my massage','Chọn liệu trình','마사지 고르기','挑选按摩'],
+  map_k:['Карта тела','Body map','Bản đồ cơ thể','바디 맵','身体地图'],
+  map_h:['Что хочется расслабить?','Where do you need it most?','Bạn muốn thư giãn vùng nào?','어디를 풀어드릴까요?','想放松哪里？'],
+  map_p:['Нажмите на часть тела — покажем подходящие процедуры.','Tap a part of the body to see the treatments that fit.','Chạm vào vùng cơ thể để xem liệu trình phù hợp.','몸의 부위를 누르면 알맞은 관리를 보여드려요.','点击身体部位，查看合适的项目。'],
+  map_empty:['Выберите зону на фигуре','Tap a zone on the figure','Hãy chọn một vùng trên hình','그림에서 부위를 선택하세요','请在图上选择部位'],
+  z_head:['Голова и лицо','Head & face','Đầu & mặt','머리 & 얼굴','头部与面部'],
+  z_shoulders:['Шея и плечи','Neck & shoulders','Cổ & vai','목 & 어깨','肩颈'],
+  z_body:['Спина и тело','Back & body','Lưng & toàn thân','등 & 전신','背部与全身'],
+  z_arms:['Руки','Arms & hands','Tay','팔 & 손','手臂与手'],
+  z_legs:['Ноги','Legs','Chân','다리','腿部'],
+  z_feet:['Стопы','Feet','Bàn chân','발','足部'],
+  tap_hint:['Нажмите на цену, чтобы добавить процедуру в визит.','Tap a price to add the treatment to your visit.','Chạm vào giá để thêm liệu trình vào lịch hẹn.','가격을 누르면 예약 목록에 담겨요.','点击价格即可加入预约。'],
+  menu_k:['Меню','Menu','Bảng giá','메뉴','价目表'],
+  menu_h:['Все процедуры','All treatments','Tất cả dịch vụ','전체 메뉴','全部项目'],
+  c_body:['Тело','Body','Toàn thân','바디','身体'], c_foot:['Стопы','Feet','Chân','발','足部'], c_nail:['Ногти','Nails','Móng','네일','美甲'],
+  c_hair:['Волосы','Hair','Gội đầu','헤어','洗发'], c_focus:['Точечный уход','Focused care','Chăm sóc chuyên sâu','집중 케어','局部护理'],
+  min:['мин','min','phút','분','分钟'],
+  gal_k:['Атмосфера','Atmosphere','Không gian','분위기','环境'],
+  gal_h:['Внутри салона','Inside the spa','Bên trong spa','스파 둘러보기','店内一览'],
+  loc_k:['Контакты','Contact','Liên hệ','연락처','联系方式'],
+  loc_h:['Как нас найти','Find us','Tìm chúng tôi','오시는 길','如何找到我们'],
+  loc_p:['Мы в Онг Ланге. Напишите — подскажем дорогу и подберём время.','We are in Ông Lang. Message us and we will help you find the way and pick a time.','Chúng tôi ở Ông Lang. Nhắn tin để được chỉ đường và đặt giờ.','옹랑에 있습니다. 메시지 주시면 길 안내와 시간 예약을 도와드려요.','我们位于 Ông Lang。给我们留言，我们会为您指路并安排时间。'],
+  map_btn:['Открыть карту','Open the map','Mở bản đồ','지도 열기','打开地图'],
+  cart_h:['Мой визит','My visit','Lịch hẹn của tôi','내 예약','我的预约'],
+  book:['Записаться','Book','Đặt lịch','예약하기','预约'],
+ },
+ onLang(){ renderAll(); }
+};
+
+const byId = Object.fromEntries(SERVICES.map(s=>[s.id,s]));
+const cart = new Map(); let zone = null, cat = 'body';
+const L = () => ['ru','en','vi','ko','zh'].indexOf(UD.lang);
+const $ = (s) => document.querySelector(s);
+
+function row(s, i){
+  const chips = s.d.map((d,j)=>{
+    const k = s.id+':'+d, price = s.max ? UD.fmt(s.p[j]).replace(' ₫','')+' – '+UD.fmt(s.max) : UD.fmt(s.p[j]);
+    return `<button class="chip${cart.has(k)?' on':''}" data-k="${k}">${d?`<b>${d} ${UD.t('min')}</b>`:'<b>+</b>'}<span>${price}</span><i>${UD.approx(s.p[j])}</i></button>`;
+  }).join('');
+  return `<div class="svc" style="animation-delay:${i*.05}s"><div class="svc-n">${s.n[L()]}</div><div class="svc-c">${chips}</div></div>`;
+}
+function renderPanel(){
+  $('#panel').innerHTML = zone
+    ? `<h3>${UD.t('z_'+zone)}</h3><div class="hint">${UD.t('tap_hint')}</div>` + ZONES[zone].map((id,i)=>row(byId[id],i)).join('')
+    : `<div class="empty">${UD.t('map_empty')}</div>`;
+  document.querySelectorAll('.z').forEach(z=>z.classList.toggle('on', z.dataset.z===zone));
+  $('#zchips').innerHTML = Object.keys(ZONES).map(z=>`<button data-z="${z}" class="${z===zone?'on':''}">${UD.t('z_'+z)}</button>`).join('');
+}
+function renderMenu(){
+  $('#tabs').innerHTML = CATS.map(c=>`<button data-c="${c}" class="${c===cat?'on':''}">${UD.t('c_'+c)}</button>`).join('');
+  $('#list').innerHTML = SERVICES.filter(s=>s.c===cat).map(row).join('');
+}
+function renderCart(){
+  let sum=0, mins=0, plus=false, html='', msg="Hello! I'd like to book at Út Điệu Spa:\n";
+  cart.forEach((v,k)=>{
+    const [id,d]=k.split(':'), s=byId[id], p=s.p[s.d.indexOf(+d)];
+    sum+=p; mins+=+d; if(s.max) plus=true;
+    html+=`<div><span>${s.n[L()]}${+d?` · ${d} ${UD.t('min')}`:''}</span><span>${UD.fmt(p)}${s.max?'+':''} <button data-rm="${k}" aria-label="remove">×</button></span></div>`;
+    msg+=`• ${s.n[1]}${+d?` — ${d} min`:''} — ${UD.fmt(p)}${s.max?'+':''}\n`;
+  });
+  msg+=`Total: ${UD.fmt(sum)}${plus?'+':''}\nPreferred day and time: `;
+  document.body.classList.toggle('has-cart', cart.size>0);
+  if(!cart.size) $('#cart').classList.remove('open');
+  $('#cartList').innerHTML = html;
+  $('#cartSum').innerHTML = `<small>${UD.t('cart_h')} · ${cart.size}${mins?` · ${mins} ${UD.t('min')}`:''} ▴</small><strong>${UD.fmt(sum)}${plus?'+':''}</strong>`;
+  $('#cartGo').innerHTML = UD.WA_ICON+`<span>${UD.t('book')}</span>`;
+  $('#cartGo').href = UD.wa(msg);
+}
+function renderAll(){ renderPanel(); renderMenu(); renderCart(); }
+function pickZone(z){ zone = z; renderPanel(); if(innerWidth<820) $('#panel').scrollIntoView({behavior:'smooth',block:'start'}); }
+
+document.addEventListener('click',(e)=>{
+  const chip=e.target.closest('.chip'), z=e.target.closest('[data-z]'), tab=e.target.closest('[data-c]'), rm=e.target.closest('[data-rm]');
+  if(chip){ const k=chip.dataset.k; cart.has(k)?cart.delete(k):cart.set(k,1);
+    document.querySelectorAll(`.chip[data-k="${k}"]`).forEach(c=>c.classList.toggle('on',cart.has(k))); renderCart(); }
+  else if(rm){ cart.delete(rm.dataset.rm); renderAll(); }
+  else if(z) pickZone(z.dataset.z);
+  else if(tab){ cat=tab.dataset.c; renderMenu(); }
+  else if(e.target.closest('#cartSum')) $('#cart').classList.toggle('open');
+  else if(e.target.closest('.gal img')){ const b=document.createElement('div'); b.className='lb'; b.innerHTML=`<img src="${e.target.src}" alt="">`; b.onclick=()=>b.remove(); document.body.appendChild(b); }
+});
+$('#gal').innerHTML = [17,9,12,13,16,10,15,8,11].map(n=>`<img class="rv" loading="lazy" src="assets/img/p${n}.jpg" alt="Út Điệu Spa">`).join('');
+</script>
+<script src="assets/shared.js"></script>
+</body>
+</html>

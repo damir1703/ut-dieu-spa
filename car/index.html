@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>VinFast VF3 rental — Phú Quốc</title>
+<meta name="description" content="Self-drive VinFast VF3 rental in Ông Lang, Phú Quốc. Explore the island freely. Message us on WhatsApp.">
+<meta name="theme-color" content="#12151b">
+<link rel="icon" href="../assets/img/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/shared.css">
+<style>
+:root{--bg:#12151b;--ink:#f3efe9;--muted:#9aa0ab;--acc:#ff6a2b;--acc-ink:#fff;--card:#1c2029;--line:rgba(255,255,255,.1);--hdr:rgba(18,21,27,.85);
+--gate:radial-gradient(120% 80% at 50% 100%,#ff6a2b 0%,#7a2a10 35%,#12151b 75%);--gate-ink:#fff;--gate-card:rgba(255,255,255,.12);
+--fd:Montserrat,system-ui,sans-serif;--fb:Montserrat,system-ui,sans-serif}
+h1,h2,h3{font-weight:900;text-transform:uppercase;letter-spacing:-.01em}
+.gate-logo{background:#12151b;display:grid;place-items:center;font-size:54px}
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:90px 0 0;overflow:hidden;background:linear-gradient(180deg,#141b2e 0%,#3a2440 32%,#a8482a 60%,#f08a3c 76%,#ffc56e 86%)}
+.hero .btn.ghost{background:rgba(18,21,27,.5);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.6)}
+.sun{position:absolute;left:62%;top:11%;width:140px;height:140px;border-radius:50%;background:radial-gradient(#fff3c9,#ffc266 60%,rgba(255,194,102,0) 72%);animation:glow 5s ease-in-out infinite alternate}
+@keyframes glow{to{transform:scale(1.12);opacity:.85}}
+.hills{position:absolute;left:0;right:0;bottom:118px;width:100%;height:150px}
+.hero .w{position:relative;z-index:2;padding-bottom:210px}
+.hero .kick{color:#ffd08a}
+.hero h1{font-size:clamp(38px,10.5vw,84px);margin:12px 0 14px;text-shadow:0 4px 30px rgba(0,0,0,.35)}
+.hero h1 em{font-style:normal;color:var(--acc);-webkit-text-stroke:0}
+.hero p{max-width:40ch;margin-bottom:22px;text-shadow:0 2px 14px rgba(0,0,0,.5)}
+.road{position:absolute;left:0;right:0;bottom:0;height:120px;background:#12151b;z-index:1}
+.road::before{content:"";position:absolute;left:0;right:0;top:56px;height:6px;background:repeating-linear-gradient(90deg,#f3efe9 0 46px,transparent 46px 92px);animation:dash .7s linear infinite}
+@keyframes dash{to{background-position:-92px 0}}
+.car{position:absolute;left:50%;bottom:52px;width:230px;margin-left:-115px;z-index:3;animation:bob .5s ease-in-out infinite alternate}
+@keyframes bob{to{transform:translateY(-2px)}}
+.wheel{animation:spin .7s linear infinite;transform-box:fill-box;transform-origin:center}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* facts */
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}
+@media(min-width:760px){.facts{grid-template-columns:repeat(4,1fr)}}
+.fact{background:var(--card);border-radius:22px;padding:20px 16px;box-shadow:inset 0 0 0 1px var(--line)}
+.fact b{display:block;font-size:30px;font-weight:900;color:var(--acc);line-height:1.1}
+.fact span{font-size:13px;color:var(--muted);font-weight:600}
+/* island map */
+.isl{display:grid;gap:18px;margin-top:26px}
+.isl>*{min-width:0}
+@media(min-width:820px){.isl{grid-template-columns:380px 1fr;align-items:center}}
+.isl-map{background:radial-gradient(80% 70% at 50% 40%,#16405c,#0d2233);border-radius:32px;padding:14px}
+.isl-map svg{height:min(62svh,500px);margin:0 auto;overflow:visible}
+.land{fill:#2f7a57;stroke:#f0d9a3;stroke-width:4;stroke-linejoin:round}
+.route{fill:none;stroke:#ff6a2b;stroke-width:3;stroke-linecap:round;stroke-dasharray:6 7;animation:dashr 1s linear infinite;transition:d .5s}
+@keyframes dashr{to{stroke-dashoffset:-13}}
+.pin{cursor:pointer}
+.pin circle{fill:#fff;stroke:#12151b;stroke-width:2;transition:.3s}
+.pin .halo{fill:rgba(255,255,255,.25);stroke:none;animation:pulse 2.4s infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pulse{50%{transform:scale(1.8);opacity:0}}
+.pin.on circle:not(.halo){fill:#ff6a2b;r:8}
+.pin.home circle:not(.halo){fill:#ffd08a}
+.place{background:var(--card);border-radius:28px;padding:24px 20px;box-shadow:inset 0 0 0 1px var(--line);min-height:190px}
+.place .km{display:inline-block;background:var(--acc);color:#fff;font-weight:800;font-size:13px;padding:5px 12px;border-radius:99px;margin-bottom:12px}
+.place h3{font-size:26px;margin-bottom:8px}
+.place p{color:var(--muted)}
+.pchips{display:flex;gap:8px;overflow-x:auto;margin-top:14px;padding-bottom:4px;scrollbar-width:none}
+.pchips::-webkit-scrollbar{display:none}
+.pchips button{flex:none;padding:9px 14px;border-radius:99px;font-size:13px;font-weight:700;box-shadow:inset 0 0 0 1.5px var(--line)}
+.pchips button.on{background:var(--acc);box-shadow:none}
+/* planner */
+.plan{background:linear-gradient(150deg,#ff6a2b,#c9431a);border-radius:32px;padding:26px 20px;margin-top:26px;color:#fff}
+.plan-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.25);font-weight:700}
+.stepper{display:flex;align-items:center;gap:14px}
+.stepper button{width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.22);font-size:24px;font-weight:800;line-height:1}
+.stepper b{font-size:30px;font-weight:900;min-width:36px;text-align:center}
+.plan input[type=date]{font:inherit;font-weight:700;color:#fff;background:rgba(0,0,0,.22);border:0;border-radius:14px;padding:11px 12px;color-scheme:dark;max-width:170px}
+.plan .btn{width:100%;margin-top:20px;background:#12151b;color:#fff;box-shadow:none}
+.plan small{display:block;margin-top:12px;opacity:.85;text-align:center}
+</style>
+</head>
+<body>
+<header class="hdr">
+  <a class="brand" href="#top" style="font-weight:900;text-transform:uppercase;font-size:16px">VF3 <span style="color:var(--acc)">Phú Quốc</span></a>
+  <button id="langBtn" class="lang-btn" aria-label="Language"></button>
+</header>
+
+<section class="hero" id="top">
+  <div class="sun"></div>
+  <svg class="hills" viewBox="0 0 400 150" preserveAspectRatio="none" aria-hidden="true"><path d="M0 150V90Q60 40 120 80T250 60T400 85V150Z" fill="#3b2a3a" opacity=".75"/><path d="M0 150V115Q80 80 160 110T320 100T400 112V150Z" fill="#1c1a24"/></svg>
+  <div class="w">
+    <div class="kick rv">Self-drive · Ông Lang · Phú Quốc</div>
+    <h1 class="rv d1" data-i18n="hero_h"></h1>
+    <p class="rv d2" data-i18n="hero_p"></p>
+    <div class="rv d3" style="display:flex;flex-wrap:wrap;gap:12px">
+      <a class="btn" href="#plan" data-i18n="hero_cta"></a>
+      <a class="btn ghost" href="#island" data-i18n="isl_cta"></a>
+    </div>
+  </div>
+  <div class="road"></div>
+  <svg class="car" viewBox="0 0 230 120" aria-hidden="true">
+    <path d="M22 86V52q0-8 8-10l22-4 14-24q3-6 10-6h84q8 0 10 8l8 26 22 6q8 2 8 10v28q0 6-6 6H28q-6 0-6-6Z" fill="#f6f4ef"/>
+    <path d="M62 38l11-19q2-3 6-3h33v22Zm58-22h36q4 0 5 4l6 18h-47Z" fill="#1b2a44"/>
+    <rect x="22" y="78" width="186" height="14" rx="4" fill="#2a2d35"/>
+    <rect x="196" y="54" width="12" height="9" rx="3" fill="#ffd08a"/><rect x="22" y="56" width="8" height="10" rx="3" fill="#ff5a4d"/>
+    <rect x="112" y="44" width="3" height="34" fill="#d9d6cf"/><rect x="128" y="52" width="14" height="4" rx="2" fill="#b9b6ae"/>
+    <g class="wheel"><circle cx="66" cy="92" r="21" fill="#12151b"/><circle cx="66" cy="92" r="10" fill="#9aa0ab"/><path d="M66 82v20M56 92h20" stroke="#12151b" stroke-width="3"/></g>
+    <g class="wheel"><circle cx="168" cy="92" r="21" fill="#12151b"/><circle cx="168" cy="92" r="10" fill="#9aa0ab"/><path d="M168 82v20M158 92h20" stroke="#12151b" stroke-width="3"/></g>
+  </svg>
+</section>
+
+<section>
+  <div class="w">
+    <div class="kick rv">VinFast VF3</div>
+    <h2 class="h2 rv" data-i18n="car_h"></h2>
+    <p class="lead rv" data-i18n="car_p"></p>
+    <div class="facts">
+      <div class="fact rv"><b>⚡ 100%</b><span data-i18n="f1"></span></div>
+      <div class="fact rv d1"><b>4</b><span data-i18n="f2"></span></div>
+      <div class="fact rv d2"><b>~200 km</b><span data-i18n="f3"></span></div>
+      <div class="fact rv d3"><b>3.2 m</b><span data-i18n="f4"></span></div>
+    </div>
+  </div>
+</section>
+
+<section id="island" style="padding-top:10px">
+  <div class="w">
+    <div class="kick rv" data-i18n="isl_k"></div>
+    <h2 class="h2 rv" data-i18n="isl_h"></h2>
+    <p class="lead rv" data-i18n="isl_p"></p>
+    <div class="isl">
+      <div class="isl-map rv">
+        <svg viewBox="0 0 200 320" id="isl" role="img" aria-label="Phú Quốc map">
+          <path class="land" d="M70 20Q110 8 150 24Q172 40 166 80Q160 120 150 150Q146 200 136 250Q130 290 122 306Q112 300 110 270Q104 220 84 180Q60 150 50 110Q36 70 44 44Q52 26 70 20Z"/>
+          <path class="route" id="route" d=""/>
+          <g id="pins"></g>
+        </svg>
+      </div>
+      <div>
+        <div class="place rv d1" id="place"></div>
+        <div class="pchips" id="pchips"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="plan" style="padding-top:10px">
+  <div class="w">
+    <div class="kick rv" data-i18n="plan_k"></div>
+    <h2 class="h2 rv" data-i18n="plan_h"></h2>
+    <div class="plan rv">
+      <div class="plan-row"><span data-i18n="days"></span><div class="stepper"><button id="minus" aria-label="-">−</button><b id="n">2</b><button id="plus" aria-label="+">+</button></div></div>
+      <div class="plan-row"><span data-i18n="from_d"></span><input type="date" id="date"></div>
+      <a class="btn" id="go" target="_blank" rel="noopener"></a>
+      <small data-i18n="plan_note"></small>
+    </div>
+  </div>
+</section>
+
+<section id="cross" style="padding-top:20px"></section>
+<footer><div class="w"><b>Út Điệu · VinFast VF3</b><br><span data-i18n="foot_addr"></span><br><a href="tel:+84767907799">+84 76 790 7799</a></div></footer>
+
+<script>
+/* Точки на карте: x,y — положение на схеме, km — примерное расстояние от Ông Lang. n/d — [ru,en,vi,ko,zh] */
+const HOME=[61,132];
+const PLACES=[
+ {id:'dd',x:76,y:170,km:8,en:'Dương Đông night market',n:['Ночной рынок Зыонг Донг','Dương Đông night market','Chợ đêm Dương Đông','즈엉동 야시장','阳东夜市'],d:['Морепродукты, сувениры и закат у храма Динь Кау.','Seafood, souvenirs and sunset at Dinh Cậu temple.','Hải sản, quà lưu niệm và hoàng hôn ở Dinh Cậu.','해산물, 기념품, 그리고 딘꺼우 사원의 노을.','海鲜、纪念品，以及 Dinh Cậu 庙的日落。']},
+ {id:'gw',x:57,y:82,km:17,en:'Grand World & VinWonders',n:['Grand World и VinWonders','Grand World & VinWonders','Grand World & VinWonders','그랜드월드 & 빈원더스','Grand World 与 VinWonders'],d:['Каналы, вечерние шоу и большой парк развлечений.','Canals, evening shows and a huge theme park.','Kênh đào, show buổi tối và công viên giải trí lớn.','운하, 저녁 공연, 대형 테마파크.','运河、夜间表演和大型主题乐园。']},
+ {id:'rv',x:98,y:20,km:20,en:'Starfish Beach (Rạch Vẹm)',n:['Пляж морских звёзд','Starfish Beach','Bãi Sao Biển Rạch Vẹm','불가사리 해변','海星沙滩'],d:['Тихое мелководье на севере острова и рестораны на сваях.','Calm shallows in the north and restaurants on stilts.','Vùng nước nông yên bình phía bắc đảo và nhà hàng trên biển.','섬 북쪽의 잔잔한 얕은 바다와 수상 식당.','岛北部宁静的浅滩和水上餐厅。']},
+ {id:'gd',x:47,y:50,km:22,en:'Gành Dầu cape',n:['Мыс Гань Зау','Gành Dầu cape','Mũi Gành Dầu','간저우 곶','Gành Dầu 海角'],d:['Северо-западный край острова, виды на море и дикие пляжи.','The north-west tip: sea views and wild beaches.','Cực tây bắc của đảo, cảnh biển và bãi hoang sơ.','섬의 북서쪽 끝, 바다 전망과 한적한 해변.','岛的西北角，海景与原始沙滩。']},
+ {id:'hq',x:144,y:214,km:33,en:'Hộ Quốc pagoda',n:['Пагода Хо Куок','Hộ Quốc pagoda','Chùa Hộ Quốc','호꾸옥 사원','护国寺'],d:['Самый большой храм острова на склоне над морем.','The largest temple on the island, on a hillside above the sea.','Ngôi chùa lớn nhất đảo, tựa núi hướng biển.','바다를 내려다보는 언덕 위, 섬에서 가장 큰 사원.','岛上最大的寺庙，依山面海。']},
+ {id:'sao',x:134,y:250,km:35,en:'Sao Beach',n:['Пляж Сао','Sao Beach','Bãi Sao','사오 비치','星星沙滩'],d:['Белый песок и бирюзовая вода — самый открыточный пляж.','White sand and turquoise water — the postcard beach.','Cát trắng, nước xanh ngọc — bãi biển đẹp như bưu thiếp.','하얀 모래와 에메랄드빛 바다, 엽서 같은 해변.','白沙与碧海，明信片般的海滩。']},
+ {id:'ht',x:121,y:298,km:38,en:'Hòn Thơm cable car',n:['Канатная дорога на Хон Том','Hòn Thơm cable car','Cáp treo Hòn Thơm','혼텀 케이블카','香岛跨海缆车'],d:['Одна из самых длинных канатных дорог над морем и Sunset Town.','One of the longest sea-crossing cable cars, plus Sunset Town.','Một trong những tuyến cáp treo vượt biển dài nhất, cùng Thị trấn Hoàng Hôn.','세계 최장급 해상 케이블카와 선셋 타운.','世界最长的跨海缆车之一，还有日落小镇。']},
+];
+window.SITE={
+ id:'car', root:'../', hello:"Hello! I'd like to rent a VinFast VF3. What are the price and conditions?",
+ gateLogo:'<div class="gate-logo">🚙</div>',
+ audio:{drone:[98,146.83],scale:[196,220,293.66,329.63,392,440],gap:[1100,2600]},
+ dict:{
+  title:['Аренда VinFast VF3 на Фукоке — без водителя','VinFast VF3 self-drive rental — Phú Quốc','Thuê xe tự lái VinFast VF3 — Phú Quốc','푸꾸옥 VinFast VF3 셀프 드라이브 렌트','富国岛 VinFast VF3 自驾租车'],
+  hero_h:['Весь Фукок — <em>за вашим рулём</em>','All of Phú Quốc — <em>you drive</em>','Cả Phú Quốc — <em>bạn cầm lái</em>','푸꾸옥 전체를 — <em>직접 운전으로</em>','整个富国岛 — <em>由你驾驶</em>'],
+  hero_p:['Электромобиль VinFast VF3 без водителя. Пляжи, рынки и закаты в своём ритме.','A self-drive VinFast VF3 electric car. Beaches, markets and sunsets at your own pace.','Xe điện VinFast VF3 tự lái. Bãi biển, chợ đêm và hoàng hôn theo nhịp của bạn.','VinFast VF3 전기차 셀프 드라이브. 해변과 시장, 노을을 내 속도로.','VinFast VF3 电动车自驾。按自己的节奏去海滩、夜市和看日落。'],
+  hero_cta:['Узнать цену','Get the price','Hỏi giá','가격 문의','询价'],
+  isl_cta:['Куда поехать','Where to go','Đi đâu','어디로 갈까','去哪里'],
+  car_h:['Маленький, зато везде проедет','Small, and it goes everywhere','Nhỏ gọn, đi đâu cũng được','작지만 어디든 갑니다','小巧灵活，哪里都能去'],
+  car_p:['Компактный электрический внедорожник: тихий, с кондиционером и местом для пляжной сумки.','A compact electric mini-SUV: quiet, air-conditioned, with room for the beach bag.','Mini SUV điện nhỏ gọn: êm, có máy lạnh, đủ chỗ cho túi đồ đi biển.','컴팩트한 전기 미니 SUV. 조용하고, 에어컨이 있고, 비치백도 넉넉히 실려요.','紧凑型电动小 SUV：安静、有空调，放得下沙滩包。'],
+  f1:['электромобиль','electric','xe điện','전기차','纯电动'], f2:['места','seats','chỗ ngồi','인승','座'],
+  f3:['на одном заряде','on one charge','mỗi lần sạc','1회 충전 주행','单次充电续航'], f4:['длина — легко парковаться','long — easy to park','chiều dài — dễ đỗ xe','전장 — 주차가 쉬워요','车长 — 停车方便'],
+  isl_k:['Маршруты','Routes','Lộ trình','추천 코스','路线'],
+  isl_h:['Куда поехать с Онг Ланга','Where to go from Ông Lang','Đi đâu từ Ông Lang','옹랑에서 떠나는 드라이브','从 Ông Lang 出发去哪里'],
+  isl_p:['Нажмите на точку на карте.','Tap a point on the map.','Chạm vào một điểm trên bản đồ.','지도의 지점을 눌러 보세요.','点击地图上的地点。'],
+  km_from:['≈ {km} км от нас','≈ {km} km from us','cách chúng tôi ≈ {km} km','약 {km}km 거리','距我们约 {km} 公里'],
+  plan_k:['Заявка','Request','Yêu cầu','문의','预订'],
+  plan_h:['Когда вам нужна машина?','When do you need the car?','Bạn cần xe khi nào?','언제 차가 필요하세요?','您什么时候用车？'],
+  days:['Сколько дней','How many days','Số ngày','대여 일수','租几天'],
+  from_d:['С какого числа','Starting from','Từ ngày','시작일','开始日期'],
+  send:['Узнать цену в WhatsApp','Get the price on WhatsApp','Hỏi giá qua WhatsApp','WhatsApp으로 가격 문의','WhatsApp 询价'],
+  plan_note:['Цену, условия и наличие машины на ваши даты подтвердим в чате.','We will confirm the price, conditions and availability in the chat.','Chúng tôi sẽ xác nhận giá, điều kiện và xe trống qua tin nhắn.','가격, 조건, 예약 가능 여부를 채팅으로 안내해 드려요.','价格、条件及车辆是否可租，我们会在聊天中确认。'],
+ },
+ onLang(){ render(); }
+};
+const $=(s)=>document.querySelector(s); let cur='sao', days=2;
+const L=()=>['ru','en','vi','ko','zh'].indexOf(UD.lang);
+function render(){
+  const p=PLACES.find(x=>x.id===cur), mx=(HOME[0]+p.x)/2+(p.y-HOME[1])*.18, my=(HOME[1]+p.y)/2-(p.x-HOME[0])*.18;
+  $('#pins').innerHTML=`<g class="pin home"><circle cx="${HOME[0]}" cy="${HOME[1]}" r="7"/><text x="${HOME[0]-10}" y="${HOME[1]+4}" text-anchor="end" font-size="10" font-weight="800" fill="#ffd08a">Ông Lang</text></g>`+
+    PLACES.map(q=>`<g class="pin${q.id===cur?' on':''}" data-p="${q.id}"><circle class="halo" cx="${q.x}" cy="${q.y}" r="9"/><circle cx="${q.x}" cy="${q.y}" r="6"/><circle cx="${q.x}" cy="${q.y}" r="16" style="fill:transparent;stroke:none"/></g>`).join('');
+  $('#route').setAttribute('d',`M${HOME[0]} ${HOME[1]}Q${mx} ${my} ${p.x} ${p.y}`);
+  $('#place').innerHTML=`<span class="km">${UD.t('km_from').replace('{km}',p.km)}</span><h3>${p.n[L()]}</h3><p>${p.d[L()]}</p>`;
+  $('#pchips').innerHTML=PLACES.map(q=>`<button data-p="${q.id}" class="${q.id===cur?'on':''}">${q.n[L()]}</button>`).join('');
+  $('#n').textContent=days;
+  const d=$('#date').value;
+  $('#go').innerHTML=UD.WA_ICON+`<span>${UD.t('send')}</span>`;
+  $('#go').href=UD.wa(`Hello! I'd like to rent a VinFast VF3 (self-drive).\nDays: ${days}\nStart date: ${d||'to be agreed'}\nI want to visit: ${p.en}\nWhat are the price and conditions?`);
+}
+document.addEventListener('click',(e)=>{ const p=e.target.closest('[data-p]'); if(p){cur=p.dataset.p;render();}
+  if(e.target.id==='plus'){days=Math.min(30,days+1);render();} if(e.target.id==='minus'){days=Math.max(1,days-1);render();} });
+$('#date').min=new Date().toISOString().slice(0,10); $('#date').addEventListener('change',render);
+</script>
+<script src="../assets/shared.js"></script>
+</body>
+</html>
