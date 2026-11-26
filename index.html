@@ -30,43 +30,57 @@
 .scroll-hint::after{content:"";position:absolute;inset:0;background:#fff;animation:drop 2s infinite}
 @keyframes drop{from{transform:translateY(-100%)}to{transform:translateY(100%)}}
 /* body map */
-.map-grid{display:grid;gap:26px;margin-top:28px}
-@media(min-width:820px){.map-grid{grid-template-columns:340px 1fr;align-items:start}}
-.figure{position:relative;background:radial-gradient(60% 50% at 50% 40%,#fff8ee,#ecdcc6);border-radius:32px;padding:22px 10px 14px}
-.figure svg{height:min(46svh,470px);margin:0 auto;overflow:visible}
-.z{color:#d9b998;cursor:pointer;transition:color .35s,transform .35s;transform-box:fill-box;transform-origin:center}
-.z .f{fill:currentColor}.z .l{fill:none;stroke:currentColor;stroke-linecap:round}
-.z:hover{color:#c99a72}
-.z.on{color:var(--acc);filter:drop-shadow(0 6px 14px rgba(168,85,47,.45))}
-.dot{fill:#fff;opacity:.9;pointer-events:none;animation:pulse 2.4s infinite;transform-box:fill-box;transform-origin:center}
-@keyframes pulse{50%{transform:scale(1.9);opacity:.25}}
-.zchips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px}
-.zchips button{padding:8px 14px;border-radius:99px;background:rgba(255,255,255,.7);font-size:13px;font-weight:600;transition:.25s}
+.map-grid{display:grid;gap:22px;margin-top:28px}
+.map-grid>*{min-width:0}
+@media(min-width:820px){.map-grid{grid-template-columns:360px 1fr;align-items:start}}
+.figure{position:relative;background:radial-gradient(70% 55% at 50% 42%,#fffaf2 0%,#f1e2cd 55%,#e6d0b3 100%);border-radius:32px;padding:20px 10px 16px;overflow:hidden}
+.figure::before,.figure::after{content:"";position:absolute;left:50%;top:44%;width:300px;height:300px;margin:-150px 0 0 -150px;border-radius:50%;border:1px solid rgba(168,85,47,.18);animation:ring 6s ease-out infinite}
+.figure::after{animation-delay:3s}
+@keyframes ring{from{transform:scale(.45);opacity:1}to{transform:scale(1.5);opacity:0}}
+.figure svg{position:relative;z-index:1;height:min(52svh,480px);margin:0 auto;overflow:visible;filter:drop-shadow(0 18px 22px rgba(120,70,40,.18))}
+.z{cursor:pointer}
+.z path,.z ellipse{fill:url(#skin);stroke:#fff8ee;stroke-width:2.5;stroke-linejoin:round;transition:fill .35s,filter .35s}
+.z:hover path,.z:hover ellipse{fill:#dcb48e}
+.z.on path,.z.on ellipse{fill:url(#skinOn);filter:drop-shadow(0 0 10px rgba(168,85,47,.55))}
+.dot{fill:#fff;pointer-events:none;animation:pulse 2.4s infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pulse{50%{transform:scale(2);opacity:.2}}
+.zchips{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px}
+.zchips button{padding:8px 14px;border-radius:99px;background:rgba(255,255,255,.75);font-size:13px;font-weight:600;transition:.25s}
 .zchips button.on{background:var(--acc);color:#fff}
 .panel{background:var(--card);border-radius:28px;padding:22px 18px;box-shadow:0 0 0 1px var(--line);min-height:220px;scroll-margin-top:70px}
 .panel h3{font-size:30px;margin-bottom:4px}
-.hint{font-size:13px;color:var(--muted);margin-bottom:8px}
+.hint{font-size:13px;color:var(--muted);margin-bottom:14px}
 .empty{display:grid;place-items:center;min-height:170px;text-align:center;color:var(--muted);font-family:var(--fd);font-size:24px;font-style:italic}
-/* service rows */
-.svc{padding:16px 0;border-top:1px solid var(--line);animation:rise .5s cubic-bezier(.2,.7,.2,1) both}
-.svc:first-of-type{border-top:0}
-.svc-n{font-weight:700;margin-bottom:10px}
-.svc-c{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
-@media(min-width:520px){.svc-c{display:flex;flex-wrap:wrap;gap:8px}}
-.chip{display:flex;flex-direction:column;align-items:flex-start;gap:1px;padding:9px 9px;border-radius:14px;box-shadow:inset 0 0 0 1.5px var(--line);background:#fff;text-align:left;transition:background .25s,color .25s,transform .2s,box-shadow .25s}
-@media(min-width:520px){.chip{padding:9px 13px;min-width:104px}}
-.chip:active{transform:scale(.95)}
-.chip b{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
-.chip span{font-weight:700;font-size:14px;white-space:nowrap}
-.chip i{font-style:normal;font-size:12px;color:var(--muted)}
-.chip.on{background:var(--green);color:#fff;box-shadow:none}
-.chip.on b,.chip.on i{color:rgba(255,255,255,.8)}
-.chip.on b::after{content:" ✓"}
-/* menu tabs */
-.tabs{display:flex;gap:8px;overflow-x:auto;margin:24px -20px 14px;padding:4px 20px;scrollbar-width:none;position:sticky;top:58px;z-index:5;background:linear-gradient(var(--bg) 80%,transparent)}
-.tabs::-webkit-scrollbar{display:none}
-.tabs button{flex:none;padding:10px 18px;border-radius:99px;font-weight:700;font-size:14px;box-shadow:inset 0 0 0 1.5px var(--line);transition:.25s}
-.tabs button.on{background:var(--ink);color:var(--bg);box-shadow:none}
+/* duration switch + price list */
+.seg{display:inline-flex;gap:2px;padding:4px;border-radius:99px;background:rgba(74,44,29,.07);margin-bottom:6px;max-width:100%;overflow-x:auto;scrollbar-width:none}
+.seg button{flex:none;padding:8px 14px;border-radius:99px;font-size:13px;font-weight:700;color:var(--muted);transition:.25s}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 2px 8px -2px rgba(74,44,29,.25)}
+.row{display:flex;align-items:center;gap:10px;width:100%;padding:14px 0;border-bottom:1px solid var(--line);text-align:left;animation:rise .45s cubic-bezier(.2,.7,.2,1) both}
+.rows .row:last-child{border-bottom:0}
+.rn{flex:1 1 0;min-width:0;font-weight:600;line-height:1.3}
+.rp{flex:none;text-align:right;line-height:1.2}
+.rp b{display:block;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
+.rp i{font-style:normal;font-size:12px;color:var(--muted)}
+.add{flex:none;width:30px;height:30px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--line);display:grid;place-items:center;font-size:18px;line-height:1;color:var(--acc);transition:.25s cubic-bezier(.3,1.5,.5,1)}
+.add::before{content:"+"}
+.row.on .add{background:var(--green);color:#fff;box-shadow:none;transform:scale(1.1)}
+.row.on .add::before{content:"✓";font-size:15px}
+.row.on .rn{color:var(--green)}
+.row.off{opacity:.38}
+.row.off .add{visibility:hidden}
+/* category cards */
+.jump{display:flex;gap:8px;overflow-x:auto;margin:22px -20px 18px;padding:2px 20px;scrollbar-width:none}
+.jump::-webkit-scrollbar,.seg::-webkit-scrollbar{display:none}
+.jump a{flex:none;padding:10px 18px;border-radius:99px;font-weight:700;font-size:14px;box-shadow:inset 0 0 0 1.5px var(--line)}
+.cards{display:grid;gap:18px}
+@media(min-width:820px){.cards{grid-template-columns:1fr 1fr;align-items:start}}
+.mcard{background:var(--card);border-radius:28px;overflow:hidden;box-shadow:0 0 0 1px var(--line),0 24px 40px -34px rgba(74,44,29,.5);scroll-margin-top:70px}
+.mphoto{position:relative;aspect-ratio:16/10;overflow:hidden}
+.mphoto img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.mcard:hover .mphoto img{transform:scale(1.06)}
+.mphoto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(42,24,16,0) 40%,rgba(42,24,16,.78))}
+.mphoto h3{position:absolute;left:18px;bottom:14px;z-index:1;color:#fff;font-size:34px;font-weight:600}
+.mbody{padding:16px 18px 8px}
 .note{font-size:12px;color:var(--muted);margin-top:16px}
 /* gallery */
 .gal{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 20px 20px;margin-top:22px;scrollbar-width:none}
@@ -124,14 +138,29 @@ body.has-cart .cart{transform:none}
     <p class="lead rv" data-i18n="map_p"></p>
     <div class="map-grid">
       <div class="figure rv">
-        <svg viewBox="0 0 220 490" id="body" role="img" aria-label="Body map">
-          <g class="z" data-z="head"><ellipse class="f" cx="110" cy="46" rx="27" ry="33"/></g>
-          <g class="z" data-z="shoulders"><rect class="f" x="99" y="76" width="22" height="24" rx="8"/><path class="f" d="M56 124Q58 98 100 93L120 93Q162 98 164 124Q110 106 56 124Z"/></g>
-          <g class="z" data-z="body"><path class="f" d="M63 130Q110 113 157 130L150 205Q146 234 156 264Q110 278 64 264Q74 234 70 205Z"/></g>
-          <g class="z" data-z="arms"><path class="l" stroke-width="21" d="M46 136Q35 190 31 256"/><path class="l" stroke-width="21" d="M174 136Q185 190 189 256"/><ellipse class="f" cx="29" cy="284" rx="11" ry="15"/><ellipse class="f" cx="191" cy="284" rx="11" ry="15"/></g>
-          <g class="z" data-z="legs"><path class="l" stroke-width="34" d="M88 294Q84 360 88 428"/><path class="l" stroke-width="34" d="M132 294Q136 360 132 428"/></g>
-          <g class="z" data-z="feet"><ellipse class="f" cx="83" cy="466" rx="21" ry="12"/><ellipse class="f" cx="137" cy="466" rx="21" ry="12"/></g>
-          <circle class="dot" cx="110" cy="46" r="4"/><circle class="dot" cx="110" cy="104" r="4" style="animation-delay:.3s"/><circle class="dot" cx="110" cy="190" r="4" style="animation-delay:.6s"/><circle class="dot" cx="33" cy="230" r="4" style="animation-delay:.9s"/><circle class="dot" cx="134" cy="360" r="4" style="animation-delay:1.2s"/><circle class="dot" cx="83" cy="466" r="4" style="animation-delay:1.5s"/>
+        <svg viewBox="0 0 240 540" id="body" role="img" aria-label="Body map">
+          <defs>
+            <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ecd2b4"/><stop offset="1" stop-color="#d3ab85"/></linearGradient>
+            <linearGradient id="skinOn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9703f"/><stop offset="1" stop-color="#9a4a26"/></linearGradient>
+          </defs>
+          <g class="z" data-z="head"><ellipse cx="120" cy="40" rx="20" ry="26"/></g>
+          <path d="M100 36Q98 12 120 12Q142 12 140 36Q132 22 120 24Q108 22 100 36Z" fill="rgba(74,44,29,.32)" style="pointer-events:none"/>
+          <g class="z" data-z="shoulders"><path d="M112 62Q120 68 128 62L129 78Q134 90 158 96Q178 101 184 118Q120 104 56 118Q62 101 82 96Q106 90 111 78Z"/></g>
+          <g class="z" data-z="body"><path d="M72 124Q120 111 168 124Q170 165 156 202Q158 236 170 264Q120 282 70 264Q82 236 84 202Q70 165 72 124Z"/></g>
+          <g class="z" data-z="arms">
+            <path d="M174 126Q188 118 192 134Q200 172 205 206Q212 244 216 278L204 282Q198 246 191 210Q182 172 174 146Z"/>
+            <path d="M66 126Q52 118 48 134Q40 172 35 206Q28 244 24 278L36 282Q42 246 49 210Q58 172 66 146Z"/>
+            <ellipse cx="213" cy="298" rx="8" ry="13" transform="rotate(-12 213 298)"/><ellipse cx="27" cy="298" rx="8" ry="13" transform="rotate(12 27 298)"/>
+          </g>
+          <g class="z" data-z="legs">
+            <path d="M123 290Q150 290 171 274Q178 330 164 392Q170 432 156 494L143 494Q140 440 138 394Q128 340 123 290Z"/>
+            <path d="M117 290Q90 290 69 274Q62 330 76 392Q70 432 84 494L97 494Q100 440 102 394Q112 340 117 290Z"/>
+          </g>
+          <g class="z" data-z="feet">
+            <path d="M143 502L156 502Q160 512 170 517Q176 526 164 526L147 526Q139 520 143 502Z"/>
+            <path d="M97 502L84 502Q80 512 70 517Q64 526 76 526L93 526Q101 520 97 502Z"/>
+          </g>
+          <circle class="dot" cx="120" cy="44" r="3.5"/><circle class="dot" cx="120" cy="97" r="3.5" style="animation-delay:.3s"/><circle class="dot" cx="120" cy="190" r="3.5" style="animation-delay:.6s"/><circle class="dot" cx="41" cy="206" r="3.5" style="animation-delay:.9s"/><circle class="dot" cx="153" cy="350" r="3.5" style="animation-delay:1.2s"/><circle class="dot" cx="84" cy="515" r="3" style="animation-delay:1.5s"/>
         </svg>
         <div class="zchips" id="zchips"></div>
       </div>
@@ -145,8 +174,8 @@ body.has-cart .cart{transform:none}
     <div class="kick rv" data-i18n="menu_k"></div>
     <h2 class="h2 rv" data-i18n="menu_h"></h2>
     <p class="lead rv" data-i18n="tap_hint"></p>
-    <div class="tabs" id="tabs"></div>
-    <div class="panel" id="list" style="min-height:0"></div>
+    <div class="jump" id="jump"></div>
+    <div class="cards" id="cards"></div>
     <p class="note" data-i18n="rate_note"></p>
   </div>
 </section>
@@ -246,7 +275,7 @@ window.SITE = {
   z_arms:['Руки','Arms & hands','Tay','팔 & 손','手臂与手'],
   z_legs:['Ноги','Legs','Chân','다리','腿部'],
   z_feet:['Стопы','Feet','Bàn chân','발','足部'],
-  tap_hint:['Нажмите на цену, чтобы добавить процедуру в визит.','Tap a price to add the treatment to your visit.','Chạm vào giá để thêm liệu trình vào lịch hẹn.','가격을 누르면 예약 목록에 담겨요.','点击价格即可加入预约。'],
+  tap_hint:['Нажмите на процедуру, чтобы добавить её в визит.','Tap a treatment to add it to your visit.','Chạm vào liệu trình để thêm vào lịch hẹn.','원하는 관리를 누르면 예약 목록에 담겨요.','点击项目即可加入预约。'],
   menu_k:['Меню','Menu','Bảng giá','메뉴','价目表'],
   menu_h:['Все процедуры','All treatments','Tất cả dịch vụ','전체 메뉴','全部项目'],
   c_body:['Тело','Body','Toàn thân','바디','身体'], c_foot:['Стопы','Feet','Chân','발','足部'], c_nail:['Ногти','Nails','Móng','네일','美甲'],
@@ -261,38 +290,109 @@ window.SITE = {
   cart_h:['Мой визит','My visit','Lịch hẹn của tôi','내 예약','我的预约'],
   book:['Записаться','Book','Đặt lịch','예약하기','预约'],
  },
+ extra:{
+  title:['Út Điệu Spa — Фукуоктағы массаж және спа','Út Điệu Spa — Fukuokda massaj va spa','Út Điệu Spa — Massage & Spa auf Phú Quốc','Út Điệu Spa — massage & spa à Phú Quốc'],
+  hero_h:['Демалыс ортасындағы <em>бір сағат тыныштық</em>','Ta’til o‘rtasida <em>bir soat osoyishtalik</em>','Eine Stunde Ruhe <em>mitten im Urlaub</em>','Une heure de calme <em>au cœur des vacances</em>'],
+  hero_p:['Дене мен табан массажы, шаш спасы, маникюр. Процедураны таңдап, WhatsApp-қа жазыңыз.','Tana va oyoq massaji, soch spasi, manikyur. Muolajani tanlang va WhatsAppga yozing.','Körper- und Fußmassage, Haar-Spa, Nägel. Behandlung wählen und per WhatsApp schreiben.','Massage du corps et des pieds, spa capillaire, ongles. Choisissez un soin et écrivez-nous sur WhatsApp.'],
+  hero_cta:['Массаж таңдау','Massaj tanlash','Massage finden','Trouver mon massage'],
+  map_k:['Дене картасы','Tana xaritasi','Körperkarte','Carte du corps'],
+  map_h:['Қай жеріңізді босаңсытқыңыз келеді?','Qayeringizni bo‘shashtirmoqchisiz?','Wo möchten Sie entspannen?','Où voulez-vous vous détendre ?'],
+  map_p:['Дене бөлігін басыңыз — сәйкес процедураларды көрсетеміз.','Tana qismini bosing — mos muolajalarni ko‘rsatamiz.','Tippen Sie auf eine Körperzone – wir zeigen passende Behandlungen.','Touchez une zone du corps pour voir les soins adaptés.'],
+  map_empty:['Суреттен аймақты таңдаңыз','Rasmdan sohani tanlang','Zone auf der Figur antippen','Touchez une zone sur la silhouette'],
+  z_head:['Бас және бет','Bosh va yuz','Kopf & Gesicht','Tête & visage'],
+  z_shoulders:['Мойын және иық','Bo‘yin va yelka','Nacken & Schultern','Nuque & épaules'],
+  z_body:['Арқа және дене','Orqa va tana','Rücken & Körper','Dos & corps'],
+  z_arms:['Қол','Qo‘llar','Arme & Hände','Bras & mains'],
+  z_legs:['Аяқ','Oyoqlar','Beine','Jambes'],
+  z_feet:['Табан','Oyoq kafti','Füße','Pieds'],
+  tap_hint:['Процедураны басып, сапарыңызға қосыңыз.','Muolajani bosib, tashrifingizga qo‘shing.','Behandlung antippen, um sie zum Besuch hinzuzufügen.','Touchez un soin pour l’ajouter à votre visite.'],
+  menu_k:['Мәзір','Menyu','Menü','Carte'],
+  menu_h:['Барлық процедуралар','Barcha muolajalar','Alle Behandlungen','Tous les soins'],
+  c_body:['Дене','Tana','Körper','Corps'], c_foot:['Табан','Oyoq','Füße','Pieds'], c_nail:['Тырнақ','Tirnoq','Nägel','Ongles'],
+  c_hair:['Шаш','Soch','Haare','Cheveux'], c_focus:['Нүктелі күтім','Nuqtali parvarish','Gezielte Pflege','Soins ciblés'],
+  min:['мин','daq','Min','min'],
+  gal_k:['Атмосфера','Muhit','Atmosphäre','Ambiance'],
+  gal_h:['Салон ішінде','Salon ichida','Im Spa','À l’intérieur'],
+  loc_k:['Байланыс','Aloqa','Kontakt','Contact'],
+  loc_h:['Бізді қалай табуға болады','Bizni qanday topish mumkin','So finden Sie uns','Nous trouver'],
+  loc_p:['Біз Онг Лангтамыз. Жазыңыз — жолды айтып, уақыт таңдаймыз.','Biz Ong Langdamiz. Yozing — yo‘lni tushuntirib, vaqt tanlaymiz.','Wir sind in Ông Lang. Schreiben Sie uns – wir erklären den Weg und finden einen Termin.','Nous sommes à Ông Lang. Écrivez-nous : nous vous guidons et trouvons un créneau.'],
+  map_btn:['Картаны ашу','Xaritani ochish','Karte öffnen','Ouvrir la carte'],
+  cart_h:['Менің сапарым','Mening tashrifim','Mein Besuch','Ma visite'],
+  book:['Жазылу','Yozilish','Buchen','Réserver'],
+ },
  onLang(){ renderAll(); }
 };
 
-const byId = Object.fromEntries(SERVICES.map(s=>[s.id,s]));
-const cart = new Map(); let zone = null, cat = 'body';
-const L = () => ['ru','en','vi','ko','zh'].indexOf(UD.lang);
-const $ = (s) => document.querySelector(s);
+const NX = { // [kk, uz, de, fr]
+ relax:['Босаңсыту массажы','Bo‘shashtiruvchi massaj','Entspannungsmassage','Massage relaxant'],
+ deep:['Терең тіндер массажы','Chuqur to‘qima massaji','Tiefengewebsmassage','Massage des tissus profonds'],
+ aloe:['Алоэ вера массажы','Aloe vera massaji','Aloe-vera-Massage','Massage à l’aloe vera'],
+ thai:['Тай массажы','Tay massaji','Thai-Massage','Massage thaï'],
+ herbal:['Шөп массажы','O‘simlikli massaj','Kräutermassage','Massage aux herbes'],
+ stone:['Ыстық тас массажы','Issiq toshlar massaji','Hot-Stone-Massage','Massage aux pierres chaudes'],
+ prenatal:['Жүкті әйелдерге массаж','Homiladorlar uchun massaj','Schwangerschaftsmassage','Massage prénatal'],
+ scrub:['Дене скрабы','Tana skrabi','Körperpeeling','Gommage du corps'],
+ sun:['Күнге күйгеннен кейін қалпына келтіру','Quyoshda kuygandan keyin tiklash','After-Sun-Pflege','Soin après-soleil'],
+ foot:['Табан массажы','Oyoq massaji','Fußmassage','Massage des pieds'],
+ fscrub:['Аяқ скрабы','Oyoq skrabi','Fußpeeling','Gommage des pieds'],
+ fscrubm:['Скраб + табан массажы','Skrab + oyoq massaji','Fußpeeling + Massage','Gommage + massage des pieds'],
+ fcare:['Табан күтімі: өкше пилингі, тазалау, массаж','Oyoq parvarishi: tovon pilingi, tozalash, massaj','Fußpflege: Fersenpeeling, Reinigung, Massage','Soin des pieds : gommage des talons, nettoyage, massage'],
+ nbasic:['Маникюр / педикюр, лаксыз','Manikyur / pedikyur, loksiz','Maniküre / Pediküre ohne Lack','Manucure / pédicure sans vernis'],
+ nremove:['Гель-лакты алу','Gel-lokni olib tashlash','Gel entfernen','Dépose du gel'],
+ ngel:['Гель-лак жағу','Gel-lok qoplash','Gel-Lack','Vernis gel'],
+ ncool:['Суық гель-лак','Sovuq gel-lok','Cool-Gel-Lack','Vernis gel froid'],
+ ndesign:['Жеке дизайн','Individual dizayn','Individuelles Nageldesign','Nail art sur mesure'],
+ hwash:['Шаш жуу және кептіру','Soch yuvish va quritish','Haare waschen & föhnen','Shampoing & brushing'],
+ hrelax:['Босаңсытатын шаш жуу','Bo‘shashtiruvchi soch yuvish','Entspannende Haarwäsche','Shampoing relaxant'],
+ hherbal:['Шөп шампунімен жуу','O‘simlik shampuni bilan yuvish','Kräutershampoo','Shampoing aux herbes'],
+ hmask:['Шаш жуу + бет маскасы','Soch yuvish + yuz niqobi','Haarwäsche + Gesichtsmaske','Shampoing + masque visage'],
+ hface:['Шаш жуу + бет массажы','Soch yuvish + yuz massaji','Haarwäsche + Gesichtsmassage','Shampoing + massage du visage'],
+ hneck:['Шаш жуу + мойын-иық массажы','Soch yuvish + bo‘yin-yelka massaji','Haarwäsche + Nacken-Schulter-Massage','Shampoing + massage nuque et épaules'],
+ hand:['Қол массажы','Qo‘l massaji','Handmassage','Massage des mains'],
+ neck:['Мойын және иық массажы','Bo‘yin va yelka massaji','Nacken- & Schultermassage','Massage nuque & épaules'],
+ facial:['Бет массажы','Yuz massaji','Gesichtsmassage','Massage du visage'],
+ mask:['Премиум бет маскасы','Premium yuz niqobi','Premium-Gesichtsmaske','Masque visage premium'],
+};
+SERVICES.forEach(s=>s.n.push(...NX[s.id]));
+/* Фото для карточек категорий */
+const CAT_IMG = {body:'assets/img/p9.jpg',foot:'assets/img/p16.jpg',nail:'assets/img/p10.jpg',hair:'assets/img/p12.jpg',focus:'assets/img/p17.jpg'};
 
-function row(s, i){
-  const chips = s.d.map((d,j)=>{
-    const k = s.id+':'+d, price = s.max ? UD.fmt(s.p[j]).replace(' ₫','')+' – '+UD.fmt(s.max) : UD.fmt(s.p[j]);
-    return `<button class="chip${cart.has(k)?' on':''}" data-k="${k}">${d?`<b>${d} ${UD.t('min')}</b>`:'<b>+</b>'}<span>${price}</span><i>${UD.approx(s.p[j])}</i></button>`;
-  }).join('');
-  return `<div class="svc" style="animation-delay:${i*.05}s"><div class="svc-n">${s.n[L()]}</div><div class="svc-c">${chips}</div></div>`;
+const byId = Object.fromEntries(SERVICES.map(s=>[s.id,s]));
+const cart = new Map(), dsel = {}; let zone = null;
+const $ = (s) => document.querySelector(s);
+const listFor = (key) => key==='zone' ? (zone?ZONES[zone].map(id=>byId[id]):[]) : SERVICES.filter(s=>s.c===key);
+
+function row(s, d, i){
+  const fixed = !s.d[0], j = fixed ? 0 : s.d.indexOf(d), name = UD.pick(s.n);
+  if(j<0) return `<div class="row off" style="animation-delay:${i*.04}s"><span class="rn">${name}</span><span class="rp"><b>—</b></span><span class="add"></span></div>`;
+  const k = s.id+':'+(fixed?0:d), p = s.p[j], price = s.max ? UD.fmt(p).replace(' ₫','')+' – '+UD.fmt(s.max) : UD.fmt(p);
+  return `<button class="row${cart.has(k)?' on':''}" data-k="${k}" style="animation-delay:${i*.04}s"><span class="rn">${name}</span><span class="rp"><b>${price}</b><i>${UD.approx(p)}</i></span><span class="add"></span></button>`;
+}
+function block(key){
+  const list = listFor(key), ds = [...new Set(list.flatMap(s=>s.d))].filter(Boolean).sort((a,b)=>a-b);
+  if(!ds.includes(dsel[key])) dsel[key] = ds.includes(60) ? 60 : ds[0];
+  const d = dsel[key];
+  const seg = ds.length>1 ? `<div class="seg">`+ds.map(x=>`<button data-d="${x}" class="${x===d?'on':''}">${x} ${UD.t('min')}</button>`).join('')+'</div>' : '';
+  return seg+'<div class="rows">'+list.map((s,i)=>row(s,d,i)).join('')+'</div>';
 }
 function renderPanel(){
   $('#panel').innerHTML = zone
-    ? `<h3>${UD.t('z_'+zone)}</h3><div class="hint">${UD.t('tap_hint')}</div>` + ZONES[zone].map((id,i)=>row(byId[id],i)).join('')
+    ? `<h3>${UD.t('z_'+zone)}</h3><div class="hint">${UD.t('tap_hint')}</div><div data-key="zone">${block('zone')}</div>`
     : `<div class="empty">${UD.t('map_empty')}</div>`;
   document.querySelectorAll('.z').forEach(z=>z.classList.toggle('on', z.dataset.z===zone));
   $('#zchips').innerHTML = Object.keys(ZONES).map(z=>`<button data-z="${z}" class="${z===zone?'on':''}">${UD.t('z_'+z)}</button>`).join('');
 }
 function renderMenu(){
-  $('#tabs').innerHTML = CATS.map(c=>`<button data-c="${c}" class="${c===cat?'on':''}">${UD.t('c_'+c)}</button>`).join('');
-  $('#list').innerHTML = SERVICES.filter(s=>s.c===cat).map(row).join('');
+  $('#jump').innerHTML = CATS.map(c=>`<a href="#cat-${c}">${UD.t('c_'+c)}</a>`).join('');
+  $('#cards').innerHTML = CATS.map(c=>`<article class="mcard rv" id="cat-${c}"><div class="mphoto"><img loading="lazy" src="${CAT_IMG[c]}" alt=""><h3>${UD.t('c_'+c)}</h3></div><div class="mbody" data-key="${c}">${block(c)}</div></article>`).join('');
+  UD.observe();
 }
 function renderCart(){
   let sum=0, mins=0, plus=false, html='', msg="Hello! I'd like to book at Út Điệu Spa:\n";
   cart.forEach((v,k)=>{
-    const [id,d]=k.split(':'), s=byId[id], p=s.p[s.d.indexOf(+d)];
+    const [id,d]=k.split(':'), s=byId[id], p=s.p[+d?s.d.indexOf(+d):0];
     sum+=p; mins+=+d; if(s.max) plus=true;
-    html+=`<div><span>${s.n[L()]}${+d?` · ${d} ${UD.t('min')}`:''}</span><span>${UD.fmt(p)}${s.max?'+':''} <button data-rm="${k}" aria-label="remove">×</button></span></div>`;
+    html+=`<div><span>${UD.pick(s.n)}${+d?` · ${d} ${UD.t('min')}`:''}</span><span>${UD.fmt(p)}${s.max?'+':''} <button data-rm="${k}" aria-label="remove">×</button></span></div>`;
     msg+=`• ${s.n[1]}${+d?` — ${d} min`:''} — ${UD.fmt(p)}${s.max?'+':''}\n`;
   });
   msg+=`Total: ${UD.fmt(sum)}${plus?'+':''}\nPreferred day and time: `;
@@ -304,15 +404,15 @@ function renderCart(){
   $('#cartGo').href = UD.wa(msg);
 }
 function renderAll(){ renderPanel(); renderMenu(); renderCart(); }
-function pickZone(z){ zone = z; renderPanel(); if(innerWidth<820) $('#panel').scrollIntoView({behavior:'smooth',block:'start'}); }
+function pickZone(z){ zone = z; dsel.zone = 0; renderPanel(); if(innerWidth<820) $('#panel').scrollIntoView({behavior:'smooth',block:'start'}); }
 
 document.addEventListener('click',(e)=>{
-  const chip=e.target.closest('.chip'), z=e.target.closest('[data-z]'), tab=e.target.closest('[data-c]'), rm=e.target.closest('[data-rm]');
-  if(chip){ const k=chip.dataset.k; cart.has(k)?cart.delete(k):cart.set(k,1);
-    document.querySelectorAll(`.chip[data-k="${k}"]`).forEach(c=>c.classList.toggle('on',cart.has(k))); renderCart(); }
-  else if(rm){ cart.delete(rm.dataset.rm); renderAll(); }
+  const r=e.target.closest('.row[data-k]'), sg=e.target.closest('.seg button'), z=e.target.closest('[data-z]'), rm=e.target.closest('[data-rm]');
+  if(r){ const k=r.dataset.k; cart.has(k)?cart.delete(k):cart.set(k,1);
+    document.querySelectorAll(`.row[data-k="${k}"]`).forEach(c=>c.classList.toggle('on',cart.has(k))); renderCart(); }
+  else if(sg){ const box=sg.closest('[data-key]'); dsel[box.dataset.key]=+sg.dataset.d; box.innerHTML=block(box.dataset.key); }
+  else if(rm){ cart.delete(rm.dataset.rm); renderPanel(); document.querySelectorAll('.mbody').forEach(b=>b.innerHTML=block(b.dataset.key)); renderCart(); }
   else if(z) pickZone(z.dataset.z);
-  else if(tab){ cat=tab.dataset.c; renderMenu(); }
   else if(e.target.closest('#cartSum')) $('#cart').classList.toggle('open');
   else if(e.target.closest('.gal img')){ const b=document.createElement('div'); b.className='lb'; b.innerHTML=`<img src="${e.target.src}" alt="">`; b.onclick=()=>b.remove(); document.body.appendChild(b); }
 });

@@ -4,11 +4,11 @@
   const CONFIG = {
     whatsapp: '84767907799',          // номер WhatsApp без «+»
     // Приблизительные курсы: сколько донгов в 1 единице валюты. Обновляйте при необходимости.
-    rates: { USD: 26000, RUB: 325, KRW: 18.6, CNY: 3650 },
-    currencyByLang: { ru: 'RUB', en: 'USD', ko: 'KRW', zh: 'CNY', vi: null },
+    rates: { USD: 26000, RUB: 325, KRW: 18.6, CNY: 3650, KZT: 50, UZS: 2.1, EUR: 30000 },
+    currencyByLang: { ru: 'RUB', en: 'USD', ko: 'KRW', zh: 'CNY', vi: null, kk: 'KZT', uz: 'UZS', de: 'EUR', fr: 'EUR' },
   };
-  const LANGS = ['ru', 'en', 'vi', 'ko', 'zh'];
-  const NAMES = { ru: 'Русский', en: 'English', vi: 'Tiếng Việt', ko: '한국어', zh: '中文' };
+  const LANGS = ['ru', 'en', 'vi', 'ko', 'zh', 'kk', 'uz', 'de', 'fr'];
+  const NAMES = { ru: 'Русский', en: 'English', vi: 'Tiếng Việt', ko: '한국어', zh: '中文', kk: 'Қазақша', uz: 'Oʻzbekcha', de: 'Deutsch', fr: 'Français' };
   const STAR = '0,-10 2.25,-3.09 9.51,-3.09 3.63,1.18 5.88,8.09 0,3.82 -5.88,8.09 -3.63,1.18 -9.51,-3.09 -2.25,-3.09';
   const bars = (x, y, r) => `<g transform="translate(${x},${y}) rotate(${r})" fill="#111"><rect x="-5" y="-3.6" width="10" height="1.7"/><rect x="-5" y="-.85" width="10" height="1.7"/><rect x="-5" y="1.9" width="10" height="1.7"/></g>`;
   const FLAGS = {
@@ -17,6 +17,10 @@
     vi: `<rect width="60" height="40" fill="#DA251D"/><polygon points="${STAR}" transform="translate(30,20) scale(1.15)" fill="#FFDE00"/>`,
     ko: `<rect width="60" height="40" fill="#fff"/><g transform="rotate(33 30 20)"><path d="M21,20a9,9 0 0 1 18,0a4.5,4.5 0 0 1-9,0a4.5,4.5 0 0 0-9,0z" fill="#CD2E3A"/><path d="M39,20a9,9 0 0 1-18,0a4.5,4.5 0 0 1 9,0a4.5,4.5 0 0 0 9,0z" fill="#0047A0"/></g>${bars(13, 9, -56)}${bars(47, 9, 56)}${bars(13, 31, 56)}${bars(47, 31, -56)}`,
     zh: `<rect width="60" height="40" fill="#DE2910"/><g fill="#FFDE00"><polygon points="${STAR}" transform="translate(12,12) scale(.62)"/><polygon points="${STAR}" transform="translate(23,5) scale(.2)"/><polygon points="${STAR}" transform="translate(27,10) scale(.2)"/><polygon points="${STAR}" transform="translate(27,16) scale(.2)"/><polygon points="${STAR}" transform="translate(23,21) scale(.2)"/></g>`,
+    kk: '<rect width="60" height="40" fill="#00AFCA"/><circle cx="32" cy="17" r="5.5" fill="#FEC50C"/><circle cx="32" cy="17" r="8.5" fill="none" stroke="#FEC50C" stroke-width="2" stroke-dasharray="1.3 1.7"/><path d="M19 27q13 7 26 0q-13 3-26 0z" fill="#FEC50C"/><path d="M6 3v34" stroke="#FEC50C" stroke-width="3" stroke-dasharray="3 2"/>',
+    uz: '<rect width="60" height="40" fill="#fff"/><rect width="60" height="12.5" fill="#0099B5"/><rect y="27.5" width="60" height="12.5" fill="#1EB53A"/><rect y="12.5" width="60" height="1.2" fill="#CE1126"/><rect y="26.3" width="60" height="1.2" fill="#CE1126"/><circle cx="10" cy="6.3" r="4" fill="#fff"/><circle cx="11.6" cy="6.3" r="3.4" fill="#0099B5"/><g fill="#fff"><circle cx="18" cy="3.5" r=".8"/><circle cx="21" cy="3.5" r=".8"/><circle cx="24" cy="3.5" r=".8"/><circle cx="21" cy="6.3" r=".8"/><circle cx="24" cy="6.3" r=".8"/><circle cx="24" cy="9.1" r=".8"/></g>',
+    de: '<rect width="60" height="40" fill="#FFCE00"/><rect width="60" height="26.67" fill="#DD0000"/><rect width="60" height="13.33" fill="#111"/>',
+    fr: '<rect width="60" height="40" fill="#fff"/><rect width="20" height="40" fill="#0055A4"/><rect x="40" width="20" height="40" fill="#EF4135"/>',
   };
   const flag = (l) => `<span class="flag"><svg viewBox="0 0 60 40" preserveAspectRatio="xMidYMid slice">${FLAGS[l]}</svg></span>`;
   const WA_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5l1.3-4.6A8.5 8.5 0 1 1 8 19.2z"/><path d="M9.3 8c-.8 1.2.2 3.3 1.8 4.9s3.7 2.6 4.9 1.8"/></svg>';
@@ -37,7 +41,23 @@
     rate_note: ['Цены указаны в донгах. Пересчёт в другую валюту приблизительный.', 'Prices are in Vietnamese dong. Other currencies are approximate.', 'Giá tính bằng đồng Việt Nam.', '가격은 베트남 동 기준이며, 환산 금액은 대략적입니다.', '价格以越南盾计，其他货币为约数。'],
     foot_addr: ['Tổ 3, Ông Lang, Phú Quốc, Вьетнам', 'Tổ 3, Ông Lang, Phú Quốc, Vietnam', 'Tổ 3, Ông Lang, Đặc khu Phú Quốc, An Giang', 'Tổ 3, Ông Lang, 푸꾸옥, 베트남', 'Tổ 3, Ông Lang, 富国岛, 越南'],
   };
+  const COMMON_X = {
+    wa_btn: ['WhatsApp-қа жазу', 'WhatsAppga yozish', 'Per WhatsApp schreiben', 'Écrire sur WhatsApp'],
+    snd: ['Әуенді қосу', 'Musiqani yoqish', 'Ambiente einschalten', "Activer l'ambiance"],
+    cross_k: ['Тек спа емес', 'Faqat spa emas', 'Mehr als ein Spa', "Plus qu'un spa"],
+    cross_h: ['Út Điệu-дің басқа қызметтері', 'Út Điệu ning boshqa xizmatlari', 'Mehr von Út Điệu', 'Aussi chez Út Điệu'],
+    x_spa_t: ['Спа және массаж', 'Spa va massaj', 'Spa & Massage', 'Spa & massage'],
+    x_spa_p: ['Дене, табан, шаш, тырнақ', 'Tana, oyoq, soch, tirnoq', 'Körper, Füße, Haare, Nägel', 'Corps, pieds, cheveux, ongles'],
+    x_laundry_t: ['Кір жуу', 'Kir yuvish', 'Wäscherei', 'Laverie'],
+    x_laundry_p: ['Жуу және кептіру — кг 30.000 ₫', 'Yuvish va quritish — kg 30.000 ₫', 'Waschen & Trocknen — 30.000 ₫ pro kg', 'Lavage & séchage — 30.000 ₫ le kg'],
+    x_car_t: ['VinFast VF3 жалға алу', 'VinFast VF3 ijarasi', 'VinFast VF3 mieten', 'Location VinFast VF3'],
+    x_car_p: ['Жүргізушісіз электромобиль — бүкіл арал сіздікі', 'Haydovchisiz elektromobil — butun orol sizniki', 'E-Auto zum Selbstfahren — die Insel gehört Ihnen', "Voiture électrique sans chauffeur — l'île est à vous"],
+    rate_note: ['Бағалар донгпен көрсетілген. Басқа валютаға аудару шамамен.', 'Narxlar dongda. Boshqa valyutadagi qiymat taxminiy.', 'Preise in vietnamesischen Dong. Andere Währungen sind Richtwerte.', 'Prix en dongs vietnamiens. Les autres devises sont approximatives.'],
+    foot_addr: ['Tổ 3, Ông Lang, Phú Quốc, Вьетнам', 'Tổ 3, Ông Lang, Phú Quốc, Vyetnam', 'Tổ 3, Ông Lang, Phú Quốc, Vietnam', 'Tổ 3, Ông Lang, Phú Quốc, Vietnam'],
+  };
   const dict = Object.assign({}, COMMON, S.dict || {});
+  // дополнительные языки [kk, uz, de, fr] дописываются к основным пяти
+  [COMMON_X, S.extra || {}].forEach((x) => Object.keys(x).forEach((k) => { if (dict[k]) dict[k] = dict[k].slice(0, 5).concat(x[k]); }));
   const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
   let lang = null;
 
@@ -49,6 +69,9 @@
     const v = k * 1000 / CONFIG.rates[c];
     if (c === 'USD') return '≈ $' + Math.round(v);
     if (c === 'RUB') return '≈ ' + dots(Math.round(v / 10) * 10, ' ') + ' ₽';
+    if (c === 'EUR') return '≈ €' + Math.round(v);
+    if (c === 'KZT') return '≈ ' + dots(Math.round(v / 100) * 100, ' ') + ' ₸';
+    if (c === 'UZS') return '≈ ' + dots(Math.round(v / 1000) * 1000, ' ') + ' soʻm';
     if (c === 'KRW') return '≈ ' + dots(Math.round(v / 100) * 100, ',') + '원';
     return '≈ ¥' + Math.round(v);
   }
@@ -66,22 +89,28 @@
   function setLang(l) { lang = l; store.set('ud_lang', l); apply(); }
 
   /* ---------- language gate ---------- */
-  const HI = ['Добро пожаловать', 'Welcome', 'Xin chào', '환영합니다', '欢迎光临'];
-  const SUB = ['Выберите язык', 'Choose your language', 'Chọn ngôn ngữ', '언어를 선택하세요', '请选择语言'];
+  const HI = ['Добро пожаловать', 'Welcome', 'Xin chào', '환영합니다', '欢迎光临', 'Қош келдіңіз', 'Xush kelibsiz', 'Willkommen', 'Bienvenue'];
+  const SUB = ['Выберите язык', 'Choose your language', 'Chọn ngôn ngữ', '언어를 선택하세요', '请选择语言', 'Тілді таңдаңыз', 'Tilni tanlang', 'Sprache wählen', 'Choisissez votre langue'];
   let gateTimer;
-  function openGate() {
+  function openGate(first) {
     if (document.querySelector('.gate')) return;
-    const g = document.createElement('div'); g.className = 'gate';
-    g.innerHTML = (S.gateLogo || '') + `<div class="gate-hi">${HI[1]}</div><div class="gate-sub">${SUB[1]}</div><div class="gate-list">` +
-      LANGS.map((l, i) => `<button data-l="${l}" style="animation-delay:${.25 + i * .08}s">${flag(l)}${NAMES[l]}</button>`).join('') + '</div>';
+    const g = document.createElement('div'); g.className = 'gate'; if (first) g.style.animation = 'none';
+    g.innerHTML = (S.gateLogo || '') + `<div class="gate-txt"><div class="gate-hi">${HI[1]}</div><div class="gate-sub">${SUB[1]}</div></div><div class="gate-list">` +
+      LANGS.map((l, i) => `<button data-l="${l}" class="${l === lang && !first ? 'cur' : ''}" style="animation-delay:${.15 + i * .05}s">${flag(l)}<span>${NAMES[l]}</span></button>`).join('') + '</div>';
     document.body.appendChild(g); document.body.style.overflow = 'hidden';
-    const hi = g.querySelector('.gate-hi'), sub = g.querySelector('.gate-sub'); let i = 1;
-    gateTimer = setInterval(() => { hi.style.opacity = sub.style.opacity = 0; setTimeout(() => { i = (i + 1) % 5; hi.textContent = HI[i]; sub.textContent = SUB[i]; hi.style.opacity = 1; sub.style.opacity = .65; }, 400); }, 2000);
+    const txt = g.querySelector('.gate-txt'), hi = g.querySelector('.gate-hi'), sub = g.querySelector('.gate-sub'); let i = 1;
+    gateTimer = setInterval(() => { txt.classList.add('hide'); setTimeout(() => { i = (i + 1) % HI.length; hi.textContent = HI[i]; sub.textContent = SUB[i]; txt.classList.remove('hide'); }, 350); }, 2200);
+    let done = false;
     g.addEventListener('click', (e) => {
-      const b = e.target.closest('button'); if (!b) return;
-      clearInterval(gateTimer); setLang(b.dataset.l);
-      g.classList.add('out'); document.body.style.overflow = ''; window.scrollTo(0, 0);
-      setTimeout(() => g.remove(), 800); observe();
+      const b = e.target.closest('button'); if (!b || done) return; done = true;
+      clearInterval(gateTimer); b.classList.add('picked'); g.classList.add('chosen');
+      // сначала подсвечиваем выбор, затем меняем тексты под закрытой шторкой и поднимаем её
+      setTimeout(() => {
+        setLang(b.dataset.l);
+        if (first) window.scrollTo({ top: 0, behavior: 'instant' });
+        document.body.style.overflow = ''; g.classList.add('out'); observe();
+        setTimeout(() => g.remove(), 900);
+      }, 380);
     });
   }
 
@@ -124,7 +153,7 @@
   }
 
   /* ---------- boot ---------- */
-  window.UD = { t, fmt, approx, wa, flag, WA_ICON, get lang() { return lang; }, observe };
+  window.UD = { t, fmt, approx, wa, flag, WA_ICON, get lang() { return lang; }, observe, pick: (a) => { const x = a[LANGS.indexOf(lang)]; return x == null ? a[1] : x; } };
   document.addEventListener('DOMContentLoaded', () => {
     // cross-links to the sister sites
     const cx = document.getElementById('cross');
@@ -136,17 +165,20 @@
     // floating buttons
     const fab = document.createElement('a'); fab.className = 'fab'; fab.setAttribute('data-wa', ''); fab.setAttribute('aria-label', 'WhatsApp'); fab.innerHTML = WA_ICON; document.body.appendChild(fab);
     const snd = document.createElement('button'); snd.className = 'snd'; snd.innerHTML = '<div class="bars"><i></i><i></i><i></i><i></i></div><span></span>';
-    snd.addEventListener('click', () => toggleSound(snd)); document.body.appendChild(snd);
+    snd.setAttribute('aria-label', 'Sound');
+    snd.addEventListener('click', () => toggleSound(snd));
+    const lb0 = document.getElementById('langBtn');
+    if (lb0) { const r = document.createElement('div'); r.className = 'hdr-r'; lb0.replaceWith(r); r.append(snd, lb0); } else document.body.appendChild(snd);
     setTimeout(() => snd.classList.add('mini'), 9000);
     // header
     const hdr = document.querySelector('.hdr');
     if (hdr) { const f = () => hdr.classList.toggle('solid', window.scrollY > 30); f(); window.addEventListener('scroll', f, { passive: true }); }
-    const lb = document.getElementById('langBtn'); if (lb) lb.addEventListener('click', openGate);
+    const lb = document.getElementById('langBtn'); if (lb) lb.addEventListener('click', () => openGate(false));
     // conversion event for ads: any click that opens WhatsApp
     document.addEventListener('click', (e) => { if (e.target.closest('a[href*="wa.me"]') && window.fbq) window.fbq('track', 'Contact'); });
     // language: ?lang=xx from an ad link → saved choice → gate
     const q = new URLSearchParams(location.search).get('lang'), saved = store.get('ud_lang');
     const pick = LANGS.includes(q) ? q : LANGS.includes(saved) ? saved : null;
-    if (pick) { setLang(pick); observe(); } else { lang = 'en'; apply(); openGate(); }
+    if (pick) { setLang(pick); observe(); } else { lang = 'en'; apply(); openGate(true); }
   });
 })();

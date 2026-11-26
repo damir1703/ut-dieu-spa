@@ -166,6 +166,16 @@ const PLACES=[
  {id:'sao',x:134,y:250,km:35,en:'Sao Beach',n:['Пляж Сао','Sao Beach','Bãi Sao','사오 비치','星星沙滩'],d:['Белый песок и бирюзовая вода — самый открыточный пляж.','White sand and turquoise water — the postcard beach.','Cát trắng, nước xanh ngọc — bãi biển đẹp như bưu thiếp.','하얀 모래와 에메랄드빛 바다, 엽서 같은 해변.','白沙与碧海，明信片般的海滩。']},
  {id:'ht',x:121,y:298,km:38,en:'Hòn Thơm cable car',n:['Канатная дорога на Хон Том','Hòn Thơm cable car','Cáp treo Hòn Thơm','혼텀 케이블카','香岛跨海缆车'],d:['Одна из самых длинных канатных дорог над морем и Sunset Town.','One of the longest sea-crossing cable cars, plus Sunset Town.','Một trong những tuyến cáp treo vượt biển dài nhất, cùng Thị trấn Hoàng Hôn.','세계 최장급 해상 케이블카와 선셋 타운.','世界最长的跨海缆车之一，还有日落小镇。']},
 ];
+const PX={
+ dd:[['Зыонг Донг түнгі базары','Zyong Dong tungi bozori','Nachtmarkt Dương Đông','Marché de nuit de Dương Đông'],['Теңіз өнімдері, кәдесыйлар және Динь Кау ғибадатханасындағы күн батуы.','Dengiz mahsulotlari, suvenirlar va Din Kau ibodatxonasida quyosh botishi.','Meeresfrüchte, Souvenirs und Sonnenuntergang am Dinh-Cậu-Tempel.','Fruits de mer, souvenirs et coucher de soleil au temple Dinh Cậu.']],
+ gw:[['Grand World және VinWonders','Grand World va VinWonders','Grand World & VinWonders','Grand World & VinWonders'],['Каналдар, кешкі шоулар және үлкен ойын-сауық паркі.','Kanallar, kechki shoular va katta ko‘ngilochar park.','Kanäle, Abendshows und ein großer Freizeitpark.','Canaux, spectacles du soir et grand parc d’attractions.']],
+ rv:[['Теңіз жұлдыздары жағажайы','Dengiz yulduzlari plyaji','Seestern-Strand','Plage des étoiles de mer'],['Аралдың солтүстігіндегі тыныш таяз су және су үстіндегі мейрамханалар.','Orol shimolidagi sokin sayoz suv va suv ustidagi restoranlar.','Ruhiges Flachwasser im Norden und Restaurants auf Stelzen.','Eaux calmes et peu profondes au nord, restaurants sur pilotis.']],
+ gd:[['Гань Зау мүйісі','Gan Zau burni','Kap Gành Dầu','Cap Gành Dầu'],['Аралдың солтүстік-батыс шеті: теңіз көрінісі және жабайы жағажайлар.','Orolning shimoli-g‘arbiy chekkasi: dengiz manzarasi va yovvoyi plyajlar.','Die Nordwestspitze: Meerblick und wilde Strände.','La pointe nord-ouest : vue sur la mer et plages sauvages.']],
+ hq:[['Хо Куок пагодасы','Xo Kuok pagodasi','Hộ-Quốc-Pagode','Pagode Hộ Quốc'],['Теңіз үстіндегі беткейде орналасқан аралдағы ең үлкен ғибадатхана.','Dengiz ustidagi yonbag‘irda joylashgan oroldagi eng katta ibodatxona.','Der größte Tempel der Insel, am Hang über dem Meer.','Le plus grand temple de l’île, à flanc de colline au-dessus de la mer.']],
+ sao:[['Сао жағажайы','Sao plyaji','Sao Beach','Plage de Sao'],['Ақ құм мен көгілдір су — ашықхаттағыдай жағажай.','Oq qum va firuza suv — otkritkadagidek plyaj.','Weißer Sand und türkisfarbenes Wasser – der Postkartenstrand.','Sable blanc et eau turquoise — la plage de carte postale.']],
+ ht:[['Хон Том аспалы жолы','Xon Tom kanat yo‘li','Seilbahn Hòn Thơm','Téléphérique de Hòn Thơm'],['Теңіз үстіндегі ең ұзын аспалы жолдардың бірі және Sunset Town.','Dengiz ustidagi eng uzun kanat yo‘llaridan biri va Sunset Town.','Eine der längsten Seilbahnen über das Meer, dazu Sunset Town.','L’un des plus longs téléphériques au-dessus de la mer, et Sunset Town.']],
+};
+PLACES.forEach(p=>{p.n.push(...PX[p.id][0]);p.d.push(...PX[p.id][1]);});
 window.SITE={
  id:'car', root:'../', hello:"Hello! I'd like to rent a VinFast VF3. What are the price and conditions?",
  gateLogo:'<div class="gate-logo">🚙</div>',
@@ -191,17 +201,37 @@ window.SITE={
   send:['Узнать цену в WhatsApp','Get the price on WhatsApp','Hỏi giá qua WhatsApp','WhatsApp으로 가격 문의','WhatsApp 询价'],
   plan_note:['Цену, условия и наличие машины на ваши даты подтвердим в чате.','We will confirm the price, conditions and availability in the chat.','Chúng tôi sẽ xác nhận giá, điều kiện và xe trống qua tin nhắn.','가격, 조건, 예약 가능 여부를 채팅으로 안내해 드려요.','价格、条件及车辆是否可租，我们会在聊天中确认。'],
  },
+ extra:{
+  title:['Фукуокта VinFast VF3 жалға алу — жүргізушісіз','Fukuokda VinFast VF3 ijarasi — haydovchisiz','VinFast VF3 mieten auf Phú Quốc — Selbstfahrer','Location VinFast VF3 à Phú Quốc — sans chauffeur'],
+  hero_h:['Бүкіл Фукуок — <em>рөл сізде</em>','Butun Fukuok — <em>rul sizda</em>','Ganz Phú Quốc — <em>Sie fahren</em>','Tout Phú Quốc — <em>au volant</em>'],
+  hero_p:['Жүргізушісіз VinFast VF3 электромобилі. Жағажайлар, базарлар мен күн батуы — өз ырғағыңызда.','Haydovchisiz VinFast VF3 elektromobili. Plyajlar, bozorlar va quyosh botishi — o‘z ritmingizda.','VinFast VF3 Elektroauto zum Selbstfahren. Strände, Märkte und Sonnenuntergänge im eigenen Tempo.','Une VinFast VF3 électrique sans chauffeur. Plages, marchés et couchers de soleil à votre rythme.'],
+  hero_cta:['Бағасын білу','Narxini bilish','Preis anfragen','Demander le prix'],
+  isl_cta:['Қайда бару керек','Qayerga borish','Wohin fahren','Où aller'],
+  car_h:['Кішкентай, бірақ барлық жерге жетеді','Kichkina, lekin hamma joyga boradi','Klein, aber kommt überall hin','Petite, mais elle passe partout'],
+  car_p:['Ықшам электр жол талғамайтын көлік: тыныш, кондиционері бар, жағажай сөмкесіне орын жетеді.','Ixcham elektr krossover: sokin, konditsionerli, plyaj sumkasi uchun joy bor.','Kompakter Elektro-Mini-SUV: leise, klimatisiert, mit Platz für die Strandtasche.','Un mini-SUV électrique compact : silencieux, climatisé, avec de la place pour le sac de plage.'],
+  f1:['электромобиль','elektromobil','elektrisch','électrique'], f2:['орын','o‘rin','Sitze','places'],
+  f3:['бір зарядпен','bir zaryadda','pro Ladung','par charge'], f4:['ұзындығы — қою оңай','uzunligi — to‘xtatish oson','lang — leicht zu parken','de long — facile à garer'],
+  isl_k:['Бағыттар','Yo‘nalishlar','Routen','Itinéraires'],
+  isl_h:['Онг Лангтан қайда баруға болады','Ong Langdan qayerga borish mumkin','Wohin ab Ông Lang','Où aller depuis Ông Lang'],
+  isl_p:['Картадағы нүктені басыңыз.','Xaritadagi nuqtani bosing.','Tippen Sie auf einen Punkt der Karte.','Touchez un point sur la carte.'],
+  km_from:['бізден ≈ {km} км','bizdan ≈ {km} km','≈ {km} km von uns','à ≈ {km} km de chez nous'],
+  plan_k:['Өтінім','Buyurtma','Anfrage','Demande'],
+  plan_h:['Көлік қашан керек?','Mashina qachon kerak?','Wann brauchen Sie das Auto?','Quand avez-vous besoin de la voiture ?'],
+  days:['Неше күн','Necha kun','Wie viele Tage','Combien de jours'],
+  from_d:['Қай күннен','Qaysi kundan','Ab wann','À partir du'],
+  send:['Бағасын WhatsApp-та білу','Narxini WhatsAppda bilish','Preis per WhatsApp anfragen','Demander le prix sur WhatsApp'],
+  plan_note:['Баға, шарттар және көліктің бос болуын чатта растаймыз.','Narx, shartlar va mashina bo‘shligini chatda tasdiqlaymiz.','Preis, Bedingungen und Verfügbarkeit bestätigen wir im Chat.','Nous confirmons le prix, les conditions et la disponibilité dans le chat.'],
+ },
  onLang(){ render(); }
 };
 const $=(s)=>document.querySelector(s); let cur='sao', days=2;
-const L=()=>['ru','en','vi','ko','zh'].indexOf(UD.lang);
 function render(){
   const p=PLACES.find(x=>x.id===cur), mx=(HOME[0]+p.x)/2+(p.y-HOME[1])*.18, my=(HOME[1]+p.y)/2-(p.x-HOME[0])*.18;
   $('#pins').innerHTML=`<g class="pin home"><circle cx="${HOME[0]}" cy="${HOME[1]}" r="7"/><text x="${HOME[0]-10}" y="${HOME[1]+4}" text-anchor="end" font-size="10" font-weight="800" fill="#ffd08a">Ông Lang</text></g>`+
     PLACES.map(q=>`<g class="pin${q.id===cur?' on':''}" data-p="${q.id}"><circle class="halo" cx="${q.x}" cy="${q.y}" r="9"/><circle cx="${q.x}" cy="${q.y}" r="6"/><circle cx="${q.x}" cy="${q.y}" r="16" style="fill:transparent;stroke:none"/></g>`).join('');
   $('#route').setAttribute('d',`M${HOME[0]} ${HOME[1]}Q${mx} ${my} ${p.x} ${p.y}`);
-  $('#place').innerHTML=`<span class="km">${UD.t('km_from').replace('{km}',p.km)}</span><h3>${p.n[L()]}</h3><p>${p.d[L()]}</p>`;
-  $('#pchips').innerHTML=PLACES.map(q=>`<button data-p="${q.id}" class="${q.id===cur?'on':''}">${q.n[L()]}</button>`).join('');
+  $('#place').innerHTML=`<span class="km">${UD.t('km_from').replace('{km}',p.km)}</span><h3>${UD.pick(p.n)}</h3><p>${UD.pick(p.d)}</p>`;
+  $('#pchips').innerHTML=PLACES.map(q=>`<button data-p="${q.id}" class="${q.id===cur?'on':''}">${UD.pick(q.n)}</button>`).join('');
   $('#n').textContent=days;
   const d=$('#date').value;
   $('#go').innerHTML=UD.WA_ICON+`<span>${UD.t('send')}</span>`;
