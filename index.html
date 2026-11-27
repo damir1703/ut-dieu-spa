@@ -9,7 +9,7 @@
 <link rel="icon" href="assets/img/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/shared.css">
+<link rel="stylesheet" href="assets/shared.css?v=3">
 <style>
 :root{--bg:#f6efe6;--ink:#3b2418;--muted:#8a7163;--acc:#a8552f;--acc-ink:#fff;--card:#fffaf3;--line:rgba(74,44,29,.12);--hdr:rgba(246,239,230,.86);
 --gate:radial-gradient(120% 90% at 50% 0%,#5a3423,#2a1810);--gate-ink:#f6efe6;--gate-card:rgba(255,255,255,.1);
@@ -127,6 +127,7 @@ body.has-cart .cart{transform:none}
       <a class="btn" href="#map" data-i18n="hero_cta"></a>
       <a class="btn ghost" href="#menu" data-i18n="menu_h"></a>
     </div>
+    <a class="rate-pill rv d3" data-rate></a>
   </div>
   <div class="scroll-hint"></div>
 </section>
@@ -185,6 +186,8 @@ body.has-cart .cart{transform:none}
   <div class="gal" id="gal"></div>
 </section>
 
+<section id="reviews" style="padding-top:20px"></section>
+
 <section id="find">
   <div class="w loc">
     <img class="loc-img rv" src="assets/img/p18.jpg" alt="Út Điệu Spa" loading="lazy">
@@ -195,11 +198,12 @@ body.has-cart .cart{transform:none}
       <div class="loc-rows">
         <span>📍 <span data-i18n="foot_addr"></span></span>
         <span>📞 <a href="tel:+84767907799">+84 76 790 7799</a> · <a href="tel:+84707515595">+84 707 515 595</a></span>
+        <span>🕗 08:00 – 23:00</span>
         <span>💬 <a href="https://zalo.me/0767907799" target="_blank" rel="noopener">Zalo</a></span>
       </div>
       <div class="hero-btns">
         <a class="btn wa" data-wa><span data-i18n="wa_btn"></span></a>
-        <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%C3%9At+%C4%90i%E1%BB%87u+Spa+%C3%94ng+Lang+Ph%C3%BA+Qu%E1%BB%91c" data-i18n="map_btn"></a>
+        <a class="btn ghost" target="_blank" rel="noopener" href="https://maps.google.com/?cid=10207953114541808885" data-i18n="map_btn"></a>
       </div>
     </div>
   </div>
@@ -260,6 +264,18 @@ const ZONES = {
 window.SITE = {
  id:'spa', root:'', hello:"Hello! I'd like to book at Út Điệu Spa.",
  gateLogo:'<img class="gate-logo" src="assets/img/logo.jpg" alt="Út Điệu Spa">',
+ reviews:[
+  {n:'Gregor D.',l:'en',t:'We had a wonderful massage, accompanied by pleasant scents and calm music in the background. … Upon arrival, we were offered a drink, and after the massage, a serving of freshly cut fruit was waiting for us.'},
+  {n:'Владимир И.',l:'ru',t:'Лучше чем здесь массажа нет. … Все прорабатывают от пальчиков ног до ушей.'},
+  {n:'Antonina C.',l:'en',t:'Heated towels, warm weighted eye and body pillows – thoughtful touches you rarely find even in the best European spas.'},
+  {n:'Марина Ш.',l:'ru',t:'Отличный салон, чисто, уютно, комфортно. … Ходим каждый день, нас забирают и отвозят в отель.'},
+  {n:'Martin V.',l:'en',t:'Best massage I’ve had in Vietnam and Thailand all together! Super friendly staff and cheap prices.'},
+  {n:'Полина Н.',l:'ru',t:'Посетила около 5 разных салонов, но здесь мне понравилось больше всего, была три раза.'},
+  {n:'Dar R.',l:'en',t:'I had the deep tissue massage for 90 minutes. Definitely the best massage I’ve had in Vietnam and one of the best ever.'},
+  {n:'Алексей Е.',l:'ru',t:'Приходили вчетвером, хозяйка оперативно организовывала необходимое количество мастеров. Вежливо, доброжелательно, угощают манго и дают бутылочку воды.'},
+  {n:'Bente L.',l:'en',t:'We had massage here every day in our stay at Phu Quoc.'},
+  {n:'Vladimir A.',l:'ru',t:'Самый лучший массаж из тех что нам делали в Тае, Камбодже и тут'}
+ ],
  dict:{
   title:['Út Điệu Spa — массаж и спа на Фукоке','Út Điệu Spa — massage & spa in Phú Quốc','Út Điệu Spa — massage & spa tại Phú Quốc','Út Điệu Spa — 푸꾸옥 마사지 & 스파','Út Điệu Spa — 富国岛按摩水疗'],
   hero_h:['Час тишины <em>посреди отпуска</em>','An hour of calm <em>in the middle of your holiday</em>','Một giờ bình yên <em>giữa kỳ nghỉ</em>','휴가 중 만나는 <em>고요한 한 시간</em>','假期里的 <em>一小时宁静</em>'],
@@ -418,6 +434,6 @@ document.addEventListener('click',(e)=>{
 });
 $('#gal').innerHTML = [17,9,12,13,16,10,15,8,11].map(n=>`<img class="rv" loading="lazy" src="assets/img/p${n}.jpg" alt="Út Điệu Spa">`).join('');
 </script>
-<script src="assets/shared.js"></script>
+<script src="assets/shared.js?v=3"></script>
 </body>
 </html>

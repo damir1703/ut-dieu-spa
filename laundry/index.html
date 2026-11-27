@@ -9,7 +9,7 @@
 <link rel="icon" href="../assets/img/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/shared.css">
+<link rel="stylesheet" href="../assets/shared.css?v=3">
 <style>
 :root{--bg:#eaf6fd;--ink:#0b3552;--muted:#5d7f95;--acc:#0e8fd6;--acc-ink:#fff;--card:#fff;--line:rgba(11,53,82,.1);--hdr:rgba(234,246,253,.85);
 --gate:linear-gradient(160deg,#39b4f0,#0b6fb0);--gate-ink:#fff;--gate-card:rgba(255,255,255,.18);
@@ -125,6 +125,8 @@ input[type=range]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;bac
   </div>
 </section>
 
+<section id="reviews" style="padding-top:20px"></section>
+
 <section id="cross" style="padding-top:20px"></section>
 <footer><div class="w"><b>Út Điệu Laundry</b><br><span data-i18n="foot_addr"></span><br><a href="tel:+84767907799">+84 76 790 7799</a></div></footer>
 
@@ -135,6 +137,10 @@ window.SITE = {
  id:'laundry', root:'../', hello:"Hello! I have a question about the laundry service.",
  gateLogo:'<div class="gate-logo">🫧</div>',
  audio:{drone:[130.81,196],scale:[392,440,523.25,587.33,659.25,783.99],gap:[900,2200]},
+ reviews:[
+  {n:'Rubii P.',l:'en',t:'The owner was super sweet and picked up and delivered our laundry from our hotel on short notice! Very reasonable prices for laundry compared to the resorts in this area.'},
+  {n:'Harry E.',l:'en',t:'We had a massage here which was very good and also used the laundry service. Highly recommend'}
+ ],
  dict:{
   title:['Прачечная Út Điệu — стирка и сушка на Фукоке','Út Điệu Laundry — wash & dry in Phú Quốc','Giặt sấy Út Điệu — Phú Quốc','Út Điệu 세탁 — 푸꾸옥 세탁·건조','Út Điệu 洗衣 — 富国岛洗衣烘干'],
   hero_h:['Чистые вещи, <em>пока вы на пляже</em>','Fresh clothes <em>while you are at the beach</em>','Quần áo thơm sạch <em>khi bạn đang tắm biển</em>','해변에 계신 동안 <em>옷은 깨끗하게</em>','您在海边时，<em>衣服已洗净</em>'],
@@ -191,6 +197,6 @@ $('#items').addEventListener('click',(e)=>{ const b=e.target.closest('button'); 
 $('#reset').addEventListener('click',()=>{ counts.fill(0); $('#rng').value=3; render(); });
 $('#bubbles').innerHTML=Array.from({length:14},(_,i)=>{const s=18+Math.random()*60;return `<i style="left:${Math.random()*100}%;width:${s}px;height:${s}px;animation-duration:${9+Math.random()*12}s;animation-delay:-${Math.random()*20}s"></i>`}).join('');
 </script>
-<script src="../assets/shared.js"></script>
+<script src="../assets/shared.js?v=3"></script>
 </body>
 </html>

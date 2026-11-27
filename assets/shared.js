@@ -39,6 +39,9 @@
     x_car_t: ['Аренда VinFast VF3', 'VinFast VF3 rental', 'Thuê xe VinFast VF3', 'VinFast VF3 렌트', '租 VinFast VF3'],
     x_car_p: ['Электромобиль без водителя — весь остров ваш', 'Self-drive electric car — the island is yours', 'Xe điện tự lái — khám phá cả đảo', '셀프 드라이브 전기차로 섬 전체를', '自驾电动车，畅游全岛'],
     rate_note: ['Цены указаны в донгах. Пересчёт в другую валюту приблизительный.', 'Prices are in Vietnamese dong. Other currencies are approximate.', 'Giá tính bằng đồng Việt Nam.', '가격은 베트남 동 기준이며, 환산 금액은 대략적입니다.', '价格以越南盾计，其他货币为约数。'],
+    rev_k: ['Отзывы гостей', 'Guest reviews', 'Đánh giá của khách', '고객 리뷰', '客人评价'],
+    rev_n: ['108 отзывов на Google Maps', '108 reviews on Google Maps', '108 đánh giá trên Google Maps', 'Google 지도 리뷰 108개', 'Google 地图 108 条评价'],
+    rev_all: ['Все отзывы на Google', 'All reviews on Google', 'Xem tất cả trên Google', 'Google에서 모두 보기', '在 Google 查看全部'],
     foot_addr: ['Tổ 3, Ông Lang, Phú Quốc, Вьетнам', 'Tổ 3, Ông Lang, Phú Quốc, Vietnam', 'Tổ 3, Ông Lang, Đặc khu Phú Quốc, An Giang', 'Tổ 3, Ông Lang, 푸꾸옥, 베트남', 'Tổ 3, Ông Lang, 富国岛, 越南'],
   };
   const COMMON_X = {
@@ -53,6 +56,9 @@
     x_car_t: ['VinFast VF3 жалға алу', 'VinFast VF3 ijarasi', 'VinFast VF3 mieten', 'Location VinFast VF3'],
     x_car_p: ['Жүргізушісіз электромобиль — бүкіл арал сіздікі', 'Haydovchisiz elektromobil — butun orol sizniki', 'E-Auto zum Selbstfahren — die Insel gehört Ihnen', "Voiture électrique sans chauffeur — l'île est à vous"],
     rate_note: ['Бағалар донгпен көрсетілген. Басқа валютаға аудару шамамен.', 'Narxlar dongda. Boshqa valyutadagi qiymat taxminiy.', 'Preise in vietnamesischen Dong. Andere Währungen sind Richtwerte.', 'Prix en dongs vietnamiens. Les autres devises sont approximatives.'],
+    rev_k: ['Қонақтар пікірі', 'Mehmonlar fikri', 'Gästebewertungen', 'Avis des clients'],
+    rev_n: ['Google Maps-та 108 пікір', 'Google Maps’da 108 ta sharh', '108 Bewertungen auf Google Maps', '108 avis sur Google Maps'],
+    rev_all: ['Барлық пікір Google-да', 'Barcha sharhlar Google’da', 'Alle Bewertungen auf Google', 'Tous les avis sur Google'],
     foot_addr: ['Tổ 3, Ông Lang, Phú Quốc, Вьетнам', 'Tổ 3, Ông Lang, Phú Quốc, Vyetnam', 'Tổ 3, Ông Lang, Phú Quốc, Vietnam', 'Tổ 3, Ông Lang, Phú Quốc, Vietnam'],
   };
   const dict = Object.assign({}, COMMON, S.dict || {});
@@ -84,7 +90,18 @@
     if (dict.title) document.title = t('title');
     const lb = document.getElementById('langBtn'); if (lb) lb.innerHTML = flag(lang) + lang;
     const sn = document.querySelector('.snd span'); if (sn) sn.textContent = t('snd');
+    renderReviews();
     if (S.onLang) S.onLang(lang);
+  }
+  /* отзывы с Google Maps: сначала на языке гостя, потом английские, потом остальные */
+  const MAPS = 'https://maps.google.com/?cid=10207953114541808885', RATING = '4.9';
+  function renderReviews() {
+    const tr = document.getElementById('revTrack'); if (!tr || !S.reviews) return;
+    const pref = [lang, { kk: 'ru', uz: 'ru' }[lang], 'en'];
+    const rank = (r) => { const i = pref.indexOf(r.l); return i < 0 ? 9 : i; };
+    tr.innerHTML = S.reviews.slice().sort((a, b) => rank(a) - rank(b)).map((r) =>
+      `<figure class="rev"><div class="rev-s">★★★★★</div><blockquote lang="${r.l}">${r.t}</blockquote><figcaption><b>${r.n}</b><span>Google</span></figcaption></figure>`).join('');
+    tr.scrollLeft = 0;
   }
   function setLang(l) { lang = l; store.set('ud_lang', l); apply(); }
 
@@ -162,6 +179,10 @@
       cx.innerHTML = `<div class="w"><div class="kick rv" data-i18n="cross_k"></div><h2 class="h2 rv" data-i18n="cross_h"></h2><div class="cross-grid">` +
         Object.keys(all).filter((k) => k !== S.id).map((k) => `<a class="xcard x-${k} rv" href="${all[k][0]}"><span class="ico">${all[k][1]}</span><span><b data-i18n="x_${k}_t"></b><small data-i18n="x_${k}_p"></small></span><span class="arr">→</span></a>`).join('') + '</div></div>';
     }
+    // reviews
+    const rs = document.getElementById('reviews');
+    if (rs && S.reviews) rs.innerHTML = `<div class="w"><div class="kick rv" data-i18n="rev_k"></div><a class="rev-top rv" href="${MAPS}" target="_blank" rel="noopener"><b>${RATING}</b><span><i>★★★★★</i><small data-i18n="rev_n"></small></span></a></div><div class="rev-track rv" id="revTrack"></div><div class="w"><a class="btn ghost rev-all rv" href="${MAPS}" target="_blank" rel="noopener" data-i18n="rev_all"></a></div>`;
+    document.querySelectorAll('[data-rate]').forEach((el) => { el.href = MAPS; el.target = '_blank'; el.rel = 'noopener'; el.innerHTML = `<i>★</i> ${RATING} · <span data-i18n="rev_n"></span>`; });
     // floating buttons
     const fab = document.createElement('a'); fab.className = 'fab'; fab.setAttribute('data-wa', ''); fab.setAttribute('aria-label', 'WhatsApp'); fab.innerHTML = WA_ICON; document.body.appendChild(fab);
     const snd = document.createElement('button'); snd.className = 'snd'; snd.innerHTML = '<div class="bars"><i></i><i></i><i></i><i></i></div><span></span>';

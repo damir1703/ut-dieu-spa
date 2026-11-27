@@ -9,7 +9,7 @@
 <link rel="icon" href="../assets/img/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/shared.css">
+<link rel="stylesheet" href="../assets/shared.css?v=3">
 <style>
 :root{--bg:#12151b;--ink:#f3efe9;--muted:#9aa0ab;--acc:#ff6a2b;--acc-ink:#fff;--card:#1c2029;--line:rgba(255,255,255,.1);--hdr:rgba(18,21,27,.85);
 --gate:radial-gradient(120% 80% at 50% 100%,#ff6a2b 0%,#7a2a10 35%,#12151b 75%);--gate-ink:#fff;--gate-card:rgba(255,255,255,.12);
@@ -153,6 +153,8 @@ h1,h2,h3{font-weight:900;text-transform:uppercase;letter-spacing:-.01em}
   </div>
 </section>
 
+<section id="reviews" style="padding-top:20px"></section>
+
 <section id="plan" style="padding-top:10px">
   <div class="w">
     <div class="kick rv" data-i18n="plan_k"></div>
@@ -195,6 +197,10 @@ window.SITE={
  id:'car', root:'../', hello:"Hello! I'd like to rent a VinFast VF3. What are the price and conditions?",
  gateLogo:'<div class="gate-logo">🚙</div>',
  audio:{drone:[98,146.83],scale:[196,220,293.66,329.63,392,440],gap:[1100,2600]},
+ reviews:[
+  {n:'Елена Л.',l:'ru',t:'Арендовали электрокар VF3 в данной компании. … порадовал своей мобильностью, габаритами, ёмкостью батареи (хватало на весь день), наличием кондиционера.'},
+  {n:'Afnan A.',l:'en',t:'Was super easy to rent a car from them the process was smooth and easy and prices were pretty good for the area.'}
+ ],
  dict:{
   shot_note:['Реальные фото модели VF3. Цвет автомобиля может отличаться.','Real photos of the VF3. Your car’s colour may differ.','Ảnh thực tế của VF3. Màu xe có thể khác.','실제 VF3 사진입니다. 차량 색상은 다를 수 있습니다.','VF3 实拍照片，车辆颜色可能不同。'],
   title:['Аренда VinFast VF3 на Фукоке — без водителя','VinFast VF3 self-drive rental — Phú Quốc','Thuê xe tự lái VinFast VF3 — Phú Quốc','푸꾸옥 VinFast VF3 셀프 드라이브 렌트','富国岛 VinFast VF3 自驾租车'],
@@ -258,6 +264,6 @@ document.addEventListener('click',(e)=>{ const p=e.target.closest('[data-p]'); i
   if(e.target.id==='plus'){days=Math.min(30,days+1);render();} if(e.target.id==='minus'){days=Math.max(1,days-1);render();} });
 $('#date').min=new Date().toISOString().slice(0,10); $('#date').addEventListener('change',render);
 </script>
-<script src="../assets/shared.js"></script>
+<script src="../assets/shared.js?v=3"></script>
 </body>
 </html>
