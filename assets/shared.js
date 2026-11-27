@@ -42,6 +42,11 @@
     rev_k: ['Отзывы гостей', 'Guest reviews', 'Đánh giá của khách', '고객 리뷰', '客人评价'],
     rev_n: ['108 отзывов на Google Maps', '108 reviews on Google Maps', '108 đánh giá trên Google Maps', 'Google 지도 리뷰 108개', 'Google 地图 108 条评价'],
     rev_all: ['Все отзывы на Google', 'All reviews on Google', 'Xem tất cả trên Google', 'Google에서 모두 보기', '在 Google 查看全部'],
+    pk_q: ['Откуда вас забрать?', 'Where should we pick you up?', 'Đón bạn ở đâu?', '어디로 모시러 갈까요?', '到哪里接您？'],
+    pk_ph: ['Отель или адрес', 'Hotel or address', 'Khách sạn hoặc địa chỉ', '호텔 또는 주소', '酒店或地址'],
+    pk_use: ['Указать', 'Use', 'Dùng', '직접 입력', '使用'],
+    pk_none: ['Доберусь сам', 'I’ll come by myself', 'Tôi tự đến', '직접 갈게요', '我自己过去'],
+    pk_note: ['Трансфер подтвердим в WhatsApp', 'We’ll confirm the transfer in WhatsApp', 'Chúng tôi sẽ xác nhận đưa đón qua WhatsApp', '픽업 여부는 WhatsApp으로 확인해 드려요', '接送将在 WhatsApp 确认'],
     foot_addr: ['Tổ 3, Ông Lang, Phú Quốc, Вьетнам', 'Tổ 3, Ông Lang, Phú Quốc, Vietnam', 'Tổ 3, Ông Lang, Đặc khu Phú Quốc, An Giang', 'Tổ 3, Ông Lang, 푸꾸옥, 베트남', 'Tổ 3, Ông Lang, 富国岛, 越南'],
   };
   const COMMON_X = {
@@ -59,6 +64,11 @@
     rev_k: ['Қонақтар пікірі', 'Mehmonlar fikri', 'Gästebewertungen', 'Avis des clients'],
     rev_n: ['Google Maps-та 108 пікір', 'Google Maps’da 108 ta sharh', '108 Bewertungen auf Google Maps', '108 avis sur Google Maps'],
     rev_all: ['Барлық пікір Google-да', 'Barcha sharhlar Google’da', 'Alle Bewertungen auf Google', 'Tous les avis sur Google'],
+    pk_q: ['Сізді қайдан алып кетейік?', 'Sizni qayerdan olib ketaylik?', 'Wo sollen wir Sie abholen?', 'Où venir vous chercher ?'],
+    pk_ph: ['Қонақүй немесе мекенжай', 'Mehmonxona yoki manzil', 'Hotel oder Adresse', 'Hôtel ou adresse'],
+    pk_use: ['Көрсету', 'Kiritish', 'Verwenden', 'Utiliser'],
+    pk_none: ['Өзім барамын', 'O‘zim boraman', 'Ich komme selbst', 'Je viens par moi-même'],
+    pk_note: ['Трансферді WhatsApp-та растаймыз', 'Transferni WhatsApp’da tasdiqlaymiz', 'Den Transfer bestätigen wir per WhatsApp', 'Nous confirmons le transfert sur WhatsApp'],
     foot_addr: ['Tổ 3, Ông Lang, Phú Quốc, Вьетнам', 'Tổ 3, Ông Lang, Phú Quốc, Vyetnam', 'Tổ 3, Ông Lang, Phú Quốc, Vietnam', 'Tổ 3, Ông Lang, Phú Quốc, Vietnam'],
   };
   const dict = Object.assign({}, COMMON, S.dict || {});
@@ -169,8 +179,41 @@
     else if (ctx) { master.gain.cancelScheduledValues(ctx.currentTime); master.gain.linearRampToValueAtTime(0, ctx.currentTime + .6); setTimeout(() => { if (!sndOn) ctx.suspend(); }, 700); }
   }
 
+  /* ---------- hotel picker («Откуда вас забрать?») ---------- */
+  let hotel = null; try { hotel = JSON.parse(store.get('ud_hotel') || 'null'); } catch (e) {}
+  const esc = (x) => String(x).replace(/[&<>"]/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
+  const fold = (x) => x.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd');
+  const hotelText = () => { if (!hotel) return ''; const x = [hotel[1] ? hotel[1] + '★' : '', hotel[2]].filter(Boolean).join(', '); return hotel[0] + (x ? ' (' + x + ')' : ''); };
+  function pickHotel(done) {
+    const sh = document.createElement('div'); sh.className = 'hsheet';
+    sh.innerHTML = `<div class="hs-top"><input type="text" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="${esc(t('pk_ph'))}" aria-label="${esc(t('pk_q'))}"><button class="hs-x" aria-label="close">×</button></div><div class="hs-h">${esc(t('pk_q'))}<small>${esc(t('pk_note'))}</small></div><div class="hs-list"></div>`;
+    const inp = sh.querySelector('input'), list = sh.querySelector('.hs-list');
+    const close = () => { sh.remove(); document.documentElement.style.overflow = ''; };
+    const set = (h) => { hotel = h; store.set('ud_hotel', JSON.stringify(h)); close(); if (done) done(); };
+    const draw = () => {
+      const raw = inp.value.trim(), q = fold(raw).split(/\s+/).filter(Boolean), all = window.UD_HOTELS || [];
+      let hit = all.map((h, i) => [h, i, fold(h[0] + ' ' + h[2])]).filter((x) => q.every((w) => x[2].includes(w)));
+      if (q.length) hit.sort((a, b) => (b[2].startsWith(q[0]) - a[2].startsWith(q[0])) || a[1] - b[1]);
+      let html = raw && !hit.some((x) => fold(x[0][0]) === fold(raw)) ? `<button data-own><b>📍 ${esc(t('pk_use'))} «${esc(raw)}»</b></button>` : '';
+      if (!raw) html += `<button data-none><b>🚶 ${esc(t('pk_none'))}</b></button>`;
+      html += hit.slice(0, 60).map((x) => `<button data-i="${x[1]}"><b>${esc(x[0][0])}</b><span>${x[0][1] ? `<i>${'★'.repeat(x[0][1])}</i>` : ''}${esc(x[0][2])}</span></button>`).join('');
+      list.innerHTML = html; list.scrollTop = 0;
+    };
+    inp.addEventListener('input', draw);
+    inp.addEventListener('keydown', (e) => { if (e.key === 'Enter' && inp.value.trim()) { const f = list.querySelector('[data-own],[data-i]'); if (f) f.click(); } else if (e.key === 'Escape') close(); });
+    sh.addEventListener('click', (e) => {
+      const b = e.target.closest('button'); if (!b) return;
+      if (b.classList.contains('hs-x')) close();
+      else if ('own' in b.dataset) set([inp.value.trim().slice(0, 80), 0, '']);
+      else if ('none' in b.dataset) set(null);
+      else if (b.dataset.i) set(window.UD_HOTELS[+b.dataset.i]);
+    });
+    document.body.appendChild(sh); document.documentElement.style.overflow = 'hidden'; draw(); inp.focus();
+    if (!window.UD_HOTELS) { const sc = document.createElement('script'); sc.src = (S.root || '') + 'assets/hotels.js?v=1'; sc.onload = draw; document.head.appendChild(sc); }
+  }
+
   /* ---------- boot ---------- */
-  window.UD = { t, fmt, approx, wa, flag, WA_ICON, get lang() { return lang; }, observe, pick: (a) => { const x = a[LANGS.indexOf(lang)]; return x == null ? a[1] : x; } };
+  window.UD = { t, fmt, approx, wa, flag, WA_ICON, esc, pickHotel, hotelText, get hotel() { return hotel; }, get lang() { return lang; }, observe, pick: (a) => { const x = a[LANGS.indexOf(lang)]; return x == null ? a[1] : x; } };
   document.addEventListener('DOMContentLoaded', () => {
     // cross-links to the sister sites
     const cx = document.getElementById('cross');
