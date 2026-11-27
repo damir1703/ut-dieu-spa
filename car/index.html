@@ -16,7 +16,7 @@
 <link rel="icon" href="../assets/img/logo-s.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/shared.css?v=6">
+<link rel="stylesheet" href="../assets/shared.css?v=7">
 <style>
 :root{--bg:#12151b;--ink:#f3efe9;--muted:#9aa0ab;--acc:#ff6a2b;--acc-ink:#fff;--card:#1c2029;--line:rgba(255,255,255,.1);--hdr:rgba(18,21,27,.85);
 --gate:radial-gradient(120% 80% at 50% 100%,#ff6a2b 0%,#7a2a10 35%,#12151b 75%);--gate-ink:#fff;--gate-card:rgba(255,255,255,.12);
@@ -200,8 +200,17 @@ const PX={
  ht:[['Хон Том аспалы жолы','Xon Tom kanat yo‘li','Seilbahn Hòn Thơm','Téléphérique de Hòn Thơm'],['Теңіз үстіндегі ең ұзын аспалы жолдардың бірі және Sunset Town.','Dengiz ustidagi eng uzun kanat yo‘llaridan biri va Sunset Town.','Eine der längsten Seilbahnen über das Meer, dazu Sunset Town.','L’un des plus longs téléphériques au-dessus de la mer, et Sunset Town.']],
 };
 PLACES.forEach(p=>{p.n.push(...PX[p.id][0]);p.d.push(...PX[p.id][1]);});
+/* тексты сообщения в WhatsApp: [ru,en,vi,ko,zh,kk,uz,de,fr] */
+const M = {
+  hi:['Здравствуйте! Хочу арендовать VinFast VF3 (без водителя).','Hello! I\'d like to rent a VinFast VF3 (self-drive).','Xin chào! Tôi muốn thuê xe VinFast VF3 (tự lái).','안녕하세요! VinFast VF3를 렌트하고 싶어요 (셀프 드라이브).','您好！我想租 VinFast VF3（自驾）。','Сәлеметсіз бе! VinFast VF3 жалға алғым келеді (жүргізушісіз).','Assalomu alaykum! VinFast VF3 ijaraga olmoqchiman (haydovchisiz).','Hallo! Ich möchte einen VinFast VF3 mieten (Selbstfahrer).','Bonjour ! Je souhaite louer une VinFast VF3 (sans chauffeur).'],
+  days:['Дней','Days','Số ngày','대여 일수','天数','Күн саны','Kunlar','Tage','Jours'],
+  start:['Дата начала','Start date','Ngày bắt đầu','시작일','开始日期','Басталу күні','Boshlanish sanasi','Startdatum','Date de début'],
+  tba:['по договорённости','to be agreed','thỏa thuận sau','협의','待定','келісім бойынша','kelishiladi','nach Absprache','à convenir'],
+  visit:['Хочу съездить','I want to visit','Tôi muốn đi','가고 싶은 곳','我想去','Барғым келетін жер','Bormoqchiman','Ich möchte besuchen','Je veux visiter'],
+  ask:['Какая цена и условия?','What are the price and conditions?','Giá và điều kiện thế nào?','가격과 조건이 어떻게 되나요?','价格和条件是怎样的？','Бағасы мен шарттары қандай?','Narxi va shartlari qanday?','Wie sind Preis und Bedingungen?','Quels sont le prix et les conditions ?'],
+};
 window.SITE={
- id:'car', root:'../', hello:"Hello! I'd like to rent a VinFast VF3. What are the price and conditions?",
+ id:'car', root:'../', hello:"Hello! I'd like to rent a VinFast VF3. What are the price and conditions?", helloL:M.hi.map((x,i)=>x+' '+M.ask[i]),
  gateLogo:'<div class="gate-logo">🚙</div>',
  audio:{drone:[98,146.83],scale:[196,220,293.66,329.63,392,440],gap:[1100,2600]},
  reviews:[
@@ -265,12 +274,13 @@ function render(){
   $('#n').textContent=days;
   const d=$('#date').value;
   $('#go').innerHTML=UD.WA_ICON+`<span>${UD.t('send')}</span>`;
-  $('#go').href=UD.wa(`Hello! I'd like to rent a VinFast VF3 (self-drive).\nDays: ${days}\nStart date: ${d||'to be agreed'}\nI want to visit: ${p.en}\nWhat are the price and conditions?`);
+  const ml=(k,en)=>en?M[k][1]:UD.pick(M[k]), mk=(en)=>`${ml('hi',en)}\n${ml('days',en)}: ${days}\n${ml('start',en)}: ${d||ml('tba',en)}\n${ml('visit',en)}: ${en?p.en:UD.pick(p.n)}\n${ml('ask',en)}`;
+  $('#go').href=UD.wa(mk(1), mk(0));
 }
 document.addEventListener('click',(e)=>{ const p=e.target.closest('[data-p]'); if(p){cur=p.dataset.p;render();}
   if(e.target.id==='plus'){days=Math.min(30,days+1);render();} if(e.target.id==='minus'){days=Math.max(1,days-1);render();} });
 $('#date').min=new Date().toISOString().slice(0,10); $('#date').addEventListener('change',render);
 </script>
-<script src="../assets/shared.js?v=6"></script>
+<script src="../assets/shared.js?v=7"></script>
 </body>
 </html>

@@ -16,7 +16,7 @@
 <link rel="icon" href="../assets/img/logo-s.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/shared.css?v=6">
+<link rel="stylesheet" href="../assets/shared.css?v=7">
 <style>
 :root{--bg:#eaf6fd;--ink:#0b3552;--muted:#5d7f95;--acc:#0e8fd6;--acc-ink:#fff;--card:#fff;--line:rgba(11,53,82,.1);--hdr:rgba(234,246,253,.85);
 --gate:linear-gradient(160deg,#39b4f0,#0b6fb0);--gate-ink:#fff;--gate-card:rgba(255,255,255,.18);
@@ -140,8 +140,15 @@ input[type=range]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;bac
 <script>
 const PRICE = 30;  // тысяч донгов за кг
 const ITEMS = [['👕',.15,'i_tee'],['🩳',.25,'i_shorts'],['👗',.3,'i_dress'],['👖',.6,'i_jeans'],['🏖️',.5,'i_towel']];
+/* тексты сообщения в WhatsApp: [ru,en,vi,ko,zh,kk,uz,de,fr] */
+const M = {
+  q:['Здравствуйте! У меня вопрос по стирке.','Hello! I have a question about the laundry service.','Xin chào! Tôi có câu hỏi về dịch vụ giặt ủi.','안녕하세요! 세탁 서비스에 대해 문의드려요.','您好！我想咨询洗衣服务。','Сәлеметсіз бе! Киім жуу қызметі туралы сұрағым бар.','Assalomu alaykum! Kir yuvish xizmati bo‘yicha savolim bor.','Hallo! Ich habe eine Frage zum Wäscheservice.','Bonjour ! J’ai une question sur le service de blanchisserie.'],
+  hi:['Здравствуйте! Хочу сдать вещи в стирку (стирка и сушка).','Hello! I\'d like to use the laundry service (wash & dry).','Xin chào! Tôi muốn dùng dịch vụ giặt ủi (giặt & sấy).','안녕하세요! 세탁 서비스(세탁·건조)를 이용하고 싶어요.','您好！我想使用洗衣服务（洗+烘干）。','Сәлеметсіз бе! Киім жуу қызметін пайдаланғым келеді (жуу және кептіру).','Assalomu alaykum! Kir yuvish xizmatidan foydalanmoqchiman (yuvish va quritish).','Hallo! Ich möchte den Wäscheservice nutzen (Waschen & Trocknen).','Bonjour ! Je souhaite utiliser le service de blanchisserie (lavage et séchage).'],
+  about:['Примерно {kg} кг ≈ {c}.','About {kg} kg ≈ {c}.','Khoảng {kg} kg ≈ {c}.','약 {kg} kg ≈ {c}.','大约 {kg} 公斤 ≈ {c}。','Шамамен {kg} кг ≈ {c}.','Taxminan {kg} kg ≈ {c}.','Etwa {kg} kg ≈ {c}.','Environ {kg} kg ≈ {c}.'],
+  ask:['Когда можно принести и когда будет готово?','When can I bring it and when will it be ready?','Khi nào tôi có thể mang đến và khi nào xong?','언제 맡길 수 있고 언제 완료되나요?','什么时候可以送来，什么时候能取？','Қашан әкелуге болады және қашан дайын болады?','Qachon olib kelsam bo‘ladi va qachon tayyor bo‘ladi?','Wann kann ich sie bringen und wann ist sie fertig?','Quand puis-je l’apporter et quand sera-t-elle prête ?'],
+};
 window.SITE = {
- id:'laundry', root:'../', hello:"Hello! I have a question about the laundry service.",
+ id:'laundry', root:'../', hello:"Hello! I have a question about the laundry service.", helloL:M.q,
  gateLogo:'<div class="gate-logo">🫧</div>',
  audio:{drone:[130.81,196],scale:[392,440,523.25,587.33,659.25,783.99],gap:[900,2200]},
  reviews:[
@@ -196,7 +203,8 @@ function render(){
   $('#heroApprox').textContent=UD.approx(PRICE);
   $('#rng').style.setProperty('--f',((kg-1)/14*100)+'%');
   $('#go').innerHTML=UD.WA_ICON+`<span>${UD.t('send')}</span>`;
-  $('#go').href=UD.wa(`Hello! I'd like to use the laundry service (wash & dry).\nAbout ${kg} kg ≈ ${UD.fmt(cost)}.\nWhen can I bring it and when will it be ready?`);
+  const ml=(k,en)=>en?M[k][1]:UD.pick(M[k]), mk=(en)=>`${ml('hi',en)}\n${ml('about',en).replace('{kg}',kg).replace('{c}',UD.fmt(cost))}\n${ml('ask',en)}`;
+  $('#go').href=UD.wa(mk(1), mk(0));
 }
 $('#rng').addEventListener('input',render);
 $('#items').addEventListener('click',(e)=>{ const b=e.target.closest('button'); if(!b) return; counts[+b.dataset.i]++;
@@ -204,6 +212,6 @@ $('#items').addEventListener('click',(e)=>{ const b=e.target.closest('button'); 
 $('#reset').addEventListener('click',()=>{ counts.fill(0); $('#rng').value=3; render(); });
 $('#bubbles').innerHTML=Array.from({length:14},(_,i)=>{const s=18+Math.random()*60;return `<i style="left:${Math.random()*100}%;width:${s}px;height:${s}px;animation-duration:${9+Math.random()*12}s;animation-delay:-${Math.random()*20}s"></i>`}).join('');
 </script>
-<script src="../assets/shared.js?v=6"></script>
+<script src="../assets/shared.js?v=7"></script>
 </body>
 </html>

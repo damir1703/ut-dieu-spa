@@ -91,12 +91,13 @@
     if (c === 'KRW') return '≈ ' + dots(Math.round(v / 100) * 100, ',') + '원';
     return '≈ ¥' + Math.round(v);
   }
-  const wa = (text) => 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(text + '\n(My language: ' + NAMES[lang || 'en'] + ')');
+  /* text — английский (для салона); local — тот же текст на языке гостя, идёт первым */
+  const wa = (text, local) => 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent((local && lang && lang !== 'en' && local !== text ? local + '\n\n— English —\n' : '') + text + '\n(My language: ' + NAMES[lang || 'en'] + ')');
 
   function apply() {
     document.documentElement.lang = lang === 'zh' ? 'zh-Hans' : lang;
     document.querySelectorAll('[data-i18n]').forEach((el) => { el.innerHTML = t(el.dataset.i18n); });
-    document.querySelectorAll('[data-wa]').forEach((el) => { el.href = wa(S.hello || 'Hello! I have a question.'); el.target = '_blank'; el.rel = 'noopener'; });
+    document.querySelectorAll('[data-wa]').forEach((el) => { el.href = wa(S.hello || 'Hello! I have a question.', S.helloL && S.helloL[LANGS.indexOf(lang)]); el.target = '_blank'; el.rel = 'noopener'; });
     if (dict.title) document.title = t('title');
     const lb = document.getElementById('langBtn'); if (lb) lb.innerHTML = flag(lang) + lang;
     const sn = document.querySelector('.snd span'); if (sn) sn.textContent = t('snd');

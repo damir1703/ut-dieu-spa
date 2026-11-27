@@ -17,7 +17,7 @@
 <link rel="icon" href="assets/img/logo-s.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/shared.css?v=6">
+<link rel="stylesheet" href="assets/shared.css?v=7">
 <style>
 :root{--bg:#f6efe6;--ink:#3b2418;--muted:#8a7163;--acc:#a8552f;--acc-ink:#fff;--card:#fffaf3;--line:rgba(74,44,29,.12);--hdr:rgba(246,239,230,.86);
 --gate:radial-gradient(120% 90% at 50% 0%,#5a3423,#2a1810);--gate-ink:#f6efe6;--gate-card:rgba(255,255,255,.1);
@@ -338,8 +338,17 @@ const ZONES = {
  legs:['foot','fscrubm','thai','relax'],
  feet:['foot','fscrub','fscrubm','fcare','nbasic','ngel'],
 };
+/* тексты сообщения в WhatsApp: [ru,en,vi,ko,zh,kk,uz,de,fr] */
+const M = {
+  hi:['Здравствуйте! Хочу записаться в Út Điệu Spa','Hello! I\'d like to book at Út Điệu Spa','Xin chào! Tôi muốn đặt lịch tại Út Điệu Spa','안녕하세요! Út Điệu Spa 예약하고 싶어요','您好！我想预约 Út Điệu Spa','Сәлеметсіз бе! Út Điệu Spa-ға жазылғым келеді','Assalomu alaykum! Út Điệu Spa’ga yozilmoqchiman','Hallo! Ich möchte bei Út Điệu Spa buchen','Bonjour ! Je souhaite réserver chez Út Điệu Spa'],
+  min:['мин','min','phút','분','分钟','мин','daq','Min','min'],
+  total:['Итого','Total','Tổng','합계','合计','Барлығы','Jami','Gesamt','Total'],
+  pick:['Забрать из: {h} — возможен ли трансфер?','Pick-up from: {h} — is a transfer possible?','Đón tại: {h} — có thể đưa đón không?','픽업 장소: {h} — 픽업 가능한가요?','接送地点：{h} — 可以接送吗？','Алып кету орны: {h} — трансфер мүмкін бе?','Olib ketish joyi: {h} — transfer mumkinmi?','Abholung von: {h} — ist ein Transfer möglich?','Prise en charge : {h} — un transfert est-il possible ?'],
+  when:['Желаемый день и время','Preferred day and time','Ngày giờ mong muốn','희망 날짜와 시간','希望的日期和时间','Қалаған күн мен уақыт','Qulay kun va vaqt','Wunschtermin','Jour et heure souhaités'],
+  guests:['Гостей','Guests','Số khách','인원','人数','Қонақ саны','Mehmonlar','Gäste','Personnes'],
+};
 window.SITE = {
- id:'spa', root:'', hello:"Hello! I'd like to book at Út Điệu Spa.",
+ id:'spa', root:'', hello:"Hello! I'd like to book at Út Điệu Spa.", helloL:M.hi.map(x=>x+'.'),
  gateLogo:'<img class="gate-logo" src="assets/img/logo-s.jpg" alt="Út Điệu Spa">',
  reviews:[
   {n:'Gregor D.',l:'en',t:'We had a wonderful massage, accompanied by pleasant scents and calm music in the background. … Upon arrival, we were offered a drink, and after the massage, a serving of freshly cut fruit was waiting for us.'},
@@ -587,7 +596,7 @@ function renderWhen(){
   for(let i=(nowMin>22*60?1:0);i<7;i++){
     const d=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()+i)), iso=d.toISOString().slice(0,10), o={weekday:'short',day:'numeric',month:'short',timeZone:'UTC'};
     let loc; try{ loc=d.toLocaleDateString(UD.lang,o); }catch(e){ loc=d.toLocaleDateString('en-GB',o); }
-    days.push({iso, l:i===0?UD.t('w_today'):i===1?UD.t('w_tom'):loc, en:(i===0?'Today, ':i===1?'Tomorrow, ':'')+d.toLocaleDateString('en-GB',o), today:i===0});
+    days.push({iso, loc:(i===0?UD.t('w_today')+', ':i===1?UD.t('w_tom')+', ':'')+loc, l:i===0?UD.t('w_today'):i===1?UD.t('w_tom'):loc, en:(i===0?'Today, ':i===1?'Tomorrow, ':'')+d.toLocaleDateString('en-GB',o), today:i===0});
   }
   let D=days.find(x=>x.iso===bDay); if(!D) bDay='';
   const times=[]; for(let m=8*60;m<=22*60;m+=30) if(!(D&&D.today)||m>=nowMin) times.push(String(m/60|0).padStart(2,'0')+':'+(m%60?'30':'00'));
@@ -595,26 +604,29 @@ function renderWhen(){
   $('#cartWhen').innerHTML = `<select id="wDay" class="${bDay?'set':''}" aria-label="${UD.t('w_day')}"><option value="">📅 ${UD.t('w_day')}</option>${days.map(x=>`<option value="${x.iso}"${x.iso===bDay?' selected':''}>${x.l}</option>`).join('')}</select>`
     + `<select id="wTime" class="${bTime?'set':''}" aria-label="${UD.t('w_time')}"><option value="">🕐 ${UD.t('w_time')}</option>${times.map(x=>`<option${x===bTime?' selected':''}>${x}</option>`).join('')}</select>`
     + `<div class="gst" aria-label="${UD.t('w_guests')}"><button data-g="-1" aria-label="−">−</button><b>👤 ${guests}</b><button data-g="1" aria-label="+">+</button></div>`;
-  return (D?D.en:'')+(bTime?(D?', ':'')+bTime:'');
+  const tm=bTime?(D?', ':'')+bTime:''; return [(D?D.loc:'')+tm, (D?D.en:'')+tm];
 }
 document.addEventListener('change',(e)=>{ if(e.target.id==='wDay'){ bDay=e.target.value; renderCart(); } else if(e.target.id==='wTime'){ bTime=e.target.value; renderCart(); } });
 function renderCart(){
-  let sum=0, mins=0, plus=false, html='', msg="Hello! I'd like to book at Út Điệu Spa:\n";
+  /* сообщение собирается дважды: на языке гостя (en=0) и на английском для салона (en=1) */
+  const ml=(k,en)=>en?M[k][1]:UD.pick(M[k]);
+  let sum=0, mins=0, plus=false, html='', msg=[ml('hi',0)+':\n', ml('hi',1)+':\n'];
   cart.forEach((v,k)=>{
     const [id,d]=k.split(':'), s=byId[id], p=priceOf(k);
     sum+=p; mins+=+d; if(s.max) plus=true;
     html+=`<div><span>${UD.pick(s.n)}${+d?` · ${d} ${UD.t('min')}`:''}</span><span>${UD.fmt(p)}${s.max?'+':''} <button data-rm="${k}" aria-label="remove">×</button></span></div>`;
-    msg+=`• ${s.n[1]}${+d?` — ${d} min`:''} — ${UD.fmt(p)}${s.max?'+':''}\n`;
+    [0,1].forEach(en=>{ msg[en]+=`• ${en?s.n[1]:UD.pick(s.n)}${+d?` — ${d} ${ml('min',en)}`:''} — ${UD.fmt(p)}${s.max?'+':''}\n`; });
   });
   const H=UD.hotel;
-  msg+=`Total: ${UD.fmt(sum)}${plus?'+':''}\n${H?`Pick-up from: ${UD.hotelText()} — is a transfer possible?\n`:''}Preferred day and time: ${renderWhen()}${guests>1?`\nGuests: ${guests}`:''}`;
+  const W=renderWhen();
+  [0,1].forEach(en=>{ msg[en]+=`${ml('total',en)}: ${UD.fmt(sum)}${plus?'+':''}\n${H?ml('pick',en).replace('{h}',UD.hotelText())+'\n':''}${ml('when',en)}: ${W[en]}${guests>1?`\n${ml('guests',en)}: ${guests}`:''}`; });
   $('#cartPick').innerHTML = `<span>📍</span><b class="${H?'':'e'}">${H?UD.esc(H[0]):UD.t('pk_q')}</b>${H&&H[1]?`<i>${'★'.repeat(H[1])}</i>`:''}<u>›</u>`;
   document.body.classList.toggle('has-cart', cart.size>0);
   if(!cart.size) $('#cart').classList.remove('open');
   $('#cartList').innerHTML = html;
   $('#cartSum').innerHTML = `<small>${UD.t('cart_h')} · ${cart.size}${mins?` · ${mins} ${UD.t('min')}`:''} ▴</small><strong>${UD.fmt(sum)}${plus?'+':''}</strong>`;
   $('#cartGo').innerHTML = UD.WA_ICON+`<span>${UD.t('book')}</span>`;
-  $('#cartGo').href = UD.wa(msg);
+  $('#cartGo').href = UD.wa(msg[1], msg[0]);
 }
 function renderAll(){ renderPanel(); renderQuiz(); renderSets(); renderMenu(); renderCart(); }
 /* корзина изменилась не кликом по строке — перерисовать все списки */
@@ -636,6 +648,6 @@ document.addEventListener('click',(e)=>{
 });
 $('#gal').innerHTML = [17,9,12,13,16,10,15,8,11].map(n=>`<img class="rv" loading="lazy" src="assets/img/p${n}.webp" alt="Út Điệu Spa">`).join('');
 </script>
-<script src="assets/shared.js?v=6"></script>
+<script src="assets/shared.js?v=7"></script>
 </body>
 </html>
