@@ -147,6 +147,14 @@
 body.has-cart .cart{transform:none}
 .cart-top{display:flex;align-items:center;gap:10px}
 .cart-pick{display:flex;align-items:center;gap:8px;width:100%;text-align:left;padding:9px 12px;margin-bottom:10px;border-radius:14px;background:rgba(255,255,255,.09);font-size:14px}
+.cart-pick{margin-bottom:8px!important}
+.cart-when{display:flex;gap:8px;margin-bottom:10px}
+.cart-when select{flex:1;min-width:0;font:inherit;font-size:16px;color:inherit;background:rgba(255,255,255,.09);border:0;border-radius:14px;padding:8px 10px;-webkit-appearance:none;appearance:none;text-overflow:ellipsis;outline:none}
+.cart-when select.set{background:rgba(31,175,84,.28)}
+.cart-when option{color:#222}
+.gst{display:flex;align-items:center;gap:2px;flex:none;background:rgba(255,255,255,.09);border-radius:14px;padding:0 4px;font-size:15px}
+.gst button{width:30px;height:38px;font-size:19px;opacity:.85}
+.gst b{min-width:34px;text-align:center;font-weight:600;white-space:nowrap}
 .cart-pick b{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}
 .cart-pick b.e{font-weight:500;opacity:.85}
 .cart-pick i{font-style:normal;color:#f5b301;font-size:12px;flex:none}
@@ -282,6 +290,7 @@ body.has-cart .cart{transform:none}
 <div class="cart" id="cart">
   <div class="cart-list" id="cartList"></div>
   <button class="cart-pick" id="cartPick"></button>
+  <div class="cart-when" id="cartWhen"></div>
   <div class="cart-top">
     <button class="cart-sum" id="cartSum"></button>
     <a class="btn wa" id="cartGo" target="_blank" rel="noopener"></a>
@@ -397,6 +406,11 @@ window.SITE = {
   loc_p:['Мы в Онг Ланге. Напишите — подскажем дорогу и подберём время.','We are in Ông Lang. Message us and we will help you find the way and pick a time.','Chúng tôi ở Ông Lang. Nhắn tin để được chỉ đường và đặt giờ.','옹랑에 있습니다. 메시지 주시면 길 안내와 시간 예약을 도와드려요.','我们位于 Ông Lang。给我们留言，我们会为您指路并安排时间。'],
   map_btn:['Открыть карту','Open the map','Mở bản đồ','지도 열기','打开地图'],
   cart_h:['Мой визит','My visit','Lịch hẹn của tôi','내 예약','我的预约'],
+  w_day:['Когда?','When?','Khi nào?','언제?','何时？'],
+  w_today:['Сегодня','Today','Hôm nay','오늘','今天'],
+  w_tom:['Завтра','Tomorrow','Ngày mai','내일','明天'],
+  w_time:['Время','Time','Giờ','시간','时间'],
+  w_guests:['Гостей','Guests','Số khách','인원','人数'],
   book:['Записаться','Book','Đặt lịch','예약하기','预约'],
  },
  extra:{
@@ -452,6 +466,11 @@ window.SITE = {
   loc_p:['Біз Онг Лангтамыз. Жазыңыз — жолды айтып, уақыт таңдаймыз.','Biz Ong Langdamiz. Yozing — yo‘lni tushuntirib, vaqt tanlaymiz.','Wir sind in Ông Lang. Schreiben Sie uns – wir erklären den Weg und finden einen Termin.','Nous sommes à Ông Lang. Écrivez-nous : nous vous guidons et trouvons un créneau.'],
   map_btn:['Картаны ашу','Xaritani ochish','Karte öffnen','Ouvrir la carte'],
   cart_h:['Менің сапарым','Mening tashrifim','Mein Besuch','Ma visite'],
+  w_day:['Қашан?','Qachon?','Wann?','Quand ?'],
+  w_today:['Бүгін','Bugun','Heute','Aujourd’hui'],
+  w_tom:['Ертең','Ertaga','Morgen','Demain'],
+  w_time:['Уақыт','Vaqt','Uhrzeit','Heure'],
+  w_guests:['Қонақ саны','Mehmonlar','Gäste','Personnes'],
   book:['Жазылу','Yozilish','Buchen','Réserver'],
  },
  onLang(){ renderAll(); }
@@ -561,6 +580,24 @@ function renderMenu(){
   $('#cards').innerHTML = CATS.map(c=>`<article class="mcard rv" id="cat-${c}"><div class="mphoto"><img loading="lazy" src="${CAT_IMG[c]}" alt=""><h3>${UD.t('c_'+c)}</h3></div><div class="mbody" data-key="${c}">${block(c)}</div></article>`).join('');
   UD.observe();
 }
+/* день, время и число гостей в заявке (время Фукуока, UTC+7) */
+let bDay='', bTime='', guests=1;
+function renderWhen(){
+  const now=new Date(Date.now()+7*3600e3), nowMin=now.getUTCHours()*60+now.getUTCMinutes()+30, days=[];
+  for(let i=(nowMin>22*60?1:0);i<7;i++){
+    const d=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()+i)), iso=d.toISOString().slice(0,10), o={weekday:'short',day:'numeric',month:'short',timeZone:'UTC'};
+    let loc; try{ loc=d.toLocaleDateString(UD.lang,o); }catch(e){ loc=d.toLocaleDateString('en-GB',o); }
+    days.push({iso, l:i===0?UD.t('w_today'):i===1?UD.t('w_tom'):loc, en:(i===0?'Today, ':i===1?'Tomorrow, ':'')+d.toLocaleDateString('en-GB',o), today:i===0});
+  }
+  let D=days.find(x=>x.iso===bDay); if(!D) bDay='';
+  const times=[]; for(let m=8*60;m<=22*60;m+=30) if(!(D&&D.today)||m>=nowMin) times.push(String(m/60|0).padStart(2,'0')+':'+(m%60?'30':'00'));
+  if(!times.includes(bTime)) bTime='';
+  $('#cartWhen').innerHTML = `<select id="wDay" class="${bDay?'set':''}" aria-label="${UD.t('w_day')}"><option value="">📅 ${UD.t('w_day')}</option>${days.map(x=>`<option value="${x.iso}"${x.iso===bDay?' selected':''}>${x.l}</option>`).join('')}</select>`
+    + `<select id="wTime" class="${bTime?'set':''}" aria-label="${UD.t('w_time')}"><option value="">🕐 ${UD.t('w_time')}</option>${times.map(x=>`<option${x===bTime?' selected':''}>${x}</option>`).join('')}</select>`
+    + `<div class="gst" aria-label="${UD.t('w_guests')}"><button data-g="-1" aria-label="−">−</button><b>👤 ${guests}</b><button data-g="1" aria-label="+">+</button></div>`;
+  return (D?D.en:'')+(bTime?(D?', ':'')+bTime:'');
+}
+document.addEventListener('change',(e)=>{ if(e.target.id==='wDay'){ bDay=e.target.value; renderCart(); } else if(e.target.id==='wTime'){ bTime=e.target.value; renderCart(); } });
 function renderCart(){
   let sum=0, mins=0, plus=false, html='', msg="Hello! I'd like to book at Út Điệu Spa:\n";
   cart.forEach((v,k)=>{
@@ -570,7 +607,7 @@ function renderCart(){
     msg+=`• ${s.n[1]}${+d?` — ${d} min`:''} — ${UD.fmt(p)}${s.max?'+':''}\n`;
   });
   const H=UD.hotel;
-  msg+=`Total: ${UD.fmt(sum)}${plus?'+':''}\n${H?`Pick-up from: ${UD.hotelText()} — is a transfer possible?\n`:''}Preferred day and time: `;
+  msg+=`Total: ${UD.fmt(sum)}${plus?'+':''}\n${H?`Pick-up from: ${UD.hotelText()} — is a transfer possible?\n`:''}Preferred day and time: ${renderWhen()}${guests>1?`\nGuests: ${guests}`:''}`;
   $('#cartPick').innerHTML = `<span>📍</span><b class="${H?'':'e'}">${H?UD.esc(H[0]):UD.t('pk_q')}</b>${H&&H[1]?`<i>${'★'.repeat(H[1])}</i>`:''}<u>›</u>`;
   document.body.classList.toggle('has-cart', cart.size>0);
   if(!cart.size) $('#cart').classList.remove('open');
@@ -594,6 +631,7 @@ document.addEventListener('click',(e)=>{
   else if(z){ const v=z.dataset.z; zones.has(v)?zones.delete(v):zones.add(v); renderPanel(); }
   else if(e.target.closest('#cartSum')) $('#cart').classList.toggle('open');
   else if(e.target.closest('#cartPick')) UD.pickHotel(renderCart);
+  else if(e.target.closest('[data-g]')){ guests=Math.min(8,Math.max(1,guests+ +e.target.closest('[data-g]').dataset.g)); renderCart(); }
   else if(e.target.closest('.gal img')){ const b=document.createElement('div'); b.className='lb'; b.innerHTML=`<img src="${e.target.src}" alt="">`; b.onclick=()=>b.remove(); document.body.appendChild(b); }
 });
 $('#gal').innerHTML = [17,9,12,13,16,10,15,8,11].map(n=>`<img class="rv" loading="lazy" src="assets/img/p${n}.webp" alt="Út Điệu Spa">`).join('');
