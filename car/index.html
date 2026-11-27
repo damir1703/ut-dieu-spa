@@ -16,7 +16,7 @@
 <link rel="icon" href="../assets/img/logo-s.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/shared.css?v=4">
+<link rel="stylesheet" href="../assets/shared.css?v=5">
 <style>
 :root{--bg:#12151b;--ink:#f3efe9;--muted:#9aa0ab;--acc:#ff6a2b;--acc-ink:#fff;--card:#1c2029;--line:rgba(255,255,255,.1);--hdr:rgba(18,21,27,.85);
 --gate:radial-gradient(120% 80% at 50% 100%,#ff6a2b 0%,#7a2a10 35%,#12151b 75%);--gate-ink:#fff;--gate-card:rgba(255,255,255,.12);
@@ -271,6 +271,6 @@ document.addEventListener('click',(e)=>{ const p=e.target.closest('[data-p]'); i
   if(e.target.id==='plus'){days=Math.min(30,days+1);render();} if(e.target.id==='minus'){days=Math.max(1,days-1);render();} });
 $('#date').min=new Date().toISOString().slice(0,10); $('#date').addEventListener('change',render);
 </script>
-<script src="../assets/shared.js?v=4"></script>
+<script src="../assets/shared.js?v=5"></script>
 </body>
 </html>

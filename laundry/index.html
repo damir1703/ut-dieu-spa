@@ -16,7 +16,7 @@
 <link rel="icon" href="../assets/img/logo-s.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/shared.css?v=4">
+<link rel="stylesheet" href="../assets/shared.css?v=5">
 <style>
 :root{--bg:#eaf6fd;--ink:#0b3552;--muted:#5d7f95;--acc:#0e8fd6;--acc-ink:#fff;--card:#fff;--line:rgba(11,53,82,.1);--hdr:rgba(234,246,253,.85);
 --gate:linear-gradient(160deg,#39b4f0,#0b6fb0);--gate-ink:#fff;--gate-card:rgba(255,255,255,.18);
@@ -204,6 +204,6 @@ $('#items').addEventListener('click',(e)=>{ const b=e.target.closest('button'); 
 $('#reset').addEventListener('click',()=>{ counts.fill(0); $('#rng').value=3; render(); });
 $('#bubbles').innerHTML=Array.from({length:14},(_,i)=>{const s=18+Math.random()*60;return `<i style="left:${Math.random()*100}%;width:${s}px;height:${s}px;animation-duration:${9+Math.random()*12}s;animation-delay:-${Math.random()*20}s"></i>`}).join('');
 </script>
-<script src="../assets/shared.js?v=4"></script>
+<script src="../assets/shared.js?v=5"></script>
 </body>
 </html>

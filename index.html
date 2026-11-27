@@ -17,7 +17,7 @@
 <link rel="icon" href="assets/img/logo-s.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/shared.css?v=4">
+<link rel="stylesheet" href="assets/shared.css?v=5">
 <style>
 :root{--bg:#f6efe6;--ink:#3b2418;--muted:#8a7163;--acc:#a8552f;--acc-ink:#fff;--card:#fffaf3;--line:rgba(74,44,29,.12);--hdr:rgba(246,239,230,.86);
 --gate:radial-gradient(120% 90% at 50% 0%,#5a3423,#2a1810);--gate-ink:#f6efe6;--gate-card:rgba(255,255,255,.1);
@@ -46,7 +46,8 @@
 .figure::after{animation-delay:3s}
 @keyframes ring{from{transform:scale(.45);opacity:1}to{transform:scale(1.5);opacity:0}}
 .figure svg{position:relative;z-index:1;height:min(52svh,480px);margin:0 auto;overflow:visible;filter:drop-shadow(0 18px 22px rgba(120,70,40,.18))}
-.z{cursor:pointer}
+.z{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.z .h,.z:hover .h,.z.on .h{fill:transparent;stroke:none;filter:none}
 .z path,.z ellipse{fill:url(#skin);stroke:#fff8ee;stroke-width:2.5;stroke-linejoin:round;transition:fill .35s,filter .35s}
 .z:hover path,.z:hover ellipse{fill:#dcb48e}
 .z.on path,.z.on ellipse{fill:url(#skinOn);filter:drop-shadow(0 0 10px rgba(168,85,47,.55))}
@@ -197,24 +198,27 @@ body.has-cart .cart{transform:none}
             <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ecd2b4"/><stop offset="1" stop-color="#d3ab85"/></linearGradient>
             <linearGradient id="skinOn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9703f"/><stop offset="1" stop-color="#9a4a26"/></linearGradient>
           </defs>
-          <g class="z" data-z="head"><ellipse cx="120" cy="40" rx="20" ry="26"/></g>
+          <g class="z" data-z="head"><ellipse class="h" cx="120" cy="36" rx="32" ry="34"/><ellipse cx="120" cy="40" rx="20" ry="26"/></g>
           <path d="M100 36Q98 12 120 12Q142 12 140 36Q132 22 120 24Q108 22 100 36Z" fill="rgba(74,44,29,.32)" style="pointer-events:none"/>
           <g class="z" data-z="shoulders"><path d="M112 62Q120 68 128 62L129 78Q134 90 158 96Q178 101 184 118Q120 104 56 118Q62 101 82 96Q106 90 111 78Z"/></g>
           <g class="z" data-z="body"><path d="M72 124Q120 111 168 124Q170 165 156 202Q158 236 170 264Q120 282 70 264Q82 236 84 202Q70 165 72 124Z"/></g>
           <g class="z" data-z="arms">
-            <path d="M174 126Q188 118 192 134Q200 172 205 206Q212 244 216 278L204 282Q198 246 191 210Q182 172 174 146Z"/>
-            <path d="M66 126Q52 118 48 134Q40 172 35 206Q28 244 24 278L36 282Q42 246 49 210Q58 172 66 146Z"/>
-            <ellipse cx="213" cy="298" rx="8" ry="13" transform="rotate(-12 213 298)"/><ellipse cx="27" cy="298" rx="8" ry="13" transform="rotate(12 27 298)"/>
+            <path class="h" d="M170 122L206 116L220 172L228 210L238 278L238 320L198 320L192 283L182 246L176 210L172 172Z"/>
+            <path class="h" d="M70 122L34 116L20 172L12 210L2 278L2 320L42 320L48 283L58 246L64 210L68 172Z"/>
+            <path d="M174 126Q192 116 198 134Q208 172 213 206Q220 244 224 278L206 283Q199 246 191 210Q182 172 174 146Z"/>
+            <path d="M66 126Q48 116 42 134Q32 172 27 206Q20 244 16 278L34 283Q41 246 49 210Q58 172 66 146Z"/>
+            <ellipse cx="218" cy="300" rx="10" ry="14" transform="rotate(-12 218 300)"/><ellipse cx="22" cy="300" rx="10" ry="14" transform="rotate(12 22 300)"/>
           </g>
           <g class="z" data-z="legs">
             <path d="M123 290Q150 290 171 274Q178 330 164 392Q170 432 156 494L143 494Q140 440 138 394Q128 340 123 290Z"/>
             <path d="M117 290Q90 290 69 274Q62 330 76 392Q70 432 84 494L97 494Q100 440 102 394Q112 340 117 290Z"/>
           </g>
           <g class="z" data-z="feet">
+            <path class="h" d="M134 497H184V536H134Z"/><path class="h" d="M56 497H106V536H56Z"/>
             <path d="M143 502L156 502Q160 512 170 517Q176 526 164 526L147 526Q139 520 143 502Z"/>
             <path d="M97 502L84 502Q80 512 70 517Q64 526 76 526L93 526Q101 520 97 502Z"/>
           </g>
-          <circle class="dot" cx="120" cy="44" r="3.5"/><circle class="dot" cx="120" cy="97" r="3.5" style="animation-delay:.3s"/><circle class="dot" cx="120" cy="190" r="3.5" style="animation-delay:.6s"/><circle class="dot" cx="41" cy="206" r="3.5" style="animation-delay:.9s"/><circle class="dot" cx="153" cy="350" r="3.5" style="animation-delay:1.2s"/><circle class="dot" cx="84" cy="515" r="3" style="animation-delay:1.5s"/>
+          <circle class="dot" cx="120" cy="44" r="3.5"/><circle class="dot" cx="120" cy="97" r="3.5" style="animation-delay:.3s"/><circle class="dot" cx="120" cy="190" r="3.5" style="animation-delay:.6s"/><circle class="dot" cx="38" cy="206" r="3.5" style="animation-delay:.9s"/><circle class="dot" cx="153" cy="350" r="3.5" style="animation-delay:1.2s"/><circle class="dot" cx="84" cy="515" r="3" style="animation-delay:1.5s"/>
         </svg>
         <div class="zchips" id="zchips"></div>
       </div>
@@ -585,6 +589,6 @@ document.addEventListener('click',(e)=>{
 });
 $('#gal').innerHTML = [17,9,12,13,16,10,15,8,11].map(n=>`<img class="rv" loading="lazy" src="assets/img/p${n}.webp" alt="Út Điệu Spa">`).join('');
 </script>
-<script src="assets/shared.js?v=4"></script>
+<script src="assets/shared.js?v=5"></script>
 </body>
 </html>
