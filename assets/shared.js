@@ -183,6 +183,15 @@
     const rs = document.getElementById('reviews');
     if (rs && S.reviews) rs.innerHTML = `<div class="w"><div class="kick rv" data-i18n="rev_k"></div><a class="rev-top rv" href="${MAPS}" target="_blank" rel="noopener"><b>${RATING}</b><span><i>★★★★★</i><small data-i18n="rev_n"></small></span></a></div><div class="rev-track rv" id="revTrack"></div><div class="w"><a class="btn ghost rev-all rv" href="${MAPS}" target="_blank" rel="noopener" data-i18n="rev_all"></a></div>`;
     document.querySelectorAll('[data-rate]').forEach((el) => { el.href = MAPS; el.target = '_blank'; el.rel = 'noopener'; el.innerHTML = `<i>★</i> ${RATING} · <span data-i18n="rev_n"></span>`; });
+    // hero text drifts and fades as the page scrolls
+    const hw = document.querySelector('.hero .w');
+    if (hw && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      let tick = false;
+      window.addEventListener('scroll', () => {
+        if (tick) return; tick = true;
+        requestAnimationFrame(() => { const y = Math.min(window.scrollY, window.innerHeight); hw.style.transform = `translateY(${y * .22}px)`; hw.style.opacity = Math.max(0, 1 - y / (window.innerHeight * .8)); tick = false; });
+      }, { passive: true });
+    }
     // floating buttons
     const fab = document.createElement('a'); fab.className = 'fab'; fab.setAttribute('data-wa', ''); fab.setAttribute('aria-label', 'WhatsApp'); fab.innerHTML = WA_ICON; document.body.appendChild(fab);
     const snd = document.createElement('button'); snd.className = 'snd'; snd.innerHTML = '<div class="bars"><i></i><i></i><i></i><i></i></div><span></span>';

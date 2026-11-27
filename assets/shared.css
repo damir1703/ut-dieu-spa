@@ -85,6 +85,13 @@ body.has-cart .fab{transform:scale(0);opacity:0}
 .x-car{background:linear-gradient(135deg,#1a1d24,#2d1b12);color:#fff}
 .x-car b{color:#ff7a3d;text-transform:uppercase;letter-spacing:.02em}
 
+/* page-to-page transition between the three sites */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:vtOut .3s ease both}
+::view-transition-new(root){animation:vtIn .55s cubic-bezier(.2,.7,.2,1) both}
+@keyframes vtOut{to{opacity:0;transform:scale(.97)}}
+@keyframes vtIn{from{opacity:0;transform:translateY(26px)}}
+.hero .w{will-change:transform,opacity}
 /* reviews */
 .rev-top{display:inline-flex;align-items:center;gap:14px;margin-top:12px}
 .rev-top b{font-family:var(--fd);font-size:clamp(54px,14vw,76px);line-height:1}

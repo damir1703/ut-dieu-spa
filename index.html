@@ -5,11 +5,19 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Út Điệu Spa — Phú Quốc</title>
 <meta name="description" content="Út Điệu Spa, Ông Lang, Phú Quốc — body & foot massage, hair spa, nails. Book on WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://damir1703.github.io/ut-dieu-spa/">
+<meta property="og:title" content="Út Điệu Spa — massage & spa in Phú Quốc">
+<meta property="og:description" content="★ 4.9 on Google Maps · body & foot massage, hair spa, nails. Book on WhatsApp.">
+<meta property="og:image" content="https://damir1703.github.io/ut-dieu-spa/assets/img/og-spa.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="image" href="assets/img/p14.webp" fetchpriority="high">
 <meta name="theme-color" content="#f6efe6">
-<link rel="icon" href="assets/img/logo.jpg">
+<link rel="icon" href="assets/img/logo-s.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/shared.css?v=3">
+<link rel="stylesheet" href="assets/shared.css?v=4">
 <style>
 :root{--bg:#f6efe6;--ink:#3b2418;--muted:#8a7163;--acc:#a8552f;--acc-ink:#fff;--card:#fffaf3;--line:rgba(74,44,29,.12);--hdr:rgba(246,239,230,.86);
 --gate:radial-gradient(120% 90% at 50% 0%,#5a3423,#2a1810);--gate-ink:#f6efe6;--gate-card:rgba(255,255,255,.1);
@@ -68,6 +76,43 @@
 .row.on .rn{color:var(--green)}
 .row.off{opacity:.38}
 .row.off .add{visibility:hidden}
+.see{flex-basis:100%;text-align:center;margin-top:6px;padding:12px;border-radius:99px;background:var(--ink);color:var(--bg);font-weight:700;font-size:14px;animation:rise .4s both}
+@media(min-width:820px){.see{display:none}}
+.z{transform-box:fill-box;transform-origin:center}
+.z.on{animation:zpop .45s cubic-bezier(.3,1.5,.5,1)}
+@keyframes zpop{from{transform:scale(.93)}}
+.more{display:inline-block;margin-top:14px;font-weight:700;font-size:14px;color:var(--acc)}
+.row.hit{margin:0 -18px;padding-left:18px;padding-right:18px;width:calc(100% + 36px);background:linear-gradient(90deg,rgba(168,85,47,.11),rgba(168,85,47,0) 75%)}
+.badge{display:table;margin-top:5px;font-size:11px;font-weight:700;letter-spacing:.03em;color:var(--acc)}
+.badge.top{background:var(--acc);color:#fff;padding:3px 9px;border-radius:99px}
+.rd{font-style:normal;font-weight:600;color:var(--muted);font-size:13px;margin-left:6px;white-space:nowrap}
+/* quiz */
+.quiz{background:var(--card);border-radius:28px;padding:22px 18px;box-shadow:0 0 0 1px var(--line),0 24px 40px -34px rgba(74,44,29,.5);margin-top:22px;overflow:hidden;scroll-margin-top:70px}
+.quiz h3{font-size:28px;margin:16px 0 14px}
+.qdots{display:flex;gap:6px}
+.qdots i{height:4px;flex:1;border-radius:4px;background:var(--line);transition:background .4s}
+.qdots i.done{background:var(--acc)}.qdots i.cur{background:rgba(168,85,47,.45)}
+.qopts{display:grid;gap:10px}
+.qopts button{display:flex;align-items:center;gap:12px;padding:15px 16px;border-radius:18px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line);font-weight:700;text-align:left;animation:rise .45s cubic-bezier(.2,.7,.2,1) both;transition:transform .2s}
+.qopts button:active{transform:scale(.97)}
+.qopts span{font-size:22px}
+.qopts.three{grid-template-columns:repeat(3,1fr)}
+.qopts.three button{flex-direction:column;gap:4px;text-align:center;padding:18px 6px;font-size:13px}
+.qopts.three b{font-size:24px;color:var(--acc);font-family:var(--fd);line-height:1.1}
+/* sets */
+.sets{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:22px 20px 8px;scrollbar-width:none;max-width:1080px;margin:0 auto}
+.sets::-webkit-scrollbar{display:none}
+.setc{flex:none;width:min(80vw,320px);scroll-snap-align:center;background:linear-gradient(160deg,#4a2c1d,#2a1810);color:#f6efe6;border-radius:28px;padding:22px 20px;display:flex;flex-direction:column;gap:10px}
+.se{font-size:34px;line-height:1}
+.setc h3{font-size:30px}
+.setc ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:14px}
+.setc li{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid rgba(255,255,255,.12);padding-bottom:6px}
+.setc li span{opacity:.6;white-space:nowrap}
+.sp{margin-top:auto;padding-top:8px}
+.sp b{display:block;font-size:26px;font-family:var(--fd)}
+.sp i{font-style:normal;font-size:12px;opacity:.65}
+.setc .btn{padding:13px;font-size:15px}
+.setc.on .btn{background:var(--green);box-shadow:none}
 /* category cards */
 .jump{display:flex;gap:8px;overflow-x:auto;margin:22px -20px 18px;padding:2px 20px;scrollbar-width:none}
 .jump::-webkit-scrollbar,.seg::-webkit-scrollbar{display:none}
@@ -113,23 +158,31 @@ body.has-cart .cart{transform:none}
 </head>
 <body>
 <header class="hdr">
-  <a class="brand" href="#top"><img src="assets/img/logo.jpg" alt="">Út Điệu Spa</a>
+  <a class="brand" href="#top"><img src="assets/img/logo-s.jpg" alt="">Út Điệu Spa</a>
   <button id="langBtn" class="lang-btn" aria-label="Language"></button>
 </header>
 
 <section class="hero" id="top">
-  <img class="hero-bg" src="assets/img/p14.jpg" alt="">
+  <img class="hero-bg" src="assets/img/p14.webp" alt="">
   <div class="w">
     <div class="kick rv">Ông Lang · Phú Quốc</div>
     <h1 class="rv d1" data-i18n="hero_h"></h1>
     <p class="rv d2" data-i18n="hero_p"></p>
     <div class="hero-btns rv d3">
-      <a class="btn" href="#map" data-i18n="hero_cta"></a>
+      <a class="btn" href="#quiz" data-i18n="hero_cta"></a>
       <a class="btn ghost" href="#menu" data-i18n="menu_h"></a>
     </div>
     <a class="rate-pill rv d3" data-rate></a>
   </div>
   <div class="scroll-hint"></div>
+</section>
+
+<section id="quiz" style="padding-bottom:20px">
+  <div class="w">
+    <div class="kick rv" data-i18n="q_k"></div>
+    <h2 class="h2 rv" data-i18n="q_h"></h2>
+    <div class="quiz rv" id="quizBox"></div>
+  </div>
 </section>
 
 <section id="map">
@@ -170,6 +223,11 @@ body.has-cart .cart{transform:none}
   </div>
 </section>
 
+<section id="sets" style="padding:20px 0 30px">
+  <div class="w"><div class="kick rv" data-i18n="set_k"></div><h2 class="h2 rv" data-i18n="set_h"></h2></div>
+  <div class="sets rv" id="setsBox"></div>
+</section>
+
 <section id="menu" style="padding-top:20px">
   <div class="w">
     <div class="kick rv" data-i18n="menu_k"></div>
@@ -190,7 +248,7 @@ body.has-cart .cart{transform:none}
 
 <section id="find">
   <div class="w loc">
-    <img class="loc-img rv" src="assets/img/p18.jpg" alt="Út Điệu Spa" loading="lazy">
+    <img class="loc-img rv" src="assets/img/p18.webp" alt="Út Điệu Spa" loading="lazy">
     <div class="rv d1">
       <div class="kick" data-i18n="loc_k"></div>
       <h2 class="h2" data-i18n="loc_h"></h2>
@@ -263,7 +321,7 @@ const ZONES = {
 };
 window.SITE = {
  id:'spa', root:'', hello:"Hello! I'd like to book at Út Điệu Spa.",
- gateLogo:'<img class="gate-logo" src="assets/img/logo.jpg" alt="Út Điệu Spa">',
+ gateLogo:'<img class="gate-logo" src="assets/img/logo-s.jpg" alt="Út Điệu Spa">',
  reviews:[
   {n:'Gregor D.',l:'en',t:'We had a wonderful massage, accompanied by pleasant scents and calm music in the background. … Upon arrival, we were offered a drink, and after the massage, a serving of freshly cut fruit was waiting for us.'},
   {n:'Владимир И.',l:'ru',t:'Лучше чем здесь массажа нет. … Все прорабатывают от пальчиков ног до ушей.'},
@@ -277,13 +335,38 @@ window.SITE = {
   {n:'Vladimir A.',l:'ru',t:'Самый лучший массаж из тех что нам делали в Тае, Камбодже и тут'}
  ],
  dict:{
+  map_p:["Отметьте одну или несколько зон — подберём до четырёх процедур.", "Tap one or several zones — we’ll suggest up to four treatments.", "Chọn một hoặc nhiều vùng — chúng tôi gợi ý tối đa bốn liệu trình.", "한 곳 또는 여러 부위를 누르면 최대 4가지 관리를 추천해 드려요.", "选择一个或多个部位，我们为您推荐最多四个项目。"],
+  see:["Показать процедуры ↓", "Show treatments ↓", "Xem liệu trình ↓", "관리 보기 ↓", "查看项目 ↓"],
+  hit_top:["Выбор гостей", "Guest favourite", "Khách yêu thích", "고객 추천", "客人最爱"],
+  hit_pop:["Часто берут", "Popular", "Được chọn nhiều", "인기", "人气"],
+  q_k:["Подбор за 30 секунд", "30-second match", "Chọn nhanh trong 30 giây", "30초 맞춤 추천", "30 秒快速挑选"],
+  q_h:["Не знаете, что выбрать?", "Not sure what to pick?", "Chưa biết chọn gì?", "무엇을 고를지 모르겠다면?", "不知道选什么？"],
+  q1:["Чего хочется сегодня?", "What do you need today?", "Hôm nay bạn cần gì?", "오늘 무엇이 필요하세요?", "今天想要什么？"],
+  g_relax:["Просто расслабиться", "Just relax", "Chỉ muốn thư giãn", "그냥 쉬고 싶어요", "只想放松"],
+  g_tension:["Снять зажимы в спине и шее", "Ease a tight back and neck", "Giảm mỏi lưng và cổ", "뭉친 등과 목 풀기", "缓解背部和颈部紧张"],
+  g_feet:["Устали ноги", "Tired legs and feet", "Chân mỏi", "다리와 발이 피곤해요", "腿脚疲劳"],
+  g_skin:["Кожа после солнца", "Skin after the sun", "Da sau khi đi nắng", "햇볕에 지친 피부", "晒后肌肤"],
+  g_head:["Голова, волосы, лицо", "Head, hair and face", "Đầu, tóc và mặt", "머리, 헤어, 얼굴", "头部、头发与面部"],
+  q2:["Сколько у вас времени?", "How much time do you have?", "Bạn có bao nhiêu thời gian?", "시간이 얼마나 있으세요?", "您有多少时间？"],
+  q3:["Какой нажим любите?", "How firm do you like it?", "Bạn thích lực mạnh hay nhẹ?", "어느 정도 압이 좋으세요?", "喜欢什么力度？"],
+  p_soft:["Мягкий", "Gentle", "Nhẹ", "부드럽게", "轻柔"],
+  p_mid:["Средний", "Medium", "Vừa", "중간", "适中"],
+  p_hard:["Сильный", "Firm", "Mạnh", "강하게", "有力"],
+  q_res:["Вам подойдёт", "We recommend", "Phù hợp với bạn", "추천 관리", "为您推荐"],
+  q_again:["Пройти заново", "Start over", "Làm lại", "다시 하기", "重新选择"],
+  set_k:["Готовые наборы", "Ready-made sets", "Gói có sẵn", "추천 세트", "精选套餐"],
+  set_h:["Собрали за вас", "Put together for you", "Kết hợp sẵn cho bạn", "미리 준비한 조합", "为您搭配好了"],
+  s1:["После перелёта", "After the flight", "Sau chuyến bay", "비행 후", "飞行之后"],
+  s2:["После пляжа", "After the beach", "Sau khi tắm biển", "해변 다녀온 뒤", "海滩之后"],
+  s3:["Полная перезагрузка", "Full reset", "Tái tạo toàn diện", "완전 리셋", "全面焕活"],
+  set_add:["Добавить в визит", "Add to my visit", "Thêm vào lịch hẹn", "예약에 담기", "加入预约"],
+  set_on:["В визите ✓", "Added ✓", "Đã thêm ✓", "담김 ✓", "已加入 ✓"],
   title:['Út Điệu Spa — массаж и спа на Фукоке','Út Điệu Spa — massage & spa in Phú Quốc','Út Điệu Spa — massage & spa tại Phú Quốc','Út Điệu Spa — 푸꾸옥 마사지 & 스파','Út Điệu Spa — 富国岛按摩水疗'],
   hero_h:['Час тишины <em>посреди отпуска</em>','An hour of calm <em>in the middle of your holiday</em>','Một giờ bình yên <em>giữa kỳ nghỉ</em>','휴가 중 만나는 <em>고요한 한 시간</em>','假期里的 <em>一小时宁静</em>'],
   hero_p:['Массаж тела и стоп, спа для волос, маникюр. Выберите процедуру и напишите нам в WhatsApp.','Body and foot massage, hair spa, nails. Pick a treatment and message us on WhatsApp.','Massage toàn thân và chân, gội đầu dưỡng sinh, làm móng. Chọn liệu trình và nhắn cho chúng tôi qua WhatsApp.','바디·발 마사지, 헤어 스파, 네일. 원하는 관리를 고르고 WhatsApp으로 연락 주세요.','身体与足部按摩、头发水疗、美甲。选好项目，用 WhatsApp 联系我们。'],
   hero_cta:['Подобрать массаж','Find my massage','Chọn liệu trình','마사지 고르기','挑选按摩'],
   map_k:['Карта тела','Body map','Bản đồ cơ thể','바디 맵','身体地图'],
   map_h:['Что хочется расслабить?','Where do you need it most?','Bạn muốn thư giãn vùng nào?','어디를 풀어드릴까요?','想放松哪里？'],
-  map_p:['Нажмите на часть тела — покажем подходящие процедуры.','Tap a part of the body to see the treatments that fit.','Chạm vào vùng cơ thể để xem liệu trình phù hợp.','몸의 부위를 누르면 알맞은 관리를 보여드려요.','点击身体部位，查看合适的项目。'],
   map_empty:['Выберите зону на фигуре','Tap a zone on the figure','Hãy chọn một vùng trên hình','그림에서 부위를 선택하세요','请在图上选择部位'],
   z_head:['Голова и лицо','Head & face','Đầu & mặt','머리 & 얼굴','头部与面部'],
   z_shoulders:['Шея и плечи','Neck & shoulders','Cổ & vai','목 & 어깨','肩颈'],
@@ -307,13 +390,38 @@ window.SITE = {
   book:['Записаться','Book','Đặt lịch','예약하기','预约'],
  },
  extra:{
+  map_p:["Бір немесе бірнеше аймақты белгілеңіз — төртке дейін процедура ұсынамыз.", "Bir yoki bir nechta sohani belgilang — to‘rttagacha muolaja tavsiya qilamiz.", "Eine oder mehrere Zonen antippen – wir schlagen bis zu vier Behandlungen vor.", "Touchez une ou plusieurs zones : nous proposons jusqu’à quatre soins."],
+  see:["Процедураларды көру ↓", "Muolajalarni ko‘rish ↓", "Behandlungen zeigen ↓", "Voir les soins ↓"],
+  hit_top:["Қонақтар таңдауы", "Mehmonlar tanlovi", "Gästefavorit", "Coup de cœur"],
+  hit_pop:["Жиі таңдайды", "Ko‘p tanlanadi", "Beliebt", "Populaire"],
+  q_k:["30 секундта таңдау", "30 soniyada tanlov", "In 30 Sekunden gefunden", "Trouvé en 30 secondes"],
+  q_h:["Нені таңдарыңызды білмейсіз бе?", "Nimani tanlashni bilmayapsizmi?", "Unsicher, was passt?", "Vous hésitez ?"],
+  q1:["Бүгін не қалайсыз?", "Bugun nima xohlaysiz?", "Was brauchen Sie heute?", "De quoi avez-vous envie ?"],
+  g_relax:["Жай демалу", "Shunchaki dam olish", "Einfach entspannen", "Simplement me détendre"],
+  g_tension:["Арқа мен мойынды босату", "Bel va bo‘yin taranglashuvini yozish", "Verspannten Rücken und Nacken lösen", "Dénouer le dos et la nuque"],
+  g_feet:["Аяқ шаршады", "Oyoqlar charchadi", "Müde Beine und Füße", "Jambes et pieds fatigués"],
+  g_skin:["Күннен кейінгі тері", "Quyoshdan keyingi teri", "Haut nach der Sonne", "Peau après le soleil"],
+  g_head:["Бас, шаш, бет", "Bosh, soch, yuz", "Kopf, Haare, Gesicht", "Tête, cheveux, visage"],
+  q2:["Қанша уақытыңыз бар?", "Qancha vaqtingiz bor?", "Wie viel Zeit haben Sie?", "Combien de temps avez-vous ?"],
+  q3:["Қандай қысымды ұнатасыз?", "Qanday bosimni yoqtirasiz?", "Wie fest darf es sein?", "Quelle pression préférez-vous ?"],
+  p_soft:["Жұмсақ", "Yumshoq", "Sanft", "Douce"],
+  p_mid:["Орташа", "O‘rtacha", "Mittel", "Moyenne"],
+  p_hard:["Қатты", "Kuchli", "Kräftig", "Forte"],
+  q_res:["Сізге сәйкес келеді", "Sizga mos keladi", "Unsere Empfehlung", "Nous vous conseillons"],
+  q_again:["Қайта өту", "Qaytadan boshlash", "Neu starten", "Recommencer"],
+  set_k:["Дайын жинақтар", "Tayyor to‘plamlar", "Fertige Pakete", "Formules prêtes"],
+  set_h:["Сіз үшін жинадық", "Siz uchun tuzdik", "Für Sie zusammengestellt", "Composées pour vous"],
+  s1:["Ұшудан кейін", "Parvozdan keyin", "Nach dem Flug", "Après le vol"],
+  s2:["Жағажайдан кейін", "Plyajdan keyin", "Nach dem Strand", "Après la plage"],
+  s3:["Толық жаңару", "To‘liq yangilanish", "Kompletter Neustart", "Remise à neuf"],
+  set_add:["Сапарға қосу", "Tashrifga qo‘shish", "Zum Besuch hinzufügen", "Ajouter à ma visite"],
+  set_on:["Қосылды ✓", "Qo‘shildi ✓", "Hinzugefügt ✓", "Ajouté ✓"],
   title:['Út Điệu Spa — Фукуоктағы массаж және спа','Út Điệu Spa — Fukuokda massaj va spa','Út Điệu Spa — Massage & Spa auf Phú Quốc','Út Điệu Spa — massage & spa à Phú Quốc'],
   hero_h:['Демалыс ортасындағы <em>бір сағат тыныштық</em>','Ta’til o‘rtasida <em>bir soat osoyishtalik</em>','Eine Stunde Ruhe <em>mitten im Urlaub</em>','Une heure de calme <em>au cœur des vacances</em>'],
   hero_p:['Дене мен табан массажы, шаш спасы, маникюр. Процедураны таңдап, WhatsApp-қа жазыңыз.','Tana va oyoq massaji, soch spasi, manikyur. Muolajani tanlang va WhatsAppga yozing.','Körper- und Fußmassage, Haar-Spa, Nägel. Behandlung wählen und per WhatsApp schreiben.','Massage du corps et des pieds, spa capillaire, ongles. Choisissez un soin et écrivez-nous sur WhatsApp.'],
   hero_cta:['Массаж таңдау','Massaj tanlash','Massage finden','Trouver mon massage'],
   map_k:['Дене картасы','Tana xaritasi','Körperkarte','Carte du corps'],
   map_h:['Қай жеріңізді босаңсытқыңыз келеді?','Qayeringizni bo‘shashtirmoqchisiz?','Wo möchten Sie entspannen?','Où voulez-vous vous détendre ?'],
-  map_p:['Дене бөлігін басыңыз — сәйкес процедураларды көрсетеміз.','Tana qismini bosing — mos muolajalarni ko‘rsatamiz.','Tippen Sie auf eine Körperzone – wir zeigen passende Behandlungen.','Touchez une zone du corps pour voir les soins adaptés.'],
   map_empty:['Суреттен аймақты таңдаңыз','Rasmdan sohani tanlang','Zone auf der Figur antippen','Touchez une zone sur la silhouette'],
   z_head:['Бас және бет','Bosh va yuz','Kopf & Gesicht','Tête & visage'],
   z_shoulders:['Мойын және иық','Bo‘yin va yelka','Nacken & Schultern','Nuque & épaules'],
@@ -371,18 +479,28 @@ const NX = { // [kk, uz, de, fr]
 };
 SERVICES.forEach(s=>s.n.push(...NX[s.id]));
 /* Фото для карточек категорий */
-const CAT_IMG = {body:'assets/img/p9.jpg',foot:'assets/img/p16.jpg',nail:'assets/img/p10.jpg',hair:'assets/img/p12.jpg',focus:'assets/img/p17.jpg'};
+const CAT_IMG = {body:'assets/img/p9.webp',foot:'assets/img/p16.webp',nail:'assets/img/p10.webp',hair:'assets/img/p12.webp',focus:'assets/img/p17.webp'};
 
 const byId = Object.fromEntries(SERVICES.map(s=>[s.id,s]));
-const cart = new Map(), dsel = {}; let zone = null;
+/* Хиты — по упоминаниям в отзывах Google: top = «выбор гостей», pop = «часто берут» */
+const HITS = {deep:'top', foot:'pop', aloe:'pop', hneck:'pop'};
+const cart = new Map(), dsel = {}, zones = new Set();
 const $ = (s) => document.querySelector(s);
-const listFor = (key) => key==='zone' ? (zone?ZONES[zone].map(id=>byId[id]):[]) : SERVICES.filter(s=>s.c===key);
+const hitFirst = (a,b) => (HITS[b.id]?1:0)-(HITS[a.id]?1:0);
+/* до 4 процедур под выбранные зоны: сначала те, что подходят сразу к нескольким зонам, затем хиты */
+function zoneList(){
+  const sc = {};
+  zones.forEach(z=>ZONES[z].forEach((id,i)=>{ const o = sc[id] || (sc[id]={n:0,i:99}); o.n++; o.i=Math.min(o.i,i); }));
+  return Object.keys(sc).sort((a,b)=>(sc[b].n-sc[a].n) || hitFirst(byId[a],byId[b]) || (sc[a].i-sc[b].i)).slice(0,4).map(id=>byId[id]);
+}
+const listFor = (key) => key==='zone' ? zoneList() : SERVICES.filter(s=>s.c===key).sort(hitFirst);
 
-function row(s, d, i){
-  const fixed = !s.d[0], j = fixed ? 0 : s.d.indexOf(d), name = UD.pick(s.n);
+function row(s, d, i, withD){
+  const fixed = !s.d[0], j = fixed ? 0 : s.d.indexOf(d), h = HITS[s.id];
+  const name = UD.pick(s.n) + (withD&&!fixed ? `<em class="rd">${d} ${UD.t('min')}</em>` : '') + (h ? `<small class="badge ${h}">★ ${UD.t('hit_'+h)}</small>` : '');
   if(j<0) return `<div class="row off" style="animation-delay:${i*.04}s"><span class="rn">${name}</span><span class="rp"><b>—</b></span><span class="add"></span></div>`;
   const k = s.id+':'+(fixed?0:d), p = s.p[j], price = s.max ? UD.fmt(p).replace(' ₫','')+' – '+UD.fmt(s.max) : UD.fmt(p);
-  return `<button class="row${cart.has(k)?' on':''}" data-k="${k}" style="animation-delay:${i*.04}s"><span class="rn">${name}</span><span class="rp"><b>${price}</b><i>${UD.approx(p)}</i></span><span class="add"></span></button>`;
+  return `<button class="row${h?' hit':''}${cart.has(k)?' on':''}" data-k="${k}" style="animation-delay:${i*.04}s"><span class="rn">${name}</span><span class="rp"><b>${price}</b><i>${UD.approx(p)}</i></span><span class="add"></span></button>`;
 }
 function block(key){
   const list = listFor(key), ds = [...new Set(list.flatMap(s=>s.d))].filter(Boolean).sort((a,b)=>a-b);
@@ -392,11 +510,41 @@ function block(key){
   return seg+'<div class="rows">'+list.map((s,i)=>row(s,d,i)).join('')+'</div>';
 }
 function renderPanel(){
-  $('#panel').innerHTML = zone
-    ? `<h3>${UD.t('z_'+zone)}</h3><div class="hint">${UD.t('tap_hint')}</div><div data-key="zone">${block('zone')}</div>`
+  const zs = [...zones];
+  $('#panel').innerHTML = zs.length
+    ? `<h3>${UD.t('q_res')}</h3><div class="hint">${zs.map(z=>UD.t('z_'+z)).join(' · ')}</div><div data-key="zone">${block('zone')}</div><a class="more" href="#menu">${UD.t('menu_h')} ↓</a>`
     : `<div class="empty">${UD.t('map_empty')}</div>`;
-  document.querySelectorAll('.z').forEach(z=>z.classList.toggle('on', z.dataset.z===zone));
-  $('#zchips').innerHTML = Object.keys(ZONES).map(z=>`<button data-z="${z}" class="${z===zone?'on':''}">${UD.t('z_'+z)}</button>`).join('');
+  document.querySelectorAll('.z').forEach(z=>z.classList.toggle('on', zones.has(z.dataset.z)));
+  $('#zchips').innerHTML = Object.keys(ZONES).map(z=>`<button data-z="${z}" class="${zones.has(z)?'on':''}">${UD.t('z_'+z)}</button>`).join('') + (zs.length ? `<a class="see" href="#panel">${UD.t('see')}</a>` : '');
+}
+/* подбор в три вопроса: цель → время → нажим */
+const QUIZ = {
+ relax:[['relax','aloe'],['herbal','stone'],['deep','thai']],
+ tension:[['neck','herbal'],['stone','neck'],['deep','thai']],
+ feet:[['foot','fscrubm'],['foot','fcare'],['foot','thai']],
+ skin:[['sun','aloe'],['sun','aloe'],['scrub','aloe']],
+ head:[['hrelax','facial'],['hneck','hface'],['hneck','neck']],
+};
+const GOALS = [['relax','🌿'],['tension','💆'],['feet','🦶'],['skin','☀️'],['head','💧']], PRESS = ['soft','mid','hard'];
+let qa = [];
+function renderQuiz(){
+  const st = qa.length, dots = '<div class="qdots">'+[0,1,2].map(i=>`<i class="${i<st?'done':i===st?'cur':''}"></i>`).join('')+'</div>';
+  let h;
+  if(st===0) h = `<h3>${UD.t('q1')}</h3><div class="qopts">`+GOALS.map(([g,e],i)=>`<button data-q="${g}" style="animation-delay:${i*.05}s"><span>${e}</span>${UD.t('g_'+g)}</button>`).join('')+'</div>';
+  else if(st===1) h = `<h3>${UD.t('q2')}</h3><div class="qopts three">`+[30,60,90].map((m,i)=>`<button data-q="${m}" style="animation-delay:${i*.05}s"><b>${m}${m===90?'+':''}</b>${UD.t('min')}</button>`).join('')+'</div>';
+  else if(st===2) h = `<h3>${UD.t('q3')}</h3><div class="qopts three">`+PRESS.map((p,i)=>`<button data-q="${i}" style="animation-delay:${i*.05}s"><b>${'●'.repeat(i+1)}</b>${UD.t('p_'+p)}</button>`).join('')+'</div>';
+  else { const T = +qa[1];
+    h = `<h3>${UD.t('q_res')}</h3><div class="hint">${UD.t('tap_hint')}</div><div class="rows">`+QUIZ[qa[0]][+qa[2]].map((id,i)=>{ const s=byId[id]; return row(s, s.d.reduce((b,x)=>Math.abs(x-T)<Math.abs(b-T)?x:b), i, true); }).join('')+`</div><button class="more" data-q="reset">↺ ${UD.t('q_again')}</button>`; }
+  $('#quizBox').innerHTML = dots + h;
+}
+/* готовые наборы: цена = сумма входящих процедур */
+const SETS = [{k:'s1',e:'✈️',it:['foot:60','neck:30']},{k:'s2',e:'🏖️',it:['sun:60','hrelax:45']},{k:'s3',e:'✨',it:['deep:90','foot:30','facial:30']}];
+const priceOf = (k) => { const [id,d]=k.split(':'), s=byId[id]; return s.p[+d?s.d.indexOf(+d):0]; };
+function renderSets(){
+  $('#setsBox').innerHTML = SETS.map(st=>{
+    const sum = st.it.reduce((a,k)=>a+priceOf(k),0), mins = st.it.reduce((a,k)=>a+ +k.split(':')[1],0), on = st.it.every(k=>cart.has(k));
+    return `<article class="setc${on?' on':''}"><div class="se">${st.e}</div><h3>${UD.t(st.k)}</h3><ul>`+st.it.map(k=>{ const [id,d]=k.split(':'); return `<li>${UD.pick(byId[id].n)} <span>${d} ${UD.t('min')}</span></li>`; }).join('')+`</ul><div class="sp"><b>${UD.fmt(sum)}</b><i>${[mins+' '+UD.t('min'), UD.approx(sum)].filter(Boolean).join(' · ')}</i></div><button class="btn" data-set="${st.k}">${UD.t(on?'set_on':'set_add')}</button></article>`;
+  }).join('');
 }
 function renderMenu(){
   $('#jump').innerHTML = CATS.map(c=>`<a href="#cat-${c}">${UD.t('c_'+c)}</a>`).join('');
@@ -406,7 +554,7 @@ function renderMenu(){
 function renderCart(){
   let sum=0, mins=0, plus=false, html='', msg="Hello! I'd like to book at Út Điệu Spa:\n";
   cart.forEach((v,k)=>{
-    const [id,d]=k.split(':'), s=byId[id], p=s.p[+d?s.d.indexOf(+d):0];
+    const [id,d]=k.split(':'), s=byId[id], p=priceOf(k);
     sum+=p; mins+=+d; if(s.max) plus=true;
     html+=`<div><span>${UD.pick(s.n)}${+d?` · ${d} ${UD.t('min')}`:''}</span><span>${UD.fmt(p)}${s.max?'+':''} <button data-rm="${k}" aria-label="remove">×</button></span></div>`;
     msg+=`• ${s.n[1]}${+d?` — ${d} min`:''} — ${UD.fmt(p)}${s.max?'+':''}\n`;
@@ -419,21 +567,24 @@ function renderCart(){
   $('#cartGo').innerHTML = UD.WA_ICON+`<span>${UD.t('book')}</span>`;
   $('#cartGo').href = UD.wa(msg);
 }
-function renderAll(){ renderPanel(); renderMenu(); renderCart(); }
-function pickZone(z){ zone = z; dsel.zone = 0; renderPanel(); if(innerWidth<820) $('#panel').scrollIntoView({behavior:'smooth',block:'start'}); }
+function renderAll(){ renderPanel(); renderQuiz(); renderSets(); renderMenu(); renderCart(); }
+/* корзина изменилась не кликом по строке — перерисовать все списки */
+function refresh(){ renderPanel(); document.querySelectorAll('.mbody').forEach(b=>b.innerHTML=block(b.dataset.key)); if(qa.length===3) renderQuiz(); renderSets(); renderCart(); }
 
 document.addEventListener('click',(e)=>{
-  const r=e.target.closest('.row[data-k]'), sg=e.target.closest('.seg button'), z=e.target.closest('[data-z]'), rm=e.target.closest('[data-rm]');
+  const r=e.target.closest('.row[data-k]'), sg=e.target.closest('.seg button'), z=e.target.closest('[data-z]'), rm=e.target.closest('[data-rm]'), q=e.target.closest('[data-q]'), st=e.target.closest('[data-set]');
   if(r){ const k=r.dataset.k; cart.has(k)?cart.delete(k):cart.set(k,1);
-    document.querySelectorAll(`.row[data-k="${k}"]`).forEach(c=>c.classList.toggle('on',cart.has(k))); renderCart(); }
+    document.querySelectorAll(`.row[data-k="${k}"]`).forEach(c=>c.classList.toggle('on',cart.has(k))); renderSets(); renderCart(); }
   else if(sg){ const box=sg.closest('[data-key]'); dsel[box.dataset.key]=+sg.dataset.d; box.innerHTML=block(box.dataset.key); }
-  else if(rm){ cart.delete(rm.dataset.rm); renderPanel(); document.querySelectorAll('.mbody').forEach(b=>b.innerHTML=block(b.dataset.key)); renderCart(); }
-  else if(z) pickZone(z.dataset.z);
+  else if(rm){ cart.delete(rm.dataset.rm); refresh(); }
+  else if(q){ q.dataset.q==='reset' ? qa=[] : qa.push(q.dataset.q); renderQuiz(); }
+  else if(st){ const S=SETS.find(x=>x.k===st.dataset.set), on=S.it.every(k=>cart.has(k)); S.it.forEach(k=>on?cart.delete(k):cart.set(k,1)); refresh(); }
+  else if(z){ const v=z.dataset.z; zones.has(v)?zones.delete(v):zones.add(v); renderPanel(); }
   else if(e.target.closest('#cartSum')) $('#cart').classList.toggle('open');
   else if(e.target.closest('.gal img')){ const b=document.createElement('div'); b.className='lb'; b.innerHTML=`<img src="${e.target.src}" alt="">`; b.onclick=()=>b.remove(); document.body.appendChild(b); }
 });
-$('#gal').innerHTML = [17,9,12,13,16,10,15,8,11].map(n=>`<img class="rv" loading="lazy" src="assets/img/p${n}.jpg" alt="Út Điệu Spa">`).join('');
+$('#gal').innerHTML = [17,9,12,13,16,10,15,8,11].map(n=>`<img class="rv" loading="lazy" src="assets/img/p${n}.webp" alt="Út Điệu Spa">`).join('');
 </script>
-<script src="assets/shared.js?v=3"></script>
+<script src="assets/shared.js?v=4"></script>
 </body>
 </html>
