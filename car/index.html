@@ -39,6 +39,14 @@ h1,h2,h3{font-weight:900;text-transform:uppercase;letter-spacing:-.01em}
 .fact{background:var(--card);border-radius:22px;padding:20px 16px;box-shadow:inset 0 0 0 1px var(--line)}
 .fact b{display:block;font-size:30px;font-weight:900;color:var(--acc);line-height:1.1}
 .fact span{font-size:13px;color:var(--muted);font-weight:600}
+/* photos */
+.shots{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:22px -20px 0;padding:0 20px 6px;scrollbar-width:none}
+.shots::-webkit-scrollbar{display:none}
+.shots img{flex:none;height:230px;width:auto;aspect-ratio:4/3;object-fit:cover;border-radius:22px;scroll-snap-align:center;background:var(--card)}
+.shots img.in-car{aspect-ratio:16/10;object-position:50% 100%}
+@media(min-width:900px){.shots{display:grid;grid-template-columns:repeat(4,1fr);margin:26px 0 0;padding:0;overflow:visible}.shots img,.shots img.in-car{width:100%;height:auto;aspect-ratio:4/3}}
+.credit{font-size:12px;color:var(--muted);margin-top:10px}
+.credit a{text-decoration:underline}
 /* island map */
 .isl{display:grid;gap:18px;margin-top:26px}
 .isl>*{min-width:0}
@@ -114,6 +122,13 @@ h1,h2,h3{font-weight:900;text-transform:uppercase;letter-spacing:-.01em}
       <div class="fact rv d2"><b>~200 km</b><span data-i18n="f3"></span></div>
       <div class="fact rv d3"><b>3.2 m</b><span data-i18n="f4"></span></div>
     </div>
+    <div class="shots rv">
+      <img src="../assets/img/vf3-1.jpg" alt="VinFast VF3 — front" loading="lazy" width="1280" height="960">
+      <img src="../assets/img/vf3-4.jpg" alt="VinFast VF3 — side" loading="lazy" width="1280" height="964">
+      <img class="in-car" src="../assets/img/vf3-3.jpg" alt="VinFast VF3 — interior" loading="lazy" width="1280" height="960">
+      <img src="../assets/img/vf3-2.jpg" alt="VinFast VF3 — rear" loading="lazy" width="1280" height="960">
+    </div>
+    <p class="credit rv"><span data-i18n="shot_note"></span> Photos: Ethan Llamas (<a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>), Elmschrat (CC0) · <a href="https://commons.wikimedia.org/wiki/Category:VinFast_VF_3" target="_blank" rel="noopener">Wikimedia Commons</a></p>
   </div>
 </section>
 
@@ -181,6 +196,7 @@ window.SITE={
  gateLogo:'<div class="gate-logo">🚙</div>',
  audio:{drone:[98,146.83],scale:[196,220,293.66,329.63,392,440],gap:[1100,2600]},
  dict:{
+  shot_note:['Реальные фото модели VF3. Цвет автомобиля может отличаться.','Real photos of the VF3. Your car’s colour may differ.','Ảnh thực tế của VF3. Màu xe có thể khác.','실제 VF3 사진입니다. 차량 색상은 다를 수 있습니다.','VF3 实拍照片，车辆颜色可能不同。'],
   title:['Аренда VinFast VF3 на Фукоке — без водителя','VinFast VF3 self-drive rental — Phú Quốc','Thuê xe tự lái VinFast VF3 — Phú Quốc','푸꾸옥 VinFast VF3 셀프 드라이브 렌트','富国岛 VinFast VF3 自驾租车'],
   hero_h:['Весь Фукок — <em>за вашим рулём</em>','All of Phú Quốc — <em>you drive</em>','Cả Phú Quốc — <em>bạn cầm lái</em>','푸꾸옥 전체를 — <em>직접 운전으로</em>','整个富国岛 — <em>由你驾驶</em>'],
   hero_p:['Электромобиль VinFast VF3 без водителя. Пляжи, рынки и закаты в своём ритме.','A self-drive VinFast VF3 electric car. Beaches, markets and sunsets at your own pace.','Xe điện VinFast VF3 tự lái. Bãi biển, chợ đêm và hoàng hôn theo nhịp của bạn.','VinFast VF3 전기차 셀프 드라이브. 해변과 시장, 노을을 내 속도로.','VinFast VF3 电动车自驾。按自己的节奏去海滩、夜市和看日落。'],
@@ -202,6 +218,7 @@ window.SITE={
   plan_note:['Цену, условия и наличие машины на ваши даты подтвердим в чате.','We will confirm the price, conditions and availability in the chat.','Chúng tôi sẽ xác nhận giá, điều kiện và xe trống qua tin nhắn.','가격, 조건, 예약 가능 여부를 채팅으로 안내해 드려요.','价格、条件及车辆是否可租，我们会在聊天中确认。'],
  },
  extra:{
+  shot_note:['VF3 үлгісінің нақты фотолары. Көлік түсі өзгеше болуы мүмкін.','VF3 ning haqiqiy suratlari. Mashina rangi boshqacha bo‘lishi mumkin.','Echte Fotos des VF3. Die Wagenfarbe kann abweichen.','Photos réelles du VF3. La couleur peut varier.'],
   title:['Фукуокта VinFast VF3 жалға алу — жүргізушісіз','Fukuokda VinFast VF3 ijarasi — haydovchisiz','VinFast VF3 mieten auf Phú Quốc — Selbstfahrer','Location VinFast VF3 à Phú Quốc — sans chauffeur'],
   hero_h:['Бүкіл Фукуок — <em>рөл сізде</em>','Butun Fukuok — <em>rul sizda</em>','Ganz Phú Quốc — <em>Sie fahren</em>','Tout Phú Quốc — <em>au volant</em>'],
   hero_p:['Жүргізушісіз VinFast VF3 электромобилі. Жағажайлар, базарлар мен күн батуы — өз ырғағыңызда.','Haydovchisiz VinFast VF3 elektromobili. Plyajlar, bozorlar va quyosh botishi — o‘z ritmingizda.','VinFast VF3 Elektroauto zum Selbstfahren. Strände, Märkte und Sonnenuntergänge im eigenen Tempo.','Une VinFast VF3 électrique sans chauffeur. Plages, marchés et couchers de soleil à votre rythme.'],
